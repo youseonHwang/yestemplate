@@ -7,27 +7,37 @@ import { Document, Model, model, Schema } from "mongoose";
  * @param avatar:string
  */
 export interface IUser extends Document {
+  name: string;
   email: string;
   password: string;
-  avatar: string;
+  role: number;
+  token: string;
+  tokenExp: number;
 }
 
 const userSchema: Schema = new Schema({
+  name: {
+    type: String,
+    maxlength: 50
+  },
   email: {
     type: String,
-    required: true,
-    unique: true
+    trim: true,
+    unique: 1
   },
   password: {
     type: String,
-    required: true
+    minglength: 5
   },
-  avatar: {
-    type: String
+  role: {
+    type: Number,
+    default: 0
   },
-  date: {
-    type: Date,
-    default: Date.now
+  token: {
+    type: String,
+  },
+  tokenExp: {
+    type: Number
   }
 });
 
