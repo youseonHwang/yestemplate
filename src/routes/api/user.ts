@@ -13,7 +13,7 @@ const router: Router = Router();
 { /* user 회원가입 */ }
 router.post("/",
   [
-    check("")
+    check(""),
     check("email", "Please include a valid email").isEmail(),
     check(
       "password",
