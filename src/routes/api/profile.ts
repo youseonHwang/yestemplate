@@ -1,49 +1,22 @@
+//user 이용해서 로그인하는 걸로 바꾸기
 import { Router, Response } from "express";
 import { check, validationResult } from "express-validator/check";
 import HttpStatusCodes from "http-status-codes";
-
-import auth from "../../middleware/auth";
-import Profile, { IProfile } from "../../models/Profile";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import Payload from "../../types/Payload";
 import Request from "../../types/Request";
 import User, { IUser } from "../../models/User";
+import config from 'config';
 
 const router: Router = Router();
 
-// @route   GET api/profile/me
-// @desc    Get current user's profile
-// @access  Private
-router.get("/me", auth, async (req: Request, res: Response) => {
-  try {
-    const profile: IProfile = await Profile.findOne({
-      user: req.userId,
-    }).populate("user", ["avatar", "email"]);
-    if (!profile) {
-      return res.status(HttpStatusCodes.BAD_REQUEST).json({
-        errors: [
-          {
-            msg: "There is no profile for this user",
-          },
-        ],
-      });
-    }
-
-    res.json(profile);
-  } catch (err) {
-    console.error(err.message);
-    res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).send("Server Error");
-  }
-});
-
-// @route   POST api/profile
-// @desc    Create or update user's profile
-// @access  Private
+{/* user 로그인 */}
 router.post(
   "/",
   [
-    auth,
-    check("firstName", "First Name is required").not().isEmpty(),
-    check("lastName", "Last Name is required").not().isEmpty(),
-    check("username", "Username is required").not().isEmpty(),
+    check("email", "Please include a valid email").isEmail(),
+    check("password", "Password is required").exists()
   ],
   async (req: Request, res: Response) => {
     const errors = validationResult(req);
@@ -53,108 +26,53 @@ router.post(
         .json({ errors: errors.array() });
     }
 
-    const { firstName, lastName, username } = req.body;
-
-    // Build profile object based on IProfile
-    const profileFields = {
-      user: req.userId,
-      firstName,
-      lastName,
-      username,
-    };
-
+    const { email, password } = req.body;
     try {
-      let user: IUser = await User.findOne({ _id: req.userId });
+      let user: IUser = await User.findOne({ email });
 
+      //유저 이메일 조회
       if (!user) {
         return res.status(HttpStatusCodes.BAD_REQUEST).json({
           errors: [
             {
-              msg: "User not registered",
-            },
-          ],
+              msg: "Invalid Email"
+            }
+          ]
         });
       }
 
-      let profile: IProfile = await Profile.findOne({ user: req.userId });
-      if (profile) {
-        // Update
-        profile = await Profile.findOneAndUpdate(
-          { user: req.userId },
-          { $set: profileFields },
-          { new: true }
-        );
+      const isMatch = await bcrypt.compare(password, user.password);
 
-        return res.json(profile);
+      //유저 비밀번호 조회: 암호화된 비밀번호와 일치하는지 확인
+      if (!isMatch) {
+        return res.status(HttpStatusCodes.BAD_REQUEST).json({
+          errors: [
+            {
+              msg: "Invalid Password"
+            }
+          ]
+        });
       }
 
-      // Create
-      profile = new Profile(profileFields);
+      const payload: Payload = {
+        userId: user.id
+      };
 
-      await profile.save();
-
-      res.json(profile);
+      //jwt.sign(payload, 비밀키 값) -> 출력 결과로는 .으로 이어진 인코딩 문자열 나옴
+      jwt.sign(
+        payload,
+        config.get("jwtSecret"),
+        { expiresIn: config.get("jwtExpiration") },
+        (err, token) => {
+          if (err) throw err;
+          res.json({ msg: [{ msg: "success" }], token });
+        }
+      );
     } catch (err) {
       console.error(err.message);
       res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).send("Server Error");
     }
   }
 );
-
-// @route   GET api/profile
-// @desc    Get all profiles
-// @access  Public
-router.get("/", async (_req: Request, res: Response) => {
-  try {
-    const profiles = await Profile.find().populate("user", ["avatar", "email"]);
-    res.json(profiles);
-  } catch (err) {
-    console.error(err.message);
-    res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).send("Server Error");
-  }
-});
-
-// @route   GET api/profile/user/:userId
-// @desc    Get profile by userId
-// @access  Public
-router.get("/user/:userId", async (req: Request, res: Response) => {
-  try {
-    const profile: IProfile = await Profile.findOne({
-      user: req.params.userId,
-    }).populate("user", ["avatar", "email"]);
-
-    if (!profile)
-      return res
-        .status(HttpStatusCodes.BAD_REQUEST)
-        .json({ msg: "Profile not found" });
-
-    res.json(profile);
-  } catch (err) {
-    console.error(err.message);
-    if (err.kind === "ObjectId") {
-      return res
-        .status(HttpStatusCodes.BAD_REQUEST)
-        .json({ msg: "Profile not found" });
-    }
-    res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).send("Server Error");
-  }
-});
-
-// @route   DELETE api/profile
-// @desc    Delete profile and user
-// @access  Private
-router.delete("/", auth, async (req: Request, res: Response) => {
-  try {
-    // Remove profile
-    await Profile.findOneAndRemove({ user: req.userId });
-    // Remove user
-    await User.findOneAndRemove({ _id: req.userId });
-
-    res.json({ msg: "User removed" });
-  } catch (err) {
-    console.error(err.message);
-    res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).send("Server Error");
-  }
-});
 
 export default router;
