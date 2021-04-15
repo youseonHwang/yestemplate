@@ -24,6 +24,7 @@ app.get("/", (_req, res) => {
 
 app.use("/api/auth", auth);
 app.use("/api/user", user);
+//login으로 변경
 app.use("/api/profile", profile);
 
 const port = app.get("port");
