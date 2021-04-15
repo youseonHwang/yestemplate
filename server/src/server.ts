@@ -1,19 +1,18 @@
 import express from "express";
-
-import connectDB from "../config/database";
+import connectDB from "../../config/database";
 import auth from "./routes/api/auth";
 import user from "./routes/api/user";
 import profile from "./routes/api/profile";
 
 const app = express();
 
-// Connect to MongoDB
-connectDB();
-
 // Express configuration
 app.set("port", process.env.PORT || 5000);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Connect to MongoDB
+connectDB();
 
 // @route   GET /
 // @desc    Test Base API
