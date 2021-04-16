@@ -9,7 +9,7 @@ const App: React.FC = () => {
     <div className="App">
       <Router>
         {/* 헤더 컴포넌트 자리*/}
-        
+
         <Switch>
           {/* 컨테이너 자리? */}
           <Route exact path="/" component={SingUpComponent} />
