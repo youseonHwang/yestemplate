@@ -1,4 +1,6 @@
 import config from "config";
+console.log('SUPPRESS_NO_CONFIG_WARNING: ' + config.util.getEnv('SUPPRESS_NO_CONFIG_WARNING'));
+console.log(process.env['NODE_CONFIG_DIR']);
 import { ConnectionOptions, connect } from "mongoose";
 
 const connectDB = async () => {

@@ -16,12 +16,16 @@ module.exports = {
       }
     ]
   },
+  devServer: {
+    historyApiFallback: true,
+  },
   resolve: {
     extensions: [ '.tsx', '.ts', '.js' ]
   },
   output: {
     filename: 'bundle.js', // build시 만들어질 파일 번들 파일 이름
-    path: path.resolve(__dirname, '/dist') // 그리고 경로 입니다.
+    path: path.resolve(__dirname, '/dist'), // 그리고 경로 입니다.
+    publicPath: '/'
   },
   plugins: [
     new HTMLWeebPackPlugin({

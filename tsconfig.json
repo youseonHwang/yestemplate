@@ -3,20 +3,19 @@
     "module": "commonjs",
     "esModuleInterop": true,
     "target": "es6",
+    "removeComments": true,
     "noImplicitAny": true,
     "moduleResolution": "node",
     "sourceMap": true,
-    "outDir": "dist",
+    "outDir": "server/dist",
     "baseUrl": ".",
-    "paths": {
-      "*": [
-        "node_modules/*",
-        "src/types/*"
-      ]
-    },
+    "rootDir": "./",
     "skipLibCheck": true
   },
   "include": [
-    "src/**/*"
+    "server/src/**/*.ts"
+  ],
+  "exclude": [
+    "server/dist"
   ]
 }
