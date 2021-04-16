@@ -3,11 +3,13 @@ import React, { useEffect } from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import Login from '../../../components/pages/loginPage/logIn/Login';
 import useLoginChangeField from '../../../hooks/pages/loginPage/useLoginChangeField';
+import useLoginRequest from '../../../hooks/pages/loginPage/useLoginRequest';
 
 const LoginPageContainer: React.FC<RouteComponentProps> = ({ history }) => {
     const {
         email,
         password,
+        onChangeLoginFields,
     } = useLoginChangeField();
 
     const { onLoginRequest, isMailSucssessed } = useLoginRequest();
@@ -20,8 +22,10 @@ const LoginPageContainer: React.FC<RouteComponentProps> = ({ history }) => {
     return (
         <>
             <Login
-                email = {email}
-                password = {password}
+                email = { email }
+                password = { password }
+                onChangeLoginFields = { onChangeLoginFields }
+                onLoginRequest = { onLoginRequest }
             />
         </>
     );

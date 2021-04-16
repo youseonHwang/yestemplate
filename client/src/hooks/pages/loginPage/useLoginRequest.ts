@@ -1,10 +1,10 @@
 import { useSelector, useDispatch } from 'react-redux';
-import * as actions from '../../../modules/login/actions';
-import { State } from '../../../modules/login/types';
+import * as actions from '../../../modules/postLogin/actions';
+import { State } from '../../../modules/postLogin/types';
 
 function useLoginRequest(): {
     isMailSucssessed: boolean | null;
-    onAskRequest: (
+    onLoginRequest: (
         email: string,
         password: string,
   ) => void;

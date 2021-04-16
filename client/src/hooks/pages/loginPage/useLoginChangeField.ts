@@ -17,7 +17,7 @@ function useLoginChangeField(): {
         }),
     );
 
-    const onChangeLoginField = <T>(location: Text, value: T): void => {
+    const onChangeLoginField = <T>(location: T, value: T): void => {
         dispatch(
             actions.changeLoginField({
                 key: location,
@@ -28,10 +28,10 @@ function useLoginChangeField(): {
 
     const onChangeLoginFields = (
         event: React.ChangeEvent<HTMLInputElement>,
-    ): void => {
-        const  { name, value } = event.target;
-        onChangeLoginField<string>(name, value);
-    };
+      ): void => {
+        const { name, value } = event.target;
+        onChangeLoginField<string>( name, value );
+      };
 
     return {
         email,
