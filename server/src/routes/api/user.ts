@@ -11,7 +11,7 @@ import User, { IUser } from "../../models/User";
 const router: Router = Router();
 
 { /* user 회원가입 */ }
-router.post("/",
+router.post("/signup",
   [
     check("name", "이름을 작성해주세요").isLength({ min: 1 }),
     check("email", "유효한 이메일 주소를 작성해주세요").isEmail(),

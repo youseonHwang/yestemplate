@@ -5,6 +5,7 @@ export interface State {
   success: boolean | null;
   msg: string;
 }
+
 const actions = {
   loginRequest,
   loginSuccess,

@@ -1,21 +1,46 @@
 import * as React from "react";
 
-export interface Props {
+interface SignUpProps {
   name: string;
-  enthusiasmLevel?: number;
-  onIncrement?: () => void;
-  onDecrement?: () => void;
+  email: string;
+  password: string;
+  onChangeSignUpFields: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
-//{ name, enthusiasmLevel = 1, onIncrement, onDecrement }: Props
-function SingUpComponent() {
 
+const SignUpComponent: React.FC<SignUpProps> = ({
+  name,
+  email,
+  password,
+  onChangeSignUpFields
+}) => {
   return (
-    <div className="hello">
-      <div className="greeting">
-        <p>"안녕"</p>
+    <section className="container">
+      <p>안녕</p>
+      <div >
+        <input
+          type="text"
+          name="email"
+          value={email}
+          onChange={onChangeSignUpFields}
+          placeholder="이름을 입력해주세요"
+        />
+        <input
+          type="text"
+          name="password"
+          value={password}
+          onChange={onChangeSignUpFields}
+          placeholder="이름을 입력해주세요"
+        />
+        <input
+          type="text"
+          name="name"
+          value={name}
+          onChange={onChangeSignUpFields}
+          placeholder="이름을 입력해주세요"
+        />
       </div>
-    </div>
+    </section>
   );
 }
 
-export default SingUpComponent;
+export default SignUpComponent;

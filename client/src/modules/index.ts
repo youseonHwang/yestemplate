@@ -3,6 +3,7 @@ import { all } from 'redux-saga/effects';
 
 {/* 리듀서 임포트 */ }
 import loginRequestField from './login/reducer';
+import signUpRequestField from './signUp/reducer'
 
 {/* 사가 임포트 */ }
 //... 아직 없음
@@ -10,7 +11,8 @@ import loginRequestField from './login/reducer';
 
 {/* reducers */ }
 const rootReducer = combineReducers({
-  loginRequestField
+  loginRequestField,
+  signUpRequestField
 });
 
 {/* sagas */ }
