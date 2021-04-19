@@ -1,10 +1,5 @@
 import { Document, Model, model, Schema } from "mongoose";
 
-/**
- * Interface to model the User Schema for TypeScript.
- * @param email:string
- * @param password:string
- */
 export interface IUser extends Document {
   name: string;
   email: string;
@@ -37,7 +32,8 @@ const userSchema: Schema = new Schema({
   },
   tokenExp: {
     type: Number
-  }
+  },
+  
 });
 
 const User: Model<IUser> = model("User", userSchema);
