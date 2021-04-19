@@ -1,6 +1,11 @@
 import * as React from 'react';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+{/*Header*/ }
+import Header from './components/systems/header/Header';
+
+{/* Containers */ }
 import LoginPageContainer from './containers/pages/loginPage/LoginPageContainer';
 import SignUpContainer from './containers/pages/loginPage/signUp/SignUpContainer';
 
@@ -8,7 +13,6 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <Router>
-        {/* 헤더 컨테이너*/}
         <Switch>
           {/* 컨테이너 자리? */}
           <Route exact path="/signup" component={SignUpContainer} ></Route>
@@ -21,7 +25,7 @@ const App: React.FC = () => {
         </Switch>
       </Router>
     </div>
-    );
+  );
 };
 
 export default App;
