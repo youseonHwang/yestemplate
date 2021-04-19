@@ -1,13 +1,15 @@
 import { ActionType } from 'typesafe-actions';
-import { loginRequest, loginSuccess, loginFailure } from './actions';
+import { signUpRequest, signUpSuccess, signUpFailure } from './actions';
 
 export interface State {
   success: boolean | null;
   msg: string;
 }
+
 const actions = {
-  loginRequest,
-  loginSuccess,
-  loginFailure,
+  signUpSuccess,
+  signUpFailure,
+  signUpRequest,
 };
+
 export type Actions = ActionType<typeof actions>;

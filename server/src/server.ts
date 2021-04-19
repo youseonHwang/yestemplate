@@ -3,10 +3,17 @@ import connectDB from "../../config/database";
 import auth from "./routes/api/auth";
 import user from "./routes/api/user";
 import profile from "./routes/api/profile";
+import cors from "cors"
 
 const app = express();
 
-// Express configuration
+// cors설정
+const corsOptions = {
+  origin: ["http://localhost:8080"],
+  credentials: true
+}
+app.use(cors(corsOptions));
+
 app.set("port", process.env.PORT || 5000);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -14,9 +21,6 @@ app.use(express.urlencoded({ extended: true }));
 // Connect to MongoDB
 connectDB();
 
-// @route   GET /
-// @desc    Test Base API
-// @access  Public
 app.get("/", (_req, res) => {
   res.send("API Running");
 });
