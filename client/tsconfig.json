@@ -4,6 +4,12 @@
     "noImplicitAny": true, // 음.. 암시적 any 타입의 표현식 및 선언에서 오류를 발생시킬지?
     "module": "commonJS",
     "target": "es6",
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "noImplicitThis": true,
+    "strictNullChecks": true,
     "skipLibCheck": true,
     "jsx": "react",
     "allowSyntheticDefaultImports": true,

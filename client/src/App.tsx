@@ -1,7 +1,7 @@
 import * as React from 'react';
+
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import MainHeader from './components/systems/header/Header';
 
 import SignUpContainer from './containers/pages/loginPage/signUp/SignUpContainer'
 
@@ -10,7 +10,6 @@ const App: React.FC = () => {
     <div className="App">
       <Router>
         {/* 헤더 컨테이너*/}
-        <MainHeader />
         <Switch>
           {/* 컨테이너 자리? */}
           <Route exact path="/" component={SignUpContainer} ></Route>
