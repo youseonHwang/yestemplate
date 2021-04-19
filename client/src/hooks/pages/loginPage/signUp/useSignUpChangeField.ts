@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import * as actions from '../../../../modules/signUp/actions';
-import { State } from '../../../../modules/signUp/types';
+import * as actions from '../../../../modules/signUp/changeField/actions';
+import { State } from '../../../../modules/signUp/changeField/types';
 
 function useSignUpChangeField(): {
   name: string;
@@ -9,13 +9,6 @@ function useSignUpChangeField(): {
   onChangeSignUpFields: (event: React.ChangeEvent<HTMLInputElement>) => void;
 } {
   const dispatch = useDispatch();
-  const { name, email, password } = useSelector(
-    ({ signUpRequestField }: { signUpRequestField: State }) => ({
-      name: signUpRequestField.userInfo.name,
-      email: signUpRequestField.userInfo.email,
-      password: signUpRequestField.userInfo.password,
-    })
-  );
 
   const onChangeSignUpField = <T>(location: T, value: T): void => {
     dispatch(
@@ -25,6 +18,14 @@ function useSignUpChangeField(): {
       }),
     );
   };
+
+  const { name, email, password } = useSelector(
+    ({ signUpChangeField }: { signUpChangeField: State }) => ({
+      name: signUpChangeField.userInfo.name,
+      email: signUpChangeField.userInfo.email,
+      password: signUpChangeField.userInfo.password,
+    })
+  );
 
   const onChangeSignUpFields = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = event.target;
@@ -36,7 +37,7 @@ function useSignUpChangeField(): {
     name,
     email,
     password,
-    onChangeSignUpFields
+    onChangeSignUpFields,
   };
 }
 

@@ -22,7 +22,6 @@ sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <React.StrictMode>
-
     <Provider store={store}>
       <App />
     </Provider>

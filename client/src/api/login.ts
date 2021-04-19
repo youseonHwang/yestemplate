@@ -1,12 +1,16 @@
 import axios from 'axios';
 
-export const signUp: (data: IUser) => Promise<IUser> = async (data) => {
-  const response = await axios.post('/signup', data);
+export const signUp: (data: any) => Promise<Message> = async (data) => {
+  const response = await axios.post(' http://localhost:5000/api/user/signup', data);
   return response.data;
-};
+}
 
-export interface IUser {
+export interface Message {
   name: string;
   email: string;
   password: string;
+  msg: string;
+  success: boolean | null;
 }
+
+export default signUp;

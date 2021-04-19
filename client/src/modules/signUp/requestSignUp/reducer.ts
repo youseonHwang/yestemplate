@@ -1,9 +1,9 @@
 import { createReducer } from 'typesafe-actions';
 import { State, Actions } from './types';
 import {
-  LOGIN_REQUEST,
-  LOGIN_SUCCESS,
-  LOGIN_FAILURE,
+  SIGNUP_REQUEST,
+  SIGNUP_SUCCESS,
+  SIGNUP_FAILURE,
 } from './actions';
 
 const initialState: State = {
@@ -11,16 +11,16 @@ const initialState: State = {
   msg: '',
 };
 
-const loginRequestField = createReducer<State, Actions>(initialState, {
-  [LOGIN_SUCCESS]: (state, action) => ({
+const signUpRequest = createReducer<State, Actions>(initialState, {
+  [SIGNUP_SUCCESS]: (state, action) => ({
     ...state,
     success: action.payload.success,
   }),
-  [LOGIN_FAILURE]: (state, action) => ({
+  [SIGNUP_FAILURE]: (state, action) => ({
     ...state,
     msg: action.payload.msg,
   }),
-  [LOGIN_REQUEST]: (state) => ({ ...state }),
+  [SIGNUP_REQUEST]: (state) => ({ ...state }),
 });
 
-export default loginRequestField;
+export default signUpRequest;
