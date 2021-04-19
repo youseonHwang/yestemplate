@@ -7,11 +7,19 @@
       "module": "commonJS",
       "moduleResolution": "node",
       "esModuleInterop": true,
-      "target": "es6",
-      "jsx": "react",
       "removeComments": true,
       "sourceMap": true,
+      "target": "es6",
+      "lib": [
+        "es6",
+        "dom"
+      ],
+      "noImplicitThis": true,
+      "strictNullChecks": true,
       "skipLibCheck": true,
-      "allowJs": true // .js 파일도 함께 컴파일 할지 여부
+      "jsx": "react",
+      "allowSyntheticDefaultImports": true,
+      "strict": true,
+      "allowJs": true, // .js 파일도 함께 컴파일 할지 여부
     }
   }

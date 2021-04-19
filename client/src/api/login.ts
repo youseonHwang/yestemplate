@@ -11,3 +11,5 @@ export const postLoginAsync: (data: any) => Promise<Message> = async (data) => {
     isLoginSuccessed: boolean;
     message: string;
   }
+
+export default postLoginAsync;

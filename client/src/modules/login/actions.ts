@@ -12,4 +12,3 @@ export const changeLoginField = createAction(
     value,
   }),
 )();
-

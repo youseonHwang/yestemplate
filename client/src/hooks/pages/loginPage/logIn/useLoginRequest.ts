@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import * as actions from '../../../modules/postLogin/actions';
-import { State } from '../../../modules/postLogin/types';
+import * as actions from '../../../../modules/postLogin/actions';
+import { State } from '../../../../modules/postLogin/types';
 
 function useLoginRequest(): {
     isLoginSuccessed: boolean | null;

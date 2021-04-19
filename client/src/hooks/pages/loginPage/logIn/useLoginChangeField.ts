@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import * as actions from '../../../modules/login/actions';
-import { State } from '../../../modules/login/types';
+import * as actions from '../../../../modules/login/actions';
+import { State } from '../../../../modules/login/types';
 
 function useLoginChangeField(): {
     email: string;

@@ -2,8 +2,8 @@
 import React, { useEffect } from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import Login from '../../../components/pages/loginPage/logIn/Login';
-import useLoginChangeField from '../../../hooks/pages/loginPage/useLoginChangeField';
-import useLoginRequest from '../../../hooks/pages/loginPage/useLoginRequest';
+import useLoginChangeField from '../../../hooks/pages/loginPage/logIn/useLoginChangeField';
+import useLoginRequest from '../../../hooks/pages/loginPage/login/useLoginRequest';
 
 const LoginPageContainer: React.FC<RouteComponentProps> = ({ history }) => {
     const {
