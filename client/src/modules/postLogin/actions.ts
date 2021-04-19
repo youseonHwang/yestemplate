@@ -7,13 +7,13 @@ export const POST_LOGIN_FAILURE = 'POST_LOGIN_FAILURE';
 
 export const loginPostRequest = createAction(
   POST_LOGIN_REQUEST,
-  ({ mail, password }) => ({ mail, password }),
+  ({ email, password }) => ({ email, password }),
 )();
 
 export const loginPostSuccess = createAction(
   POST_LOGIN_SUCCESS,
-  ({ isMailSucssessed }) => ({
-    isMailSucssessed,
+  ({ isLoginSuccessed }) => ({
+    isLoginSuccessed,
   }),
 )();
 

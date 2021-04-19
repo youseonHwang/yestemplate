@@ -1,25 +1,26 @@
 {/* api가 있어야 사용 가능.. */ }
+import { takeEvery, call, put } from 'redux-saga/effects';
+import { postLoginAsync } from '../../api/login';
+import { Actions } from '../../modules/postLogin/types';
 
-{ /*import { takeEvery, call, put } from 'redux-saga/effects';
-import { postAskAsync } from '../../api/ask';
-import { Actions } from '../../modules/post_ask/types';
+{/* yield put에서 각각의 타입을 리슨하고 있는 리듀서가 반응함 */}
 
-function* fetch(actions: Actions) {
+function* fetchLogin(actions: Actions) {
   try {
-    const req = yield call(postAskAsync, actions.payload);
-    yield put({
-      type: 'POST_ASK_SUCCESS',
-      payload: { isMailSucssessed: req.isMailSucssessed },
+    const req = yield call(postLoginAsync, actions.payload);
+    yield put({ 
+      type: 'POST_LOGIN_SUCCESS',
+      payload: { isLoginSuccessed: req.isLoginSuccessed },
     });
-  } catch (e) {
+  } catch (error) {
     yield put({
-      type: 'POST_ASK_FAILURE',
-      payload: { message: e.message },
+      type: 'POST_LOGIN_FAILURE',
+      payload: { message: error.message },
     });
   }
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-export function* askSaga() {
-  yield takeEvery('POST_ASK_REQUEST', fetch);
-} */}
+export function* loginSaga() {
+  yield takeEvery('POST_LOGIN_REQUEST', fetchLogin);
+}

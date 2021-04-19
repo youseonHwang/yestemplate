@@ -3,7 +3,7 @@ import * as actions from '../../../modules/postLogin/actions';
 import { State } from '../../../modules/postLogin/types';
 
 function useLoginRequest(): {
-    isMailSucssessed: boolean | null;
+    isLoginSuccessed: boolean | null;
     onLoginRequest: (
         email: string,
         password: string,
@@ -11,9 +11,9 @@ function useLoginRequest(): {
 } {
     const dispatch = useDispatch();
 
-    const { isMailSucssessed } = useSelector(
+    const { isLoginSuccessed } = useSelector(
         ({ loginRequestField }: {loginRequestField: State}) => ({
-            isMailSucssessed: loginRequestField.isMailSucssessed,
+            isLoginSuccessed: loginRequestField.isLoginSuccessed,
         }),
     );
 
@@ -23,7 +23,7 @@ function useLoginRequest(): {
     ): void => {
         dispatch(actions.loginPostRequest({ email, password }));
     };
-    return { onLoginRequest, isMailSucssessed };
+    return { onLoginRequest, isLoginSuccessed };
 }
 
 export default useLoginRequest;

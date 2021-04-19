@@ -1,3 +1,4 @@
+{/* saga의 액션이 발동되면 리듀서 실행 */}
 import { createReducer } from 'typesafe-actions';
 import { State, Actions } from './types';
 import {
@@ -7,14 +8,14 @@ import {
 } from './actions';
 
 const initialState: State = {
-  isMailSucssessed: null,
+  isLoginSuccessed: null,
   message: '',
 };
 
 const loginRequestField = createReducer<State, Actions>(initialState, {
   [POST_LOGIN_SUCCESS]: (state, action) => ({
     ...state,
-    isMailSucssessed: action.payload.isMailSucssessed,
+    isLoginSuccessed: action.payload.isLoginSuccessed,
   }),
   [POST_LOGIN_FAILURE]: (state, action) => ({
     ...state,
@@ -22,4 +23,5 @@ const loginRequestField = createReducer<State, Actions>(initialState, {
   }),
   [POST_LOGIN_REQUEST]: (state) => ({ ...state }),
 });
+
 export default loginRequestField;

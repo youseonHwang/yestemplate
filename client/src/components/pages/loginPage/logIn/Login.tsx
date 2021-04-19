@@ -18,25 +18,33 @@ const Login: React.FC<LoginProps> = ({
   onLoginRequest,
 }) => {
   return (
-    <div>
-      <form>
-        <div>
-          <label> email </label>
-          <input 
-            type="text"
-            name="email"
-            value= {email}
-            onChange= {onChangeLoginFields}
-            placeholder="email"
-          />
+    <section className="container">
+        <div >
+          <form>
+            <input
+              type="text"
+              name="email"
+              value={email}
+              onChange={onChangeLoginFields}
+              placeholder="이메일을 입력해주세요"
+            />
+            <input
+              type="text"
+              name="password"
+              value={password}
+              onChange={onChangeLoginFields}
+              placeholder="비밀번호를 입력해주세요"
+            />
+          </form>
+          <button
+            onClick={() => {
+              onLoginRequest( email, password );
+            }}
+          >
+            login
+            </button>
         </div>
-      </form>
-      <button onClick={() => {
-        onLoginRequest(email, password);
-      }}
-      > 로그인 
-      </button>
-    </div>
+      </section>
   );
 };
 export default Login;

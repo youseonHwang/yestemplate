@@ -9,26 +9,24 @@ const LoginPageContainer: React.FC<RouteComponentProps> = ({ history }) => {
     const {
         email,
         password,
-        onChangeLoginFields,
+        onChangeLoginFields
     } = useLoginChangeField();
-
-    const { onLoginRequest, isMailSucssessed } = useLoginRequest();
+    const { onLoginRequest, isLoginSuccessed } = useLoginRequest();
 
     useEffect(() => {
-        if(isMailSucssessed === true){
+        if(isLoginSuccessed === true){
             history.push('/');
         }
-    }, [isMailSucssessed]);
+    }, [isLoginSuccessed]);
+
     return (
-        <>
-            <Login
-                email = { email }
-                password = { password }
-                onChangeLoginFields = { onChangeLoginFields }
-                onLoginRequest = { onLoginRequest }
-            />
-        </>
-    );
-} ;
+        <Login
+            email = { email }
+            password = { password }
+            onChangeLoginFields = { onChangeLoginFields }
+            onLoginRequest = { onLoginRequest }
+        />
+    )
+}
 
 export default withRouter(LoginPageContainer);

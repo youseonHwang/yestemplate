@@ -12,8 +12,7 @@ import config from 'config';
 const router: Router = Router();
 
 {/* user 로그인 */}
-router.post(
-  "/",
+router.post( "/",
   [
     check("email", "Please include a valid email").isEmail(),
     check("password", "Password is required").exists()
@@ -27,10 +26,10 @@ router.post(
     }
 
     const { email, password } = req.body;
-    try {
+
+    try { //유저 이메일 조회
       let user: IUser = await User.findOne({ email });
 
-      //유저 이메일 조회
       if (!user) {
         return res.status(HttpStatusCodes.BAD_REQUEST).json({
           errors: [
@@ -41,9 +40,9 @@ router.post(
         });
       }
 
+      //유저 비밀번호 조회: 암호화된 비밀번호와 일치하는지 확인
       const isMatch = await bcrypt.compare(password, user.password);
 
-      //유저 비밀번호 조회: 암호화된 비밀번호와 일치하는지 확인
       if (!isMatch) {
         return res.status(HttpStatusCodes.BAD_REQUEST).json({
           errors: [
@@ -65,7 +64,7 @@ router.post(
         { expiresIn: config.get("jwtExpiration") },
         (err, token) => {
           if (err) throw err;
-          res.json({ msg: [{ msg: "success" }], token });
+          res.json({ token });
         }
       );
     } catch (err) {
