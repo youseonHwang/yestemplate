@@ -1,10 +1,18 @@
 import express from "express";
 import connectDB from "../../config/database";
-import auth from "./routes/api/auth";
+// import auth from "./routes/api/auth";
 import user from "./routes/api/user";
-import profile from "./routes/api/profile";
+import login from "./routes/api/login";
+import cors from "cors";
 
 const app = express();
+
+//cors 설정
+const corsOptions = {
+  origin: ["http://localhost:8080"],
+  Credential: true
+}
+app.use(cors(corsOptions));
 
 // Express configuration
 app.set("port", process.env.PORT || 5000);
@@ -21,10 +29,8 @@ app.get("/", (_req, res) => {
   res.send("API Running");
 });
 
-app.use("/api/auth", auth);
 app.use("/api/user", user);
-//login으로 변경
-app.use("/api/profile", profile);
+app.use("/api/login", login);
 
 const port = app.get("port");
 const server = app.listen(port, () =>

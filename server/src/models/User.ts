@@ -4,7 +4,6 @@ import { Document, Model, model, Schema } from "mongoose";
  * Interface to model the User Schema for TypeScript.
  * @param email:string
  * @param password:string
- * @param avatar:string
  */
 export interface IUser extends Document {
   name: string;

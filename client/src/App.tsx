@@ -1,16 +1,17 @@
 import * as React from 'react';
- 
-interface Hello {
-  compiler: string;
-  framework: string;
-}
- 
-export class App extends React.Component<Hello, {}> {
-  render() {
-    return (
-      <h1>
-        Hello from {this.props.compiler} and {this.props.framework}!
-      </h1>
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import LoginPageContainer from './containers/pages/loginPage/LoginPageContainer';
+
+const App: React.FC = () => {
+  return (
+    <div className="App">
+      <Router>
+        <Switch>
+            <Route exact path="/" component={LoginPageContainer} />
+        </Switch>
+      </Router>
+    </div>
     );
-  }
-}
+};
+
+export default App;
