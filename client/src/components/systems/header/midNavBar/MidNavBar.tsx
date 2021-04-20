@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -27,14 +28,16 @@ const MidNavBar: React.FC<midnavProps> = ({
   const classes = useStyles();
   return (
     <>
-      <nav>
-        <Link variant="button" color="textPrimary" href="#" className={classes.link}>
-          템플릿 작성하기
+      <Grid item alignItems="center">
+        <nav>
+          <Link variant="button" color="textPrimary" href="#" className={classes.link}>
+            템플릿 작성하기
         </Link>
-        <Link variant="button" color="textPrimary" href="#" className={classes.link}>
-          내 템플릿
+          <Link variant="button" color="textPrimary" href="/mypage" className={classes.link}>
+            내 템플릿
         </Link>
-      </nav>
+        </nav>
+      </Grid>
     </>
   );
 };

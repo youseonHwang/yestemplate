@@ -11,14 +11,17 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   img: {
-    width: '10%'
+    width: '90%'
+  },
+  link: {
+    width: '3%'
   }
 }));
 
 const LeftLogo: React.FC = () => {
   const classes = useStyles();
   return (
-    <Link to="/" >
+    <Link to="/" className={classes.link}>
       <img src='../../../../public/YESTEMPLATE_LOGO_ver2.png' alt="header_logo" className={classes.img} />
     </Link>
   );
