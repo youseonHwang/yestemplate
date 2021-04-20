@@ -39,13 +39,13 @@ const useStyles = makeStyles((theme) => ({
   },
   details: {
     display: 'flex',
-    height:'600px',
+    height: '600px',
   },
   cover: {
     background: 'rgb(40, 141, 83)',
     width: '50%',
-    backgroundSize:'contain',
-    backgroundRepeat:'no-repeat',
+    backgroundSize: 'contain',
+    backgroundRepeat: 'no-repeat',
   },
   content: {
     color: 'black',
@@ -143,7 +143,8 @@ const SignUpComponent: React.FC<SignUpProps> = ({
                       variant="contained"
                       color="primary"
                       className={classes.submit}
-                      onClick={() => {
+                      onClick={e => {
+                        e.preventDefault();
                         onSignUpRequest(name, email, password);
                       }}
                     >

@@ -1,4 +1,4 @@
-{/* 로그인 폼 구현 */}
+{/* 로그인 폼 구현 */ }
 import * as React from "react";
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -42,14 +42,14 @@ const useStyles = makeStyles((theme) => ({
   },
   details: {
     display: 'flex',
-    height:'600px',
+    height: '600px',
   },
   //img-cover
   cover: {
     background: 'rgb(40, 141, 83)',
     width: '50%',
-    backgroundSize:'contain',
-    backgroundRepeat:'no-repeat',
+    backgroundSize: 'contain',
+    backgroundRepeat: 'no-repeat',
   },
   content: {
     color: 'black',
@@ -125,10 +125,10 @@ const Login: React.FC<LoginProps> = ({
                         />
                       </Grid>
                       <Grid item xs={12}>
-                          <FormControlLabel
-                            control={<Checkbox value="remember" color="primary" />}
-                            label="Remember me"
-                          />
+                        <FormControlLabel
+                          control={<Checkbox value="remember" color="primary" />}
+                          label="Remember me"
+                        />
                       </Grid>
                     </Grid>
                     <Button
@@ -137,7 +137,8 @@ const Login: React.FC<LoginProps> = ({
                       variant="contained"
                       color="primary"
                       className={classes.submit}
-                      onClick={() => {
+                      onClick={e => {
+                        e.preventDefault();
                         onLoginRequest(email, password);
                       }}
                     >
