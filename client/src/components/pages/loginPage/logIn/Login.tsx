@@ -139,6 +139,7 @@ const Login: React.FC<LoginProps> = ({
                       className={classes.submit}
                       onClick={() => {
                         onLoginRequest(email, password);
+                        <Link href="/template"></Link>
                       }}
                     >
                       Login
