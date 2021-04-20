@@ -18,7 +18,6 @@ router.post("/",
     check("password", "Password is required").exists()
   ],
   async (req: Request, res: Response) => {
-    console.log('login server api에 도착함')
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res
@@ -27,7 +26,6 @@ router.post("/",
     }
 
     const { email, password } = req.body;
-    console.log('req.body', req.body)
     try { //유저 이메일 조회
       let user: IUser = await User.findOne({ email });
 
@@ -65,7 +63,9 @@ router.post("/",
         { expiresIn: config.get("jwtExpiration") },
         (err, token) => {
           if (err) throw err;
-          res.status(HttpStatusCodes.OK).json({ token });
+
+          
+          res.status(HttpStatusCodes.OK).json({ token, isLoginSuccessed: true });
         }
       );
     } catch (err) {
