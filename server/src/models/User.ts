@@ -6,7 +6,6 @@ export interface IUser extends Document {
   password: string;
   role: number;
   token: string;
-  tokenExp: number;
 }
 
 const userSchema: Schema = new Schema({
@@ -30,10 +29,6 @@ const userSchema: Schema = new Schema({
   token: {
     type: String,
   },
-  tokenExp: {
-    type: Number
-  },
-  
 });
 
 const User: Model<IUser> = model("User", userSchema);

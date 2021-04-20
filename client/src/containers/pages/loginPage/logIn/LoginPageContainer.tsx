@@ -15,7 +15,7 @@ const LoginPageContainer: React.FC<RouteComponentProps> = ({ history }) => {
 
     useEffect(() => {
         if(isLoginSuccessed === true){
-            history.push('/');
+            history.push('/template');
         }
     }, [isLoginSuccessed]);
 

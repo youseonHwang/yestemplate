@@ -8,6 +8,7 @@ import Payload from "../../types/Payload";
 import Request from "../../types/Request";
 import User, { IUser } from "../../models/User";
 import config from 'config';
+import cookieParser from 'cookie-parser';
 
 const router: Router = Router();
 
@@ -18,7 +19,6 @@ router.post("/",
     check("password", "Password is required").exists()
   ],
   async (req: Request, res: Response) => {
-    console.log('login server api에 도착함')
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res
@@ -65,7 +65,11 @@ router.post("/",
         { expiresIn: config.get("jwtExpiration") },
         (err, token) => {
           if (err) throw err;
-          res.status(HttpStatusCodes.OK).json({ token });
+          res
+            //쿠키에 토큰 싣기: 웹 브라우저에 저장할 정보(token)
+            .cookie('token', token)
+            .status(HttpStatusCodes.OK)
+            .json({ token, isLoginSuccessed: true});          
         }
       );
     } catch (err) {
