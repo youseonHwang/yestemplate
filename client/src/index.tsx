@@ -1,7 +1,14 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import App from './App';
+import { CookiesProvider } from 'react-cookie';
 
+{/* Style */ }
+import GlobalStyles from './styles/GlobalStyles'
+import theme from './styles/theme'
+import { ThemeProvider } from './styles/themeComponents'
+
+{/* Store */ }
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -22,9 +29,14 @@ sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <CookiesProvider>
+      <Provider store={store}>
+        <GlobalStyles />
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
+      </Provider>
+    </CookiesProvider>
   </React.StrictMode>,
 
   document.getElementById('root')

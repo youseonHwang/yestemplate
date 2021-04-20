@@ -18,7 +18,7 @@ function useLoginRequest(): {
     );
 
     const onLoginRequest = (
-        email: string, 
+        email: string,
         password: string,
     ): void => {
         dispatch(actions.loginPostRequest({ email, password }));

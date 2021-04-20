@@ -8,11 +8,12 @@ import Payload from "../../types/Payload";
 import Request from "../../types/Request";
 import User, { IUser } from "../../models/User";
 import config from 'config';
+import cookieParser from 'cookie-parser';
 
 const router: Router = Router();
 
-{/* user 로그인 */}
-router.post( "/",
+{/* user 로그인 */ }
+router.post("/",
   [
     check("email", "Please include a valid email").isEmail(),
     check("password", "Password is required").exists()
@@ -26,7 +27,7 @@ router.post( "/",
     }
 
     const { email, password } = req.body;
-
+    console.log('req.body', req.body)
     try { //유저 이메일 조회
       let user: IUser = await User.findOne({ email });
 
@@ -64,7 +65,11 @@ router.post( "/",
         { expiresIn: config.get("jwtExpiration") },
         (err, token) => {
           if (err) throw err;
-          res.json({ token });
+          res
+            //쿠키에 토큰 싣기: 웹 브라우저에 저장할 정보(token)
+            .cookie('token', token)
+            .status(HttpStatusCodes.OK)
+            .json({ token, isLoginSuccessed: true});          
         }
       );
     } catch (err) {
