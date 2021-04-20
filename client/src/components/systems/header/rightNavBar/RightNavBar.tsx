@@ -27,7 +27,7 @@ const RightNavBar: React.FC<midnavProps> = ({
   const classes = useStyles();
   return (
     <>
-        <Avatar className={classes.purple}>OP</Avatar>
+      <Avatar className={classes.purple}>OP</Avatar>
     </>
   );
 };
