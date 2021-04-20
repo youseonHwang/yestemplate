@@ -27,7 +27,6 @@ router.post("/",
     }
 
     const { email, password } = req.body;
-    console.log('req.body', req.body)
     try { //유저 이메일 조회
       let user: IUser = await User.findOne({ email });
 

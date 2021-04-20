@@ -3,6 +3,7 @@ import connectDB from "../../config/database";
 import user from "./routes/api/user";
 import login from "./routes/api/login";
 import cookieParser from 'cookie-parser';
+import mypage from "./routes/api/mypage";
 import cors from "cors";
 
 const app = express();
@@ -26,6 +27,7 @@ connectDB();
 
 app.use("/api/user", user);
 app.use("/api/login", login);
+app.use("/api/mypage", mypage);
 
 const port = app.get("port");
 const server = app.listen(port, () =>
