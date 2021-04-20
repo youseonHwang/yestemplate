@@ -1,7 +1,7 @@
 import { Document, Model, model, Schema } from "mongoose";
 
 export interface ITemplate extends Document {
-  userFrom: Array<string>,
+  userFrom: string,
   applicant: {
     belong: string | null,
     position: string | null,
@@ -23,10 +23,10 @@ export interface ITemplate extends Document {
 }
 
 const templateSchema: Schema = new Schema({
-  userFrom: [{
+  userFrom: {
     type: Schema.Types.ObjectId, // user모델의 objectId를 가지고만 ref가능
     ref: 'User' // 'User' 모델 참조
-  }],
+  },
   applicant: {
     belong: {
       type: String,
@@ -67,6 +67,6 @@ const templateSchema: Schema = new Schema({
 
 }, { timestamps: true })
 
-const User: Model<ITemplate> = model("Template", templateSchema);
+const Template: Model<ITemplate> = model("Template", templateSchema);
 
-export default User;
+export default Template;
