@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
+import Grid from '@material-ui/core/Grid';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
@@ -28,26 +29,26 @@ export default function SimpleCard() {
   const bull = <span className={classes.bullet}>•</span>;
 
   return (
-    <Card className={classes.root}>
-      <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
-          Word of the Day
+    <Grid item xs={3}>
+      <Card className={classes.root}>
+        <CardContent>
+          <Typography className={classes.title} color="textSecondary" gutterBottom>
+            ㅇㄹ
         </Typography>
-        <Typography variant="h5" component="h2">
-          be{bull}nev{bull}o{bull}lent
+          <Typography variant="h5" component="h2">
+            템플릿 제목적기
         </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          adjective
+          <Typography className={classes.pos} color="textSecondary">
+            2021/04/20
         </Typography>
-        <Typography variant="body2" component="p">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography>
-      </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
+          <Typography variant="body2" component="p">
+            설명을 적을게 있나..
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button size="small">수정하러 가기</Button>
+        </CardActions>
+      </Card>
+    </Grid>
   );
 }
