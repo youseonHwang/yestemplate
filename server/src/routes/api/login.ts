@@ -8,6 +8,7 @@ import Payload from "../../types/Payload";
 import Request from "../../types/Request";
 import User, { IUser } from "../../models/User";
 import config from 'config';
+import cookieParser from 'cookie-parser';
 
 const router: Router = Router();
 
@@ -63,7 +64,11 @@ router.post("/",
         { expiresIn: config.get("jwtExpiration") },
         (err, token) => {
           if (err) throw err;
-          res.status(HttpStatusCodes.OK).json({ token, isLoginSuccessed: true });
+          res
+            //쿠키에 토큰 싣기: 웹 브라우저에 저장할 정보(token)
+            .cookie('token', token)
+            .status(HttpStatusCodes.OK)
+            .json({ token, isLoginSuccessed: true });
         }
       );
     } catch (err) {

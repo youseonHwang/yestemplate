@@ -140,6 +140,7 @@ const Login: React.FC<LoginProps> = ({
                       onClick={e => {
                         e.preventDefault();
                         onLoginRequest(email, password);
+                        <Link href="/template"></Link>
                       }}
                     >
                       Login

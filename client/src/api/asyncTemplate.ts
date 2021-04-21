@@ -1,2 +1,128 @@
-import * as React from "react"; 
-import * as ReactDOM from "react-dom";
+{/* 템플릿 불러오기, 저장, 수정, 삭제 */}
+import axios from 'axios';
+// import { ExperienceItem } from '../modules/changeField/workExperience/types';
+// import { SkillItem } from '../modules/changeField/skills/types';
+// import { AeaItem } from '../modules/changeField/aea/types';
+// import { EducationItem } from '../modules/changeField/education/types';
+
+{/* 저장 */}
+export const saveResumeAsync: (data: any) => Promise<SaveResult> = async (
+  data,
+) => {
+  const response = await axios.post(
+    'http://localhost:5000/api/template/save', data
+  );
+  if (!response.data.save) {
+    throw new Error('저장에 실패했습니다.');
+  }
+  return response.data;
+};
+export interface SaveResult {
+  save: boolean;
+}
+
+{/* 불러오기 및 수정 */}
+export const editResumeAsync: (data: any) => Promise<EditResult> = async (
+  data,
+) => {
+  const resumeId = data.resumeId;
+  const response = await axios.get(
+    `http://localhost:5000/api/template/form/${resumeId}`,
+  );
+  if (!response.data.resume) {
+    throw new Error('불러오기에 실패했습니다.');
+  }
+  localStorage.setItem('edit_field', JSON.stringify(response.data.resume));
+  return response.data.resume;
+};
+export interface EditResult {
+  values: {
+    // applicant: applicantItem[];
+    // skills: SkillItem[];
+    // workExperience: ExperienceItem[];
+    // educations: EducationItem[];
+    // aeas: AeaItem[];
+  };
+}
+
+export const updateResumeAsync: (data: any) => Promise<UpdateResult> = async (
+  data,
+) => {
+  const response = await axios.post(
+    'https://www.everysmoi.tk/resume/edit',
+    data,
+    {
+      withCredentials: true,
+    },
+  );
+  if (!response.data.newResume) {
+    throw new Error('불러오기에 실패했습니다.');
+  }
+  return response.data;
+};
+
+export interface UpdateResult {
+  isEdited: boolean;
+  newResume: {
+    info: {
+      username: string;
+      avatar: string;
+      profile: string;
+      contact: {
+        address: string;
+        phone: string;
+        email: string;
+        link: {
+          facebook: string;
+          twitter: string;
+          blog: string;
+          github: string;
+          youtube: string;
+          instagram: string;
+        };
+      };
+    };
+    // skills: SkillItem[];
+    // workExperience: ExperienceItem[];
+    // educations: EducationItem[];
+    // aeas: AeaItem[];
+  };
+}
+
+export const uploadImageAsync: (file: any) => Promise<UploadResult> = async (
+  file,
+) => {
+  const response = await axios.post(
+    'https://www.everysmoi.tk/upload/image',
+    file.formData,
+    {
+      withCredentials: true,
+    },
+  );
+  if (!response.data.isUpload) {
+    throw new Error('저장에 실패했습니다.');
+  }
+  return response.data;
+};
+export interface UploadResult {
+  location: string;
+  isUpload: null | boolean;
+}
+
+export const deleteResumeAsync: (data: any) => Promise<DeleteResult> = async (
+  data,
+) => {
+  const response = await axios.post(
+    'https://www.everysmoi.tk/resume/delete',
+    data,
+    {
+      withCredentials: true,
+    },
+  );
+
+  return response.data;
+};
+
+export interface DeleteResult {
+  isDeleted: boolean;
+}

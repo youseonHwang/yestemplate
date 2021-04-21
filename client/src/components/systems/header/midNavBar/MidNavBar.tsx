@@ -30,7 +30,7 @@ const MidNavBar: React.FC<midnavProps> = ({
     <>
       <Grid item alignItems="center">
         <nav>
-          <Link variant="button" color="textPrimary" href="#" className={classes.link}>
+          <Link variant="button" color="textPrimary" href="/template" className={classes.link}>
             템플릿 작성하기
         </Link>
           <Link variant="button" color="textPrimary" href="/mypage" className={classes.link}>

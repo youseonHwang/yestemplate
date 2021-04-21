@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import LoginPageContainer from './containers/pages/loginPage/logIn/LoginPageContainer';
 import SignUpContainer from './containers/pages/loginPage/signUp/SignUpContainer';
 import MyPageContainer from './containers/pages/myPage/MyPageContainer';
+import TemplateContainer from './containers/pages/templatePage/TemplatePageContainer'
 
 {/* Components 화면 확인용 import */ }
 import HeaderComponent from './components/systems/header/Header';
@@ -19,6 +20,7 @@ const App: React.FC = () => {
         <Switch>
           {/* 컨테이너 자리? */}
           <Route exact path="/" component={LoginPageContainer} ></Route>
+          <Route exact path="/template" component={TemplateContainer} ></Route>
           <Route exact path="/signup" component={SignUpContainer} ></Route>
           <Route exact path="/mypage" component={MyPageContainer} ></Route>
           {/* <Route exact path="/" component={LandingPageContainer} />

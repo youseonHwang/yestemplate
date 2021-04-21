@@ -1,6 +1,8 @@
 {/* 클라이언트 데이터 전송 */ }
 import axios from 'axios';
 
+
+
 export const postLoginAsync: (data: any) => Promise<Message> = async (data) => {
   const response = await axios.post('http://localhost:5000/api/login', data,
     { withCredentials: true });
@@ -13,4 +15,6 @@ export interface Message {
   message: string;
 }
 
+
 export default postLoginAsync;
+
