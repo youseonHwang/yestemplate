@@ -71,7 +71,7 @@ export default function Album() {
                       경조금 지급신청서
                     </Typography>
                     <Typography>
-                      경조금 지급 신청서입니다.
+                      경조금 지급신청서입니다.
                     </Typography>
                   </CardContent>
                   <CardActions>
