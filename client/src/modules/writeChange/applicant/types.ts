@@ -4,12 +4,11 @@ import { ApplicantChangeField } from './actions';
 
 export interface ApplicantState {
     applicant: {
-        belong: '',
-        position: '',
-        name: '',
-        etc: '',
-    },
+        belong: string;
+        position: string;
+        name: string;
+        etc: string;
+    }
 }
 
-const actions = { ApplicantChangeField }
-export type Actions = ActionType<typeof actions>;
+export type Actions = ActionType<typeof ApplicantChangeField>;
