@@ -1,8 +1,6 @@
 import * as React from 'react';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { useCookies } from 'react-cookie';
-
 {/* Containers */ }
 import LoginPageContainer from './containers/pages/loginPage/logIn/LoginPageContainer';
 import SignUpContainer from './containers/pages/loginPage/signUp/SignUpContainer';
@@ -14,11 +12,6 @@ import HeaderComponent from './components/systems/header/Header';
 
 const App: React.FC = () => {
 
-  const [ cookies, setCookie ] = useCookies(['name']);
-
-  function onChange (newName: string){
-    setCookie('name', newName, {path:'/'})
-  }
   return (
     <div className="App">
       <Router>
