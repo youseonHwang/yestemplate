@@ -46,7 +46,8 @@ const MyPageComponent: React.FC<Props> = ({
               return (
                 <>
                   <TemplateCard key={index} template={template} />
-                </>)
+                </>
+              )
             })}
           </Grid>
         </Grid>
