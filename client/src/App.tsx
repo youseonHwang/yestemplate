@@ -1,16 +1,33 @@
 import * as React from 'react';
- 
-interface Hello {
-  compiler: string;
-  framework: string;
-}
- 
-export class App extends React.Component<Hello, {}> {
-  render() {
-    return (
-      <h1>
-        Hello from {this.props.compiler} and {this.props.framework}!
-      </h1>
-    );
-  }
-}
+
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+{/* Containers */ }
+import LoginPageContainer from './containers/pages/loginPage/logIn/LoginPageContainer';
+import SignUpContainer from './containers/pages/loginPage/signUp/SignUpContainer';
+import MyPageContainer from './containers/pages/myPage/MyPageContainer';
+
+{/* Components 화면 확인용 import */ }
+import HeaderComponent from './components/systems/header/Header';
+
+const App: React.FC = () => {
+  return (
+    <div className="App">
+      <Router>
+        {/* 로그인여부 확인해서 Header조건부 랜더링 하기 */}
+        <HeaderComponent />
+        <Switch>
+          {/* 컨테이너 자리? */}
+          <Route exact path="/" component={LoginPageContainer} ></Route>
+          <Route exact path="/signup" component={SignUpContainer} ></Route>
+          <Route exact path="/mypage" component={MyPageContainer} ></Route>
+          {/* <Route exact path="/" component={LandingPageContainer} />
+          <Route path={['/write', '/edit/:']} component={WritePageContainer} />
+          <Route path="/ask" component={AskPageContainer} /> */}
+        </Switch>
+      </Router>
+    </div>
+  );
+};
+
+export default App;
