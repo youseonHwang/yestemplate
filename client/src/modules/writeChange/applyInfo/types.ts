@@ -1,6 +1,6 @@
 {/* 신청사항 타입 지정 */}
 import { ActionType } from 'typesafe-actions';
-import { changeField } from './actions';
+import { InfoChangeField } from './actions';
 
 export interface ApplyInfoState {
     applyInfo: {
@@ -10,9 +10,9 @@ export interface ApplyInfoState {
             resJumin: string,
             relation: string,
         },
-        applyAmount: string,
+        applyAmount: number,
     };
 }
 
-const actions = { changeField }
+const actions = { InfoChangeField }
 export type Actions = ActionType<typeof actions>;

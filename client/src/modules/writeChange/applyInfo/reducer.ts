@@ -11,7 +11,7 @@ const initialState: ApplyInfoState = {
             resJumin: '',
             relation: '',
         },
-        applyAmount: '',
+        applyAmount: 0,
     },
 }
 

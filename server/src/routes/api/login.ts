@@ -68,7 +68,7 @@ router.post("/",
             //쿠키에 토큰 싣기: 웹 브라우저에 저장할 정보(token)
             .cookie('token', token)
             .status(HttpStatusCodes.OK)
-            .json({ token, isLoginSuccessed: true});          
+            .json({ token, isLoginSuccessed: true });
         }
       );
     } catch (err) {

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import App from './App';
-import { CookiesProvider } from 'react-cookie';
 
 {/* Style */ }
 import GlobalStyles from './styles/GlobalStyles'
@@ -29,14 +28,12 @@ sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <React.StrictMode>
-    <CookiesProvider>
-      <Provider store={store}>
-        <GlobalStyles />
-        <ThemeProvider theme={theme}>
-          <App />
-        </ThemeProvider>
-      </Provider>
-    </CookiesProvider>
+    <Provider store={store}>
+      <GlobalStyles />
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </Provider>
   </React.StrictMode>,
 
   document.getElementById('root')

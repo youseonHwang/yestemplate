@@ -3,7 +3,7 @@ import { createAction } from 'typesafe-actions';
 
 export const INFO_CHANGE_FIELD = 'INFO_CHANGE_FIELD';
 
-export const changeField = createAction(
+export const InfoChangeField = createAction(
     INFO_CHANGE_FIELD,
     ({ key, value }) => ({
         key,

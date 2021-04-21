@@ -6,6 +6,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { ITemplate } from '../../../../api/mypage';
 
 const useStyles = makeStyles({
   root: {
@@ -24,25 +25,34 @@ const useStyles = makeStyles({
   },
 });
 
-export default function SimpleCard() {
+interface Props {
+  key: number,
+  template: ITemplate
+}
+
+const MyPageComponent: React.FC<Props> = ({
+  key,
+  template
+}) => {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
 
   return (
     <Grid item xs={3}>
       <Card className={classes.root}>
         <CardContent>
           <Typography className={classes.title} color="textSecondary" gutterBottom>
-            ㅇㄹ
-        </Typography>
+            이름: {template.applicant.name}
+          </Typography>
           <Typography variant="h5" component="h2">
-            템플릿 제목적기
-        </Typography>
+            {template.title ? template.title : 'undefined'}
+          </Typography>
           <Typography className={classes.pos} color="textSecondary">
-            2021/04/20
-        </Typography>
+            작성: {template.createdAt}
+            <br />
+            수정: {template.updatedAt}
+          </Typography>
           <Typography variant="body2" component="p">
-            설명을 적을게 있나..
+            {template.applyInfo.applyContent}
           </Typography>
         </CardContent>
         <CardActions>
@@ -52,3 +62,4 @@ export default function SimpleCard() {
     </Grid>
   );
 }
+export default MyPageComponent;
