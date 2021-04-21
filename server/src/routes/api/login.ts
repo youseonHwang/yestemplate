@@ -63,8 +63,6 @@ router.post("/",
         { expiresIn: config.get("jwtExpiration") },
         (err, token) => {
           if (err) throw err;
-
-          
           res.status(HttpStatusCodes.OK).json({ token, isLoginSuccessed: true });
         }
       );

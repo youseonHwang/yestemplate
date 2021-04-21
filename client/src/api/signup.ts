@@ -1,5 +1,4 @@
 import axios from 'axios';
-import {useDispatch } from 'react-redux';
 
 export const signUp: (data: any) => Promise<Message> = async (data) => {
   const response = await axios.post(' http://localhost:5000/api/user/signup', data);

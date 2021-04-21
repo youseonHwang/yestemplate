@@ -11,8 +11,10 @@ const app = express();
 //cors 설정
 const corsOptions = {
   origin: ["http://localhost:8080"],
-  Credential: true
+  credentials: true,
+  exposedHeaders: ["set-cookie"],
 }
+
 app.use(cors(corsOptions));
 
 app.set("port", process.env.PORT || 5000);

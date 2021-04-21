@@ -5,9 +5,9 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 {/* Containers */ }
 import LoginPageContainer from './containers/pages/loginPage/logIn/LoginPageContainer';
 import SignUpContainer from './containers/pages/loginPage/signUp/SignUpContainer';
+import MyPageContainer from './containers/pages/myPage/MyPageContainer';
 
 {/* Components 화면 확인용 import */ }
-import MyPageComponent from './components/pages/myPage/MyPage';
 import HeaderComponent from './components/systems/header/Header';
 
 const App: React.FC = () => {
@@ -20,7 +20,7 @@ const App: React.FC = () => {
           {/* 컨테이너 자리? */}
           <Route exact path="/" component={LoginPageContainer} ></Route>
           <Route exact path="/signup" component={SignUpContainer} ></Route>
-          <Route exact path="/mypage" component={MyPageComponent} ></Route>
+          <Route exact path="/mypage" component={MyPageContainer} ></Route>
           {/* <Route exact path="/" component={LandingPageContainer} />
           <Route path={['/write', '/edit/:']} component={WritePageContainer} />
           <Route path="/ask" component={AskPageContainer} /> */}
