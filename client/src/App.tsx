@@ -10,6 +10,7 @@ import TemplateContainer from './containers/pages/templatePage/TemplatePageConta
 
 {/* Components 화면 확인용 import */ }
 import HeaderComponent from './components/systems/header/Header';
+import WritePageComponent from './components/pages/writePage/WritePage'
 
 const App: React.FC = () => {
   return (
@@ -23,9 +24,7 @@ const App: React.FC = () => {
           <Route exact path="/template" component={TemplateContainer} ></Route>
           <Route exact path="/signup" component={SignUpContainer} ></Route>
           <Route exact path="/mypage" component={MyPageContainer} ></Route>
-          {/* <Route exact path="/" component={LandingPageContainer} />
-          <Route path={['/write', '/edit/:']} component={WritePageContainer} />
-          <Route path="/ask" component={AskPageContainer} /> */}
+          <Route exact path="/addtemplate" component={WritePageComponent} />
         </Switch>
       </Router>
     </div>
