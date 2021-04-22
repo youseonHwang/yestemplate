@@ -12,7 +12,7 @@ const ApplyInfoContainer: React.FC<RouteComponentProps> = () => {
     resJumin,
     relation,
     applyAmount,
-    onChangeFields,
+    onChangeApplyInfoFields,
   } = useChangeApplyInfoField();
 
   return (
@@ -22,7 +22,7 @@ const ApplyInfoContainer: React.FC<RouteComponentProps> = () => {
         resJumin={resJumin}
         relation={relation}
         applyAmount={applyAmount}
-        onChangeFields={onChangeFields}
+        onChangeApplyInfoFields={onChangeApplyInfoFields}
     />
   )
 }
