@@ -8,13 +8,13 @@ import useChangeApplyDocumentField from '../../../../hooks/pages/writePage/useCh
 const DocumentContainer: React.FC<RouteComponentProps> = () => {
   const {
     fileName,
-    onChangeFields,
+    onChangeDocumentFields,
   } = useChangeApplyDocumentField();
 
   return (
     <ApplyDocument
       fileName = {fileName}
-      onChangeFields={onChangeFields}
+      onChangeDocumentFields={onChangeDocumentFields}
     />
   )
 }

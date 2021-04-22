@@ -4,7 +4,7 @@ import { DocumentState } from '../../../modules/writeChange/applyDocument/types'
 
 function useChangeApplyDocumentField() : {
     fileName: Array<string | null>,
-    onChangeFields: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onChangeDocumentFields: (event: React.ChangeEvent<HTMLInputElement>) => void;
 } {
     const dispatch = useDispatch();
     const {
@@ -13,18 +13,18 @@ function useChangeApplyDocumentField() : {
         fileName: documentField.applyDocument.fileName,
     }));
 
-    const onChangeField = <T>(location: T, value: T): void => {
+    const onChangeDocumentField = <T>(location: T, value: T): void => {
         dispatch(actions.DocumentChangeField({ key: location, value: value }));
     };
 
-    const onChangeFields = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const onChangeDocumentFields = (event: React.ChangeEvent<HTMLInputElement>): void => {
         const { name, value } = event.target;
 
-        onChangeField<string>(name, value);
+        onChangeDocumentField<string>(name, value);
     };
     return {
         fileName,
-        onChangeFields,
+        onChangeDocumentFields,
     };
 }
 

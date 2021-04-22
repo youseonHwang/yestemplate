@@ -11,16 +11,15 @@ const ApplicantContainer: React.FC<RouteComponentProps> = () => {
     position,
     name,
     etc,
-    onChangeFields,
+    onChangeApplicantFields,
   } = useChangeApplicantField();
-
   return (
     <Applicant
       belong={belong}
       position={position}
       name={name}
       etc={etc}
-      onChangeFields={onChangeFields}
+      onChangeApplicantFields={onChangeApplicantFields}
     />
   )
 }

@@ -1,4 +1,18 @@
-import * as React from "react"; 
+import * as React from "react";
+import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    paper: {
+        width: '95%',
+        padding: theme.spacing(2),
+        marginBottom: theme.spacing(5),
+        textAlign: 'center',
+    }
+}));
 
 interface ApplyInfoProps {
     applyContent: string;
@@ -6,8 +20,8 @@ interface ApplyInfoProps {
     resJumin: string;
     relation: string;
     applyAmount: number;
-    onChangeFields: (event: React.ChangeEvent<HTMLInputElement>) => void;
-}
+    onChangeApplyInfoFields: (event: React.ChangeEvent<HTMLInputElement>) => void;
+};
 
 const ApplyInfo: React.FC<ApplyInfoProps> = ({
     applyContent,
@@ -15,50 +29,74 @@ const ApplyInfo: React.FC<ApplyInfoProps> = ({
     resJumin,
     relation,
     applyAmount,
-    onChangeFields,
+    onChangeApplyInfoFields,
 }) => {
+    const classes = useStyles();
     return (
-        <>
-            <article>
-                <div>
-                    <input 
-                        type="text"
-                        placeholder="내용"
+        <Paper className={classes.paper}>
+            <Grid item xs={12}>
+                <h1 style={{ fontSize: '20px', fontWeight: 'bold', textAlign: 'left', marginBottom: '3%' }} >신청사항</h1>
+                    <TextField
+                        variant="outlined"
+                        required
+                        fullWidth
+                        id="applyContent"
+                        label="내용"
                         name="applyContent"
+                        autoComplete="applyContent"
                         value={applyContent}
-                        onChange={onChangeFields}
+                        onChange={onChangeApplyInfoFields}
                     />
-                    <input 
-                        type="text"
-                        placeholder="성명"
+                    <h1 style={{ fontSize: '20px', fontWeight: 'bold', textAlign: 'left', marginBottom: '3%', marginTop: '3%' }} >피신청인</h1>
+                    <TextField
+                        style={{ marginBottom: '3%' }} 
+                        variant="outlined"
+                        required
+                        fullWidth
+                        id="resName"
+                        label="성명"
                         name="resName"
+                        autoComplete="resName"
                         value={resName}
-                        onChange={onChangeFields}
+                        onChange={onChangeApplyInfoFields}
                     />
-                    <input 
-                        type="text"
-                        placeholder="주민등록번호"
+                    <TextField
+                        style={{ marginBottom: '3%' }} 
+                        variant="outlined"
+                        required
+                        fullWidth
+                        id="resJumin"
+                        label="주민등록번호"
                         name="resJumin"
+                        autoComplete="resJumin"
                         value={resJumin}
-                        onChange={onChangeFields}
+                        onChange={onChangeApplyInfoFields}
                     />
-                    <input 
-                        type="text"
-                        placeholder="신청인과의 관계"
+                    <TextField
+                        variant="outlined"
+                        required
+                        fullWidth
+                        id="relation"
+                        label="신청인과의 관계"
                         name="relation"
+                        autoComplete="relation"
                         value={relation}
-                        onChange={onChangeFields}
+                        onChange={onChangeApplyInfoFields}
                     />
-                    <input 
-                        type="number"
-                        placeholder="신청 금액"
+                    <h1 style={{ fontSize: '20px', fontWeight: 'bold', textAlign: 'left', marginBottom: '3%', marginTop: '3%' }} >신청금액</h1>
+                    <TextField
+                        variant="outlined"
+                        required
+                        fullWidth
+                        id="applyAmount"
+                        label="신청금액"
                         name="applyAmount"
+                        autoComplete="applyAmount"
                         value={applyAmount}
-                        onChange={onChangeFields}
+                        onChange={onChangeApplyInfoFields}
                     />
-                </div>
-            </article>
-        </>
+            </Grid>
+        </Paper>
     );
 }
 
