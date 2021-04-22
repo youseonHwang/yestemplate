@@ -1,50 +1,22 @@
 import * as React from "react"; 
 
 interface ApplyDocumentProps {
-    belong: string;
-    position: string;
-    name: string;
-    etc: string;
+    fileName: Array<string | null>,
     onChangeFields: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const ApplyDocument: React.FC<ApplyDocumentProps> = ({
-    belong,
-    position,
-    name,
-    etc,
+    fileName,
     onChangeFields,
 }) => {
     return (
         <>
             <article>
                 <div>
-                    <input 
-                        type="text"
-                        placeholder="소속"
-                        name="belong"
-                        value={belong}
-                        onChange={onChangeFields}
-                    />
-                    <input 
-                        type="text"
-                        placeholder="직위"
-                        name="position"
-                        value={position}
-                        onChange={onChangeFields}
-                    />
-                    <input 
-                        type="text"
-                        placeholder="성명"
-                        name="name"
-                        value={name}
-                        onChange={onChangeFields}
-                    />
-                    <input 
-                        type="text"
-                        placeholder="기타"
-                        name="etc"
-                        value={etc}
+                    <input
+                        type="file"
+                        placeholder="파일첨부"
+                        name="fileName"
                         onChange={onChangeFields}
                     />
                 </div>

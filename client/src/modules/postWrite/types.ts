@@ -30,48 +30,18 @@ export interface SaveEditResumeState {
   };
   editResume: {
     resume: null | {
-        applicant: {
-            belong: string | null,
-            position: string | null,
-            name: string | null,
-            etc: string | null
-          },
-          applyInfo: {
-            applyContent: string | null,
-            respondent: {
-              resName: string | null,
-              resJumin: string | null,
-              relation: string | null,
-            },
-            applyAmount: number | null,
-          },
-          applyDocument: {
-            fileName: Array<string | null>
-      };
+        applicant: ApplicantState[];
+        applyInfo: ApplyInfoState[];
+        applyDocument: DocumentState[];
     };
     message: null | string;
   };
   updateResume: {
     isEdited: null | boolean;
     newResume: null | {
-        applicant: {
-            belong: string | null,
-            position: string | null,
-            name: string | null,
-            etc: string | null
-          },
-          applyInfo: {
-            applyContent: string | null,
-            respondent: {
-              resName: string | null,
-              resJumin: string | null,
-              relation: string | null,
-            },
-            applyAmount: number | null,
-          },
-          applyDocument: {
-            fileName: Array<string | null>
-        };
+        applicant: ApplicantState[];
+        applyInfo: ApplyInfoState[];
+        applyDocument: DocumentState[];
     };
   };
   uploadImage: { location: null | string; isUpload: null | boolean };
