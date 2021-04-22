@@ -27,17 +27,14 @@ router.post("/signup",
     }
 
     const { name, email, password } = req.body;
+    
     try {
       // 가져온 email을 가지고 User가 이미 존재하는지 확인
       let user: IUser = await User.findOne({ email });
 
       if (user) {
         return res.status(HttpStatusCodes.BAD_REQUEST).json({
-          errors: [
-            {
-              msg: "User already exists"
-            }
-          ]
+          msg: "User already exists"
         });
       }
 
@@ -53,12 +50,25 @@ router.post("/signup",
         role: 0,
       };
 
+      // 필드로 userSchema생성
       user = new User(userFields);
+      if (!user) {
+        return res.status(HttpStatusCodes.BAD_REQUEST).json({
+          msg: "정보가 유효하지 않습니다."
+        });
+      }
 
       // User 저장
-      user = await user.save();
+      user = await user.save({});
+      if (!user) {
+        return res.status(HttpStatusCodes.BAD_REQUEST).json({
+          msg: "회원가입에 실패하였습니다."
+        });
+      }
       console.log(user);
+
       res.json({ user, success: true });
+
     } catch (err) {
       console.error(err.message);
       res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).send("Server Error");
