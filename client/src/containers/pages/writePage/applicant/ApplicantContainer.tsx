@@ -3,7 +3,7 @@ import { withRouter, RouteComponentProps } from 'react-router-dom';
 {/* component */ }
 import Applicant from '../../../../components/pages/writePage/write/applicant/Applicant';
 {/* hook */ }
-import useChangeApplyInfoField from '../../../../hooks/pages/writePage/useChangeApplicantField';
+import useChangeApplicantField from '../../../../hooks/pages/writePage/useChangeApplicantField';
 
 const ApplicantContainer: React.FC<RouteComponentProps> = () => {
   const {
@@ -12,7 +12,7 @@ const ApplicantContainer: React.FC<RouteComponentProps> = () => {
     name,
     etc,
     onChangeFields,
-  } = useChangeApplyInfoField();
+  } = useChangeApplicantField();
 
   return (
     <Applicant

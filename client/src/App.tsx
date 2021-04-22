@@ -8,6 +8,8 @@ import SignUpContainer from './containers/pages/loginPage/signUp/SignUpContainer
 import MyPageContainer from './containers/pages/myPage/MyPageContainer';
 import TemplateContainer from './containers/pages/templatePage/TemplatePageContainer'
 import ApplicantContainer from './containers/pages/writePage/applicant/ApplicantContainer';
+import ApplyDocument from './containers/pages/writePage/applyDocument/ApplyDocumentContainer';
+import ApplyInfoContainer from './containers/pages/writePage/applyInfo/ApplyInfoContainer';
 
 {/* Components 화면 확인용 import */ }
 import HeaderComponent from './components/systems/header/Header';
@@ -30,7 +32,9 @@ const App: React.FC = () => {
           <Route exact path="/mypage" component={MyPageContainer} ></Route>
           <Route exact path="/addtemplate" component={WritePageComponent} />
           {/* <Route exact path="/rightpreview" component={RightPreviewComponent} /> */}
-          <Route exact path="/write" component={ApplicantContainer} ></Route>
+          <Route exact path="/write1" component={ApplicantContainer} ></Route>
+          <Route exact path="/write2" component={ApplyDocument} ></Route>
+          <Route exact path="/write3" component={ApplyInfoContainer} ></Route>
           {/* <Route exact path="/" component={LandingPageContainer} />
           <Route path={['/write', '/edit/:']} component={WritePageContainer} />
           <Route path="/ask" component={AskPageContainer} /> */}
