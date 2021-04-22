@@ -7,7 +7,6 @@ export interface ITemplate extends Document {
     belong: string | null,
     position: string | null,
     name: string | null,
-    etc: string | null
   },
   applyInfo: {
     applyContent: string | null,
