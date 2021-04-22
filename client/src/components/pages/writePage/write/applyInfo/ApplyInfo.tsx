@@ -1,18 +1,20 @@
 import * as React from "react"; 
 
 interface ApplyInfoProps {
-    belong: string;
-    position: string;
-    name: string;
-    etc: string;
+    applyContent: string;
+    resName: string;
+    resJumin: string;
+    relation: string;
+    applyAmount: number;
     onChangeFields: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const ApplyInfo: React.FC<ApplyInfoProps> = ({
-    belong,
-    position,
-    name,
-    etc,
+    applyContent,
+    resName,
+    resJumin,
+    relation,
+    applyAmount,
     onChangeFields,
 }) => {
     return (
@@ -21,30 +23,37 @@ const ApplyInfo: React.FC<ApplyInfoProps> = ({
                 <div>
                     <input 
                         type="text"
-                        placeholder="소속"
-                        name="belong"
-                        value={belong}
-                        onChange={onChangeFields}
-                    />
-                    <input 
-                        type="text"
-                        placeholder="직위"
-                        name="position"
-                        value={position}
+                        placeholder="내용"
+                        name="applyContent"
+                        value={applyContent}
                         onChange={onChangeFields}
                     />
                     <input 
                         type="text"
                         placeholder="성명"
-                        name="name"
-                        value={name}
+                        name="resName"
+                        value={resName}
                         onChange={onChangeFields}
                     />
                     <input 
                         type="text"
-                        placeholder="기타"
-                        name="etc"
-                        value={etc}
+                        placeholder="주민등록번호"
+                        name="resJumin"
+                        value={resJumin}
+                        onChange={onChangeFields}
+                    />
+                    <input 
+                        type="text"
+                        placeholder="신청인과의 관계"
+                        name="relation"
+                        value={relation}
+                        onChange={onChangeFields}
+                    />
+                    <input 
+                        type="number"
+                        placeholder="신청 금액"
+                        name="applyAmount"
+                        value={applyAmount}
                         onChange={onChangeFields}
                     />
                 </div>
