@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import LoginPageContainer from './containers/pages/loginPage/logIn/LoginPageContainer';
 import SignUpContainer from './containers/pages/loginPage/signUp/SignUpContainer';
 import MyPageContainer from './containers/pages/myPage/MyPageContainer';
-import TemplateContainer from './containers/pages/templatePage/TemplatePageContainer'
+import TemplateContainer from './containers/pages/templatePage/TemplatePageContainer';
 import RightPreviewContainer from './containers/pages/writePage/rightPreview/RightPreviewContainer';
 
 {/* Components 화면 확인용 import */ }
