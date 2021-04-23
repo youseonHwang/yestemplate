@@ -9,7 +9,7 @@ const initialState: ApplicantState = {
         position: "",
         name: "",
     },
-};
+}
 
 const applicantField = createReducer<ApplicantState, Actions>(initialState, {
     [APPLICANT_CHANGE_FIELD]: (state, action) => {
