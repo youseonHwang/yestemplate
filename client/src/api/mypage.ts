@@ -2,11 +2,13 @@ import axios from 'axios';
 
 {/* myPage 정보 가져오기 */ }
 const getMyPageInfo: (data: any) => Promise<any> = async (data) => {
-  const response = await axios.get(' http://localhost:5000/api/mypage/' + data._id, data);
+  const userId = data._id;
+  const response = await axios.get(`http://localhost:5000/api/mypage/${userId}`, data);
   return response.data;
 }
 
 export interface ITemplate {
+  _id: string,
   title: string | null,
   userFrom: string,
   applicant: {

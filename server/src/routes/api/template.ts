@@ -64,7 +64,9 @@ router.put("/edit/:templateId",
         templateFields,
         { upsert: true }
       ).exec();
+
       console.log(template)
+      
       if (!template) {
         return res.status(HttpStatusCodes.BAD_REQUEST).json({
           msg: "수정에 실패하였습니다."

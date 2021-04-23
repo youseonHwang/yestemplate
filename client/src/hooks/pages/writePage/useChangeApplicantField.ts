@@ -8,11 +8,11 @@ function useChangeApplicantField(): {
   name: string;
   etc: string;
   //컨테이너, 컴포넌트에 적용될 것들
-  onChangeFields: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeApplicantFields: (event: React.ChangeEvent<HTMLInputElement>) => void;
 } {
   const dispatch = useDispatch();
 
-  const onChangeField = <T>(location: T, value: T): void => {
+  const onChangeApplicantField = <T>(location: T, value: T): void => {
     dispatch(
       actions.ApplicantChangeField({
         key: location, value: value
@@ -34,9 +34,9 @@ function useChangeApplicantField(): {
     }),
   );
 
-  const onChangeFields = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const onChangeApplicantFields = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = event.target;
-    onChangeField<string>(name, value);
+    onChangeApplicantField<string>(name, value);
   };
 
   return {
@@ -44,7 +44,7 @@ function useChangeApplicantField(): {
     position,
     name,
     etc,
-    onChangeFields,
+    onChangeApplicantFields,
   };
 }
 

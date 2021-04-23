@@ -1,4 +1,6 @@
 import * as React from "react";
+import { withRouter } from 'react-router-dom';
+import { RouteComponentProps } from 'react-router-dom'
 
 import Grid from '@material-ui/core/Grid';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
@@ -26,27 +28,27 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   }),
 );
-interface Props {
+interface Props extends RouteComponentProps {
+  key?: number,
   templates: Array<ITemplate>
 }
 
-const MyPageComponent: React.FC<Props> = ({
-  templates
-}) => {
+function MyPageComponent(Props: Props) {
   const classes = useStyles();
-  console.log(templates)
+  console.log(Props.templates)
+  const templates = Props.templates
 
   return (
     <>
       <div className={classes.root} >
         <Grid container justify="space-evenly" >
           <Grid container item xs={12} spacing={9}>
+
             <TemplateAddCard />
-            {templates.map((template, index) => {
+
+            {templates.map((template: ITemplate, index: number) => {
               return (
-                <>
-                  <TemplateCard key={index} template={template} />
-                </>
+                <TemplateCard key={index} template={template} />
               )
             })}
           </Grid>
@@ -56,4 +58,4 @@ const MyPageComponent: React.FC<Props> = ({
   );
 }
 
-export default MyPageComponent;
+export default withRouter(MyPageComponent);

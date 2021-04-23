@@ -8,7 +8,7 @@ function useChangeApplyInfoField() : {
     resJumin: string,
     relation: string,
     applyAmount: number, 
-    onChangeFields: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    onChangeApplyInfoFields: (event: React.ChangeEvent<HTMLInputElement>) => void;
 } {
     const dispatch = useDispatch();
     const {
@@ -25,14 +25,14 @@ function useChangeApplyInfoField() : {
         applyAmount: applyInfoField.applyInfo.applyAmount,
     }));
 
-    const onChangeField = <T>(location: T, value: T): void => {
+    const onChangeApplyInfoField = <T>(location: T, value: T): void => {
         dispatch(actions.InfoChangeField({ key: location, value: value }));
     };
 
-    const onChangeFields = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    const onChangeApplyInfoFields = (event: React.ChangeEvent<HTMLInputElement>): void => {
         const { name, value } = event.target;
 
-        onChangeField<string>(name, value);
+        onChangeApplyInfoField<string>(name, value);
     };
     return {
         applyContent,
@@ -40,7 +40,7 @@ function useChangeApplyInfoField() : {
         resJumin,
         relation,
         applyAmount,
-        onChangeFields,
+        onChangeApplyInfoFields,
     };
 }
 
