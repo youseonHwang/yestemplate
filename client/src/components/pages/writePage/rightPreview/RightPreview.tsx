@@ -107,9 +107,9 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     button: {
       border: '1px solid green',
-      color:'green', 
-      fontSize: '20px', 
-      fontWeight: 'bold', 
+      color: 'green',
+      fontSize: '20px',
+      fontWeight: 'bold',
       marginBottom: '5%',
       float: 'right'
     },
@@ -142,15 +142,44 @@ interface RightPreviewProps {
     resJumin: string;
     relation: string;
     applyAmount: number;
+  },
+  template: {
+    id: string,
+    title: string,
+    userFrom: string,
+    applicant: {
+      belong: string,
+      position: string,
+      name: string,
+    },
+    applyInfo: {
+      applyContent: string,
+      respondent: {
+        resName: string,
+        resJumin: string,
+        relation: string,
+      },
+      applyAmount: number,
+    },
+    applyDocument: {
+      fileName: Array<string>,
+      etc: string
+    },
+    createdAt: string,
+    updatedAt: string,
+    __v: number
   }
 }
 
-const RightPreview: React.FC<RightPreviewProps> = ({ values }) => {
+const RightPreview: React.FC<RightPreviewProps> = ({ values, template }) => {
   const classes = useStyles();
+
+  console.log(template)
+
   return (
     <Paper className={classes.paper}>
       <Button className={classes.button}>PDF 변환하기</Button>
-      <Button className={classes.button} style={{ marginRight:'1.7%' }}>임시저장</Button>
+      <Button className={classes.button} style={{ marginRight: '1.7%' }}>임시저장</Button>
       <Grid container spacing={0}>
         <Grid item xs={12} sm={12} md={12} >
           <Card className={classes.card} elevation={0}>

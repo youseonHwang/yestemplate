@@ -5,36 +5,7 @@ import { withRouter, RouteComponentProps } from 'react-router-dom';
 import ApplyDocument from '../../../../components/pages/writePage/write/applyDocument/ApplyDocument';
 {/* hook */ }
 import useChangeApplyDocumentField from '../../../../hooks/pages/writePage/useChangeApplyDocumentField';
-interface stateType {
-  from: { pathname: string },
-  template: {
-    id: string,
-    title: string,
-    userFrom: string,
-    applicant: {
-      belong: string,
-      position: string,
-      name: string,
-    },
-    applyInfo: {
-      applyContent: string,
-      respondent: {
-        resName: string,
-        resJumin: string,
-        relation: string,
-      },
-      applyAmount: number,
-    },
-    applyDocument: {
-      fileName: Array<string>,
-      etc: string
-    },
-    createdAt: string,
-    updatedAt: string,
-    __v: number
-  }
-}
-
+import { stateType } from '../applicant/ApplicantContainer'
 const DocumentContainer: React.FC<RouteComponentProps> = () => {
   const {
     fileName,
