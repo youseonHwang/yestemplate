@@ -16,7 +16,6 @@ interface stateType {
       belong: string,
       position: string,
       name: string,
-      etc: string
     },
     applyInfo: {
       applyContent: string,
@@ -28,7 +27,8 @@ interface stateType {
       applyAmount: number,
     },
     applyDocument: {
-      fileName: Array<string>
+      fileName: Array<string>,
+      etc: string
     },
     createdAt: string,
     updatedAt: string,
@@ -38,11 +38,10 @@ interface stateType {
 
 
 const ApplicantContainer: React.FC<RouteComponentProps> = () => {
-
-  const { name, belong, etc, position, onChangeApplicantFields } = useChangeApplicantField();
+  const { name, belong, position, onChangeApplicantFields } = useChangeApplicantField();
 
   const [init, setInit] = useState({
-    name, belong, etc, position
+    name, belong, position
   });
 
   const { state } = useLocation<stateType>();
@@ -59,7 +58,6 @@ const ApplicantContainer: React.FC<RouteComponentProps> = () => {
       belong={belong || init.belong}
       position={position || init.position}
       name={name || init.name}
-      etc={etc || init.etc}
       onChangeApplicantFields={onChangeApplicantFields}
     />
   )

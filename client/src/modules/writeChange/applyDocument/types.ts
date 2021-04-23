@@ -4,7 +4,8 @@ import { DocumentChangeField } from './actions';
 
 export interface DocumentState {
     applyDocument: {
-        fileName: Array<string | null>
+        fileName: Array<string | null>;
+        etc: string;
     },
 }
 

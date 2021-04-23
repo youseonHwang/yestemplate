@@ -15,7 +15,6 @@ interface stateType {
       belong: string,
       position: string,
       name: string,
-      etc: string
     },
     applyInfo: {
       applyContent: string,
@@ -27,7 +26,8 @@ interface stateType {
       applyAmount: number,
     },
     applyDocument: {
-      fileName: Array<string>
+      fileName: Array<string>,
+      etc: string
     },
     createdAt: string,
     updatedAt: string,
@@ -38,10 +38,11 @@ interface stateType {
 const DocumentContainer: React.FC<RouteComponentProps> = () => {
   const {
     fileName,
+    etc,
     onChangeDocumentFields,
   } = useChangeApplyDocumentField();
 
-  const [init, setInit] = useState({ fileName });
+  const [init, setInit] = useState({ fileName, etc });
 
   const { state } = useLocation<stateType>();
   useEffect(() => {
@@ -54,6 +55,7 @@ const DocumentContainer: React.FC<RouteComponentProps> = () => {
   return (
     <ApplyDocument
       fileName={fileName || init.fileName}
+      etc={etc || init.etc}
       onChangeDocumentFields={onChangeDocumentFields}
     />
   )

@@ -15,7 +15,6 @@ export interface ITemplate {
     belong: string | null,
     position: string | null,
     name: string | null,
-    etc: string | null
   },
   applyInfo: {
     applyContent: string | null,
@@ -27,7 +26,8 @@ export interface ITemplate {
     applyAmount: number | null,
   },
   applyDocument: {
-    fileName: Array<string | null>
+    fileName: Array<string | null>,
+    etc: string | null
   },
   createdAt: string | null,
   updatedAt: string | null,

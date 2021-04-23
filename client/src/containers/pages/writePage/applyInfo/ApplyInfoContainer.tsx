@@ -16,7 +16,6 @@ interface stateType {
       belong: string,
       position: string,
       name: string,
-      etc: string
     },
     applyInfo: {
       applyContent: string,
@@ -28,7 +27,8 @@ interface stateType {
       applyAmount: number,
     },
     applyDocument: {
-      fileName: Array<string>
+      fileName: Array<string>,
+      etc: string
     },
     createdAt: string,
     updatedAt: string,

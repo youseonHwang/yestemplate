@@ -4,7 +4,6 @@ import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
-import { ITemplate } from '../../../../../api/mypage';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -16,12 +15,10 @@ const useStyles = makeStyles((theme: Theme) =>
     }
   }));
 
-
 interface ApplicantProps {
-  belong: string | null;
-  position: string | null;
-  name: string | null;
-  etc: string | null;
+  belong: string;
+  position: string;
+  name: string;
   onChangeApplicantFields: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 

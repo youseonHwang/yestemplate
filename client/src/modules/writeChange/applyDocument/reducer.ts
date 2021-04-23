@@ -6,6 +6,7 @@ import { DOCUMENT_CHANGE_FIELD } from './actions';
 const initialState: DocumentState = {
     applyDocument: {
         fileName: [],
+        etc: "",
     },
 }
 
@@ -14,7 +15,8 @@ const documentField = createReducer<DocumentState, Actions>(initialState, {
         const key = action.payload.key;
 
         if (
-            key === 'fileName'
+            key === 'fileName' ||
+            key === 'etc'
         ) {
             return {
                 ...state,
