@@ -7,7 +7,6 @@ export interface ApplicantState {
         belong: string;
         position: string;
         name: string;
-        etc: string;
     }
 }
 

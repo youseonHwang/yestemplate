@@ -18,7 +18,6 @@ interface ApplicantProps {
     belong: string;
     position: string;
     name: string;
-    etc: string;
     onChangeApplicantFields: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 

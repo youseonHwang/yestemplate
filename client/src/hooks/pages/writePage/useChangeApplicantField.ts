@@ -6,7 +6,6 @@ function useChangeApplicantField(): {
   belong: string;
   position: string;
   name: string;
-  etc: string;
   //컨테이너, 컴포넌트에 적용될 것들
   onChangeApplicantFields: (event: React.ChangeEvent<HTMLInputElement>) => void;
 } {
@@ -24,13 +23,11 @@ function useChangeApplicantField(): {
     belong,
     position,
     name,
-    etc,
   } = useSelector(
     ({ applicantField }: { applicantField: ApplicantState }) => ({
       belong: applicantField.applicant.belong,
       position: applicantField.applicant.position,
       name: applicantField.applicant.name,
-      etc: applicantField.applicant.etc,
     }),
   );
 
@@ -43,7 +40,6 @@ function useChangeApplicantField(): {
     belong,
     position,
     name,
-    etc,
     onChangeApplicantFields,
   };
 }
