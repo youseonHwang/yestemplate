@@ -5,7 +5,9 @@ import Paper from '@material-ui/core/Paper';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
 import { Divider } from '@material-ui/core';
+import { PdfViewerComponent, Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, Inject } from '@syncfusion/ej2-react-pdfviewer';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -103,6 +105,14 @@ const useStyles = makeStyles((theme: Theme) =>
       backgroundSize: 'contain',
       backgroundRepeat: 'no-repeat',
     },
+    button: {
+      border: '1px solid green',
+      color:'green', 
+      fontSize: '20px', 
+      fontWeight: 'bold', 
+      marginBottom: '5%',
+      float: 'right'
+    },
     content: {
       fontSize: '12px',
       textAlign: 'right',
@@ -137,9 +147,10 @@ interface RightPreviewProps {
 
 const RightPreview: React.FC<RightPreviewProps> = ({ values }) => {
   const classes = useStyles();
-  console.log(values);
   return (
     <Paper className={classes.paper}>
+      <Button className={classes.button}>PDF 변환하기</Button>
+      <Button className={classes.button} style={{ marginRight:'1.7%' }}>임시저장</Button>
       <Grid container spacing={0}>
         <Grid item xs={12} sm={12} md={12} >
           <Card className={classes.card} elevation={0}>
