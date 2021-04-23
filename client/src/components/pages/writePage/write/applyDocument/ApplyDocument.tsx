@@ -16,11 +16,13 @@ const useStyles = makeStyles((theme: Theme) =>
 
 interface ApplyDocumentProps {
     fileName: Array<string | null>;
+    etc: string;
     onChangeDocumentFields: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 const ApplyDocument: React.FC<ApplyDocumentProps> = ({
     fileName,
+    etc,
     onChangeDocumentFields,
 }) => {
     const classes = useStyles();
@@ -29,7 +31,6 @@ const ApplyDocument: React.FC<ApplyDocumentProps> = ({
             <Grid item xs={12}>
                     <h1 style={{ fontSize: '20px', fontWeight: 'bold', textAlign: 'left', marginBottom: '3%' }} >증빙자료 첨부</h1>
                         <input
-                            
                             type="file"
                             placeholder="파일첨부"
                             name="fileName"
@@ -45,7 +46,7 @@ const ApplyDocument: React.FC<ApplyDocumentProps> = ({
                         label="기타 사항"
                         name="etc"
                         autoComplete="etc"
-                        // value={etc}
+                        value={etc}
                         onChange={onChangeDocumentFields}
                         />
                 </Grid>

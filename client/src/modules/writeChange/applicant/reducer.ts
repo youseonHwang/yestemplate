@@ -8,7 +8,6 @@ const initialState: ApplicantState = {
         belong: "",
         position: "",
         name: "",
-        etc: "",
     },
 };
 
@@ -18,8 +17,7 @@ const applicantField = createReducer<ApplicantState, Actions>(initialState, {
         if (
             key === 'belong' ||
             key === 'position' ||
-            key === 'name' ||
-            key === 'etc'
+            key === 'name'
         ) {
             return {
                 ...state,

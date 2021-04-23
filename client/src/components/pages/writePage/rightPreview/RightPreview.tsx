@@ -120,12 +120,26 @@ const useStyles = makeStyles((theme: Theme) =>
     }
   }));
 
-export default function RightPreview() {
+interface RightPreviewProps {
+  values: {
+    belong: string;
+    position: string;
+    name: string;
+    etc: string;
+    fileName: Array<string | null>;
+    applyContent: string;
+    resName: string;
+    resJumin: string;
+    relation: string;
+    applyAmount: number;
+  }
+}
+
+const RightPreview: React.FC<RightPreviewProps> = ({ values }) => {
   const classes = useStyles();
+  console.log(values);
   return (
-
     <Paper className={classes.paper}>
-
       <Grid container spacing={0}>
         <Grid item xs={12} sm={12} md={12} >
           <Card className={classes.card} elevation={0}>
@@ -133,7 +147,6 @@ export default function RightPreview() {
               <CardMedia
                 className={classes.cover}
                 image='../../../../../../public/Logo.png'
-                //image='../../../../../../public/yesLogo.png'
                 title="Live from space album cover"
               />
               <CardContent className={classes.content}>
@@ -207,61 +220,63 @@ export default function RightPreview() {
               </tr>
               <tr>
                 <td className={classes.tgTgL93j}>
-                  어쩌고
-                  </td>
+                  {values.belong && <th>{values.belong}</th>}
+                </td>
                 <td className={classes.tgTgL93j}>
-                  저쩌고
-                  </td>
+                  {values.position && <th>{values.position}</th>}
+                </td>
                 <td className={classes.tgTgL93j}>
-                  어찌고
-                  </td>
+                  {values.name && <th>{values.name}</th>}
+                </td>
               </tr>
               <tr>
                 <td rowSpan={5} className={classes.tgTgHikc}>신청사항</td>
                 <td className={classes.tgTgFc4c}>내용</td>
                 <td colSpan={2} className={classes.tgTgL93j}>
-
+                  {values.applyContent && <th>{values.applyContent}</th>}
                 </td>
               </tr>
               <tr>
                 <td rowSpan={3} className={classes.tgTgHikc}>피신청인<br /></td >
                 <td className={classes.tgTgEqfb}>성명</td>
                 <td className={classes.tgTgL93j}>
-
+                  {values.resName && <th>{values.resName}</th>}
                 </td>
               </tr>
               <tr>
                 <td className={classes.tgTgEqfb}>주민등록번호</td>
                 <td className={classes.tgTgL93j}>
-
+                  {values.resJumin && <th>{values.resJumin}</th>}
                 </td>
               </tr>
               <tr>
                 <td className={classes.tgTgEqfb}>신청인과의 관계</td>
                 <td className={classes.tgTgL93j}>
-
+                  {values.relation && <th>{values.relation}</th>}
                 </td>
               </tr>
               <tr>
                 <td className={classes.tgTgFc4c}>신청금액</td>
                 <td colSpan={2} className={classes.tgTgL93j}>
-
+                  {values.applyAmount && <th>{values.applyAmount}</th>}
                 </td>
               </tr>
               <tr>
                 <td className={classes.tgTgFc4c}>증빙자료<br />첨부</td>
                 <td colSpan={3} className={classes.tgTgL93j}>
-
+                  {values.fileName && <th>{values.fileName}</th>}
                 </td>
               </tr>
               <tr>
                 <td className={classes.tgTgFc4c}>기타 사항</td>
                 <td colSpan={3} className={classes.tgTgL93j}>
-
+                  {values.etc && <th>{values.etc}</th>}
                 </td>
               </tr>
               <tr>
-                <td colSpan={4} className={classes.tgTg3mbc}>신청자:                                                             (인)</td>
+                <td colSpan={4} className={classes.tgTg3mbc}>신청자:
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(인)</td>
               </tr>
             </tbody>
           </table>
@@ -270,3 +285,5 @@ export default function RightPreview() {
     </Paper>
   );
 }
+
+export default RightPreview;
