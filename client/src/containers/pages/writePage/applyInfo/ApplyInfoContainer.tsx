@@ -5,36 +5,7 @@ import { withRouter, RouteComponentProps } from 'react-router-dom';
 import ApplyInfo from '../../../../components/pages/writePage/write/applyInfo/ApplyInfo';
 {/* hook */ }
 import useChangeApplyInfoField from '../../../../hooks/pages/writePage/useChangeApplyInfoField';
-
-interface stateType {
-  from: { pathname: string },
-  template: {
-    id: string,
-    title: string,
-    userFrom: string,
-    applicant: {
-      belong: string,
-      position: string,
-      name: string,
-    },
-    applyInfo: {
-      applyContent: string,
-      respondent: {
-        resName: string,
-        resJumin: string,
-        relation: string,
-      },
-      applyAmount: number,
-    },
-    applyDocument: {
-      fileName: Array<string>,
-      etc: string
-    },
-    createdAt: string,
-    updatedAt: string,
-    __v: number
-  }
-}
+import { stateType } from '../applicant/ApplicantContainer'
 
 const ApplyInfoContainer: React.FC<RouteComponentProps> = () => {
 
@@ -107,8 +78,6 @@ const ApplyInfoContainer: React.FC<RouteComponentProps> = () => {
     if (!mounted.current) { mounted.current = true }
     else { setIsApplyAmountChanged(true) }
   }, [applyAmount])
-
-  console.log(init)
 
   return (
     <ApplyInfo

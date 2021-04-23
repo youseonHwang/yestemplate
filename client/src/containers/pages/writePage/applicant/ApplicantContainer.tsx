@@ -1,13 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useLocation } from "react-router";
 import { withRouter, RouteComponentProps } from 'react-router-dom';
-import { isUnionTypeNode } from 'typescript';
 {/* component */ }
 import Applicant from '../../../../components/pages/writePage/write/applicant/Applicant';
 {/* hook */ }
 import useChangeApplicantField from '../../../../hooks/pages/writePage/useChangeApplicantField';
 
-interface stateType {
+export interface stateType {
   from: { pathname: string },
   template: {
     id: string,
