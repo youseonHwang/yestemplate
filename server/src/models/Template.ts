@@ -56,7 +56,7 @@ const templateSchema: Schema = new Schema({
       resName: {
         type: String,
       },
-      resJUmin: {
+      resJumin: {
         type: String,
       },
       relation: {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useLocation } from "react-router";
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 {/* component */ }
@@ -37,6 +37,17 @@ interface stateType {
 }
 
 const ApplyInfoContainer: React.FC<RouteComponentProps> = () => {
+
+  {/* 첫 마운트 여부를 확인함 */ }
+  const mounted = useRef(false)
+
+  {/* 수정사항 변경여부 */ }
+  const [isApplyContentChanged, setIsApplyContentChanged] = useState(false);
+  const [isResNameChanged, setIsResNameChanged] = useState(false);
+  const [isRelationChanged, setIsRelationChanged] = useState(false);
+  const [isResJuminChanged, setIsResJuminChanged] = useState(false);
+  const [isApplyAmountChanged, setIsApplyAmountChanged] = useState(false);
+
   const {
     applyContent,
     resName,
@@ -47,33 +58,65 @@ const ApplyInfoContainer: React.FC<RouteComponentProps> = () => {
   } = useChangeApplyInfoField();
 
   const [init, setInit] = useState({
-    applyInfo: {
-      applyContent: '',
-      respondent: {
-        resName: '',
-        resJumin: '',
-        relation: '',
-      },
-      applyAmount: 0,
+    applyContent: '',
+    respondent: {
+      resName: '',
+      resJumin: '',
+      relation: '',
     },
+    applyAmount: 0,
+
   });
   const { state } = useLocation<stateType>();
-  console.log(state)
   useEffect(() => {
     if (state) {
       if (state.template.applyInfo) {
-        setInit(state.template)
+        setInit(state.template.applyInfo)
       }
     }
+    return () => { !mounted.current }
   }, [])
+
+  {/* applyContent 값이 변경이 되면 */ }
+  useEffect(() => {
+    if (!mounted.current) { }
+    else { setIsApplyContentChanged(true) }
+  }, [applyContent])
+
+  {/* resName 값이 변경이 되면 */ }
+  useEffect(() => {
+    if (!mounted.current) {
+    } else { setIsResNameChanged(true) }
+  }, [resName])
+
+  {/* resJumin 값이 변경이 되면 */ }
+  useEffect(() => {
+    if (!mounted.current) { }
+    else { setIsResJuminChanged(true) }
+  }, [resJumin])
+
+  {/* relation 값이 변경이 되면 */ }
+  useEffect(() => {
+    if (!mounted.current) {
+    } else { setIsRelationChanged(true) }
+  }, [relation])
+
+
+  {/* applyAmount 값이 변경이 되면 */ }
+  useEffect(() => {
+    if (!mounted.current) { mounted.current = true }
+    else { setIsApplyAmountChanged(true) }
+  }, [applyAmount])
+
+  console.log(init)
 
   return (
     <ApplyInfo
-      applyContent={applyContent || init.applyInfo.applyContent}
-      resName={resName || init.applyInfo.applyContent}
-      resJumin={resJumin || init.applyInfo.applyContent}
-      relation={relation || init.applyInfo.applyContent}
-      applyAmount={applyAmount || init.applyInfo.applyAmount}
+      applyContent={applyContent || isApplyContentChanged ? applyContent : init.applyContent}
+      resName={resName || isResNameChanged ? resName : init.respondent.resName}
+      resJumin={resJumin || isResJuminChanged ? resJumin : init.respondent.resJumin}
+      relation={relation || isRelationChanged ? relation : init.respondent.relation}
+      applyAmount={applyAmount || isApplyAmountChanged ? applyAmount : init.applyAmount}
       onChangeApplyInfoFields={onChangeApplyInfoFields}
     />
   )
