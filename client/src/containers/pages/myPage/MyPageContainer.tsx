@@ -10,7 +10,12 @@ import getMyPageInfo from '../../../api/mypage';
 {/* components */ }
 import MyPageComponent from '../../../components/pages/myPage/MyPage'
 
-const MyPageContainer: React.FC<RouteComponentProps> = () => {
+interface Props extends RouteComponentProps {
+  key?: number,
+  templates: Array<ITemplate>
+}
+
+export default function MyPageContainer(Props: Props) {
 
   const [templates, setTemplates] = useState(Array<ITemplate>())
 
@@ -33,4 +38,4 @@ const MyPageContainer: React.FC<RouteComponentProps> = () => {
   )
 }
 
-export default withRouter(MyPageContainer);
+// export default withRouter(MyPageContainer);

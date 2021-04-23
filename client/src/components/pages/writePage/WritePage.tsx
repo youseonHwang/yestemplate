@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import RightPreview from './rightPreview/RightPreview'
@@ -12,7 +13,9 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   }));
 
-export default function WritePage() {
+
+function WritePage() {
+
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -27,3 +30,5 @@ export default function WritePage() {
     </div >
   );
 }
+
+export default withRouter(WritePage);
