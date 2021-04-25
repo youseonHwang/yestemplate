@@ -13,6 +13,7 @@ const router: Router = Router();
 router.post("/save",
   async (req: Request, res: Response) => {
 
+    console.log('server의 api로 들어옴')
     console.log(req.body)
     const userId = req.body.userFrom;
 

@@ -1,29 +1,29 @@
-// /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-// import { takeLatest, call, put } from 'redux-saga/effects';
-// import {
-//   saveResumeAsync,
-//   editResumeAsync,
-//   updateResumeAsync,
-//   uploadImageAsync,
-//   deleteResumeAsync,
-// } from '../../api/asyncTemplate';
-// import { Actions } from '../../modules/postWrite/types';
+/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+import { takeLatest, call, put } from 'redux-saga/effects';
+import {
+  saveTemplate
+} from '../../api/asyncTemplate';
+import { Actions } from '../../modules/postWrite/types';
 
-// function* fetchSave(actions: Actions) {
-//   try {
-//     const req = yield call(saveResumeAsync, actions.payload);
-//     yield put({
-//       type: 'SAVE_RESUME_FIELD_SUCCESS',
-//       payload: { save: req.save },
-//     });
-//   } catch (e) {
-//     yield put({
-//       type: 'SAVE_RESUME_FIELD_FAILURE',
-//       payload: { message: e.message },
-//     });
-//   }
-// }
+{/* 템플릿 저장 */}
+function* fetchSave(actions: Actions) {
+  console.log('saga로 옴')
+  console.log(actions.payload)
+  try {
+    const req = yield call(saveTemplate, actions.payload);
+    yield put({
+      type: 'SAVE_TEMPLATE_FIELD_SUCCESS',
+      payload: { success: req.success },
+    });
+  } catch (e) {
+    yield put({
+      type: 'SAVE_TEMPLATE_FIELD_FAILURE',
+      payload: { msg: e.msg },
+    });
+  }
+}
 
+// {/* 템플릿 수정 */}
 // function* fetchEdit(actions: Actions) {
 //   try {
 //     const req = yield call(editResumeAsync, actions.payload);
@@ -84,10 +84,10 @@
 //   }
 // }
 
-// export function* requestResumeSaga() {
-//   yield takeLatest('SAVE_RESUME_FIELD_REQUEST', fetchSave);
-//   yield takeLatest('EDIT_RESUME_FIELD_REQUEST', fetchEdit);
-//   yield takeLatest('UPDATE_RESUME_FIELD_REQUEST', fetchUpdate);
-//   yield takeLatest('ON_UPLOAD_IMAGE_REQUEST', fetchUpload);
-//   yield takeLatest('DELETE_RESUME_FIELD_REQUEST', fetchDelete);
-// }
+export function* requestTemplateSaga() {
+  yield takeLatest('SAVE_TEMPLATE_FIELD_REQUEST', fetchSave);
+  // yield takeLatest('EDIT_RESUME_FIELD_REQUEST', fetchEdit);
+  // yield takeLatest('UPDATE_RESUME_FIELD_REQUEST', fetchUpdate);
+  // yield takeLatest('ON_UPLOAD_IMAGE_REQUEST', fetchUpload);
+  // yield takeLatest('DELETE_RESUME_FIELD_REQUEST', fetchDelete);
+}

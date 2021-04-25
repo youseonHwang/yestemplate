@@ -1,8 +1,8 @@
-// import { createAction } from 'typesafe-actions';
+import { createAction } from 'typesafe-actions';
 
-// export const SAVE_RESUME_FIELD_REQUEST = 'SAVE_RESUME_FIELD_REQUEST';
-// export const SAVE_RESUME_FIELD_SUCCESS = 'SAVE_RESUME_FIELD_SUCCESS';
-// export const SAVE_RESUME_FIELD_FAILURE = 'SAVE_RESUME_FIELD_FAILURE';
+export const SAVE_TEMPLATE_FIELD_REQUEST = 'SAVE_TEMPLATE_FIELD_REQUEST';
+export const SAVE_TEMPLATE_FIELD_SUCCESS = 'SAVE_TEMPLATE_FIELD_SUCCESS';
+export const SAVE_TEMPLATE_FIELD_FAILURE = 'SAVE_TEMPLATE_FIELD_FAILURE';
 
 // export const EDIT_RESUME_FIELD_REQUEST = 'EDIT_RESUME_FIELD_REQUEST';
 // export const EDIT_RESUME_FIELD_SUCCESS = 'EDIT_RESUME_FIELD_SUCCESS';
@@ -20,26 +20,26 @@
 // export const DELETE_RESUME_FIELD_SUCCESS = 'DELETE_RESUME_FIELD_SUCCESS';
 // export const DELETE_RESUME_FIELD_FAILURE = 'DELETE_RESUME_FIELD_FAILURE';
 
-// export const saveResumeFieldRequest = createAction(
-//   SAVE_RESUME_FIELD_REQUEST,
-//   ({ values }) => ({
-//     values,
-//   }),
-// )();
+export const saveTemplateFieldRequest = createAction(
+SAVE_TEMPLATE_FIELD_REQUEST,
+  ({ values }) => ({
+    values,
+  }),
+)();
 
-// export const saveResumeFieldSuccess = createAction(
-//   SAVE_RESUME_FIELD_SUCCESS,
-//   ({ result }) => ({
-//     save: result,
-//   }),
-// )();
+export const saveTemplateFieldSuccess = createAction(
+SAVE_TEMPLATE_FIELD_SUCCESS,
+  ({ result }) => ({
+    success: result,
+  }),
+)();
 
-// export const saveResumeFieldFailure = createAction(
-//   SAVE_RESUME_FIELD_FAILURE,
-//   ({ result }) => ({
-//     message: result,
-//   }),
-// )();
+export const saveTemplateFieldFailure = createAction(
+SAVE_TEMPLATE_FIELD_FAILURE,
+  ({ result }) => ({
+    msg: result,
+  }),
+)();
 
 // //* EDIT_RESUME_FIELD_SAGA_ACTIONS
 // export const editResumeFieldRequest = createAction(

@@ -5,14 +5,16 @@ import { ITemplate } from '../api/mypage'
 {/* 저장 */ }
 export const saveTemplate: (data: any) => Promise<ITemplate> = async (data) => {
   const response = await axios.post(
-    'http://localhost:5000/api/template/save', data
+    'http://localhost:5000/api/template/save', data,
+    {
+      withCredentials: true,
+    }
   );
   if (!response.data.success) {
     throw new Error('저장에 실패했습니다.');
   }
   return response.data;
 };
-
 
 {/* 수정 */ }
 export const editTemplate: (data: any) => Promise<ITemplate> = async (data) => {
@@ -42,6 +44,7 @@ export const deleteTemplate: (templateId: string) => Promise<ITemplate> = async 
   }
   return response.data;
 };
+
 
 {/* 한개의 템플릿만 불러오기 */ }
 export const getOneTemplate: (templateId: string) => Promise<ITemplate> = async (templateId) => {

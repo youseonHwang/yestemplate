@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { VoidFunctionComponent } from 'react';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -8,6 +8,8 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import { Divider } from '@material-ui/core';
 import { PdfViewerComponent, Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, Inject } from '@syncfusion/ej2-react-pdfviewer';
+import { ITemplate } from '../../../../api/mypage';
+
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -131,6 +133,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }));
 
 interface RightPreviewProps {
+  saveRequest:() => void,
   values: {
     belong: string;
     position: string;
@@ -171,15 +174,16 @@ interface RightPreviewProps {
   }
 }
 
-const RightPreview: React.FC<RightPreviewProps> = ({ values, template }) => {
+const RightPreview: React.FC<RightPreviewProps> = ({ values, template, saveRequest}) => {
   const classes = useStyles();
 
+  {/* 마이페이지에서 수정 클릭시 받아온 template */}
   console.log(template)
 
   return (
     <Paper className={classes.paper}>
       <Button className={classes.button}>PDF 변환하기</Button>
-      <Button className={classes.button} style={{ marginRight: '1.7%' }}>임시저장</Button>
+      <Button className={classes.button} style={{ marginRight: '1.7%' }} onClick={saveRequest}>임시저장</Button>
       <Grid container spacing={0}>
         <Grid item xs={12} sm={12} md={12} >
           <Card className={classes.card} elevation={0}>
@@ -260,7 +264,7 @@ const RightPreview: React.FC<RightPreviewProps> = ({ values, template }) => {
               </tr>
               <tr>
                 <td className={classes.tgTgL93j}>
-                  {values.belong}
+                  {values.belong || template.applicant.belong}
                 </td>
                 <td className={classes.tgTgL93j}>
                   {values.position}

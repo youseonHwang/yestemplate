@@ -7,7 +7,7 @@
   "scripts": {
     "tsc": "tsc",
     "watch-tsc": "tsc -w",
-    "deploy": "node server/dist/server/src/server.js",
+    "deploy": "nodemon server/dist/server/src/server.js",
     "watch-deploy": "nodemon server/dist/server/src/server.js",
     "frontend": "npm run start --prefix client",
     "server": "concurrently \"npm run watch-tsc\" \"npm run watch-deploy\" \"npm run frontend\"",

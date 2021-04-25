@@ -6,11 +6,13 @@ import { useLocation } from "react-router";
 import RightPreview from '../../../../components/pages/writePage/rightPreview/RightPreview';
 {/* hook import */ }
 import useLoadPreviewValues from '../../../../hooks/pages/writePage/useLoadPreviewValues';
+import useSaveTemplate from '../../../../hooks/pages/templatePage/useSaveTemplate'
 
 {/* model Interface */ }
 import { stateType } from '../applicant/ApplicantContainer'
 
 function RightPreviewContainer() {
+
   const { state } = useLocation<stateType>();
 
   const [template, setTemplate] = useState({
@@ -41,13 +43,15 @@ function RightPreviewContainer() {
   })
 
   useEffect(() => {
-    if (state) {
-      setTemplate(state.template)
-    }
+    if (state) {setTemplate(state.template)}
   }, [])
+
   const values = useLoadPreviewValues();
+
+  const { saveRequest } = useSaveTemplate();
+  
   return (
-    <RightPreview values={values} template={template} />
+    <RightPreview values={values} template={template} saveRequest ={saveRequest}/>
   )
 }
 
