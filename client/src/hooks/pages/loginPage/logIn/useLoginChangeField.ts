@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import * as actions from '../../../modules/login/actions';
-import { State } from '../../../modules/login/types';
+import * as actions from '../../../../modules/login/actions';
+import { State } from '../../../../modules/login/types';
 
 function useLoginChangeField(): {
     email: string;
@@ -8,14 +8,6 @@ function useLoginChangeField(): {
     onChangeLoginFields: (event: React.ChangeEvent<HTMLInputElement>) => void;
 } {
     const dispatch  = useDispatch();
-
-    {/* 리덕스 스토어에 있는 사용자 email, password 상태 조회 */}
-    const { email, password } = useSelector(
-        ({ loginField }: { loginField: State }) => ({
-            email: loginField.login.email,
-            password: loginField.login.password,
-        }),
-    );
 
     const onChangeLoginField = <T>(location: T, value: T): void => {
         dispatch(
@@ -26,9 +18,15 @@ function useLoginChangeField(): {
         );
     };
 
-    const onChangeLoginFields = (
-        event: React.ChangeEvent<HTMLInputElement>,
-      ): void => {
+    {/* 리덕스 스토어에 있는 사용자 email, password 상태 조회 */}
+    const { email, password } = useSelector(
+        ({ loginField }: { loginField: State }) => ({
+            email: loginField.login.email,
+            password: loginField.login.password,
+        }),
+    );
+
+    const onChangeLoginFields = (event: React.ChangeEvent<HTMLInputElement>): void => {
         const { name, value } = event.target;
         onChangeLoginField<string>( name, value );
       };

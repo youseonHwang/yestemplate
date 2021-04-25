@@ -1,17 +1,25 @@
 {
-    "compilerOptions": {
-      "outDir": "./dist", // 아웃풋 될 경로
-      "baseUrl": ".",
-      "rootDir": "./",
-      "noImplicitAny": true, // 음.. 암시적 any 타입의 표현식 및 선언에서 오류를 발생시킬지?
-      "module": "commonJS",
-      "moduleResolution": "node",
-      "esModuleInterop": true,
-      "target": "es6",
-      "jsx": "react",
-      "removeComments": true,
-      "sourceMap": true,
-      "skipLibCheck": true,
-      "allowJs": true // .js 파일도 함께 컴파일 할지 여부
-    }
+  "compilerOptions": {
+    "outDir": "./dist", // 아웃풋 될 경로
+    "baseUrl": ".",
+    "rootDir": "./",
+    "noImplicitAny": true, // 음.. 암시적 any 타입의 표현식 및 선언에서 오류를 발생시킬지?
+    "module": "commonJS",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "target": "es6",
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "skipLibCheck": true,
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "allowJs": true, // .js 파일도 함께 컴파일 할지 여부,
   }
+}

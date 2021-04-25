@@ -1,31 +1,40 @@
 import express from "express";
+import cookieParser from 'cookie-parser';
+import cors from "cors";
 import connectDB from "../../config/database";
-import auth from "./routes/api/auth";
+
+{/* apis */ }
 import user from "./routes/api/user";
-import profile from "./routes/api/profile";
+import login from "./routes/api/login";
+import mypage from "./routes/api/mypage";
+import template from "./routes/api/template";
 
 const app = express();
 
-// Express configuration
+{/* cors설정 */ }
+const corsOptions = {
+  origin: ["http://localhost:8080"],
+  credentials: true,
+  exposedHeaders: ["set-cookie"],
+}
+app.use(cors(corsOptions));
+
+{/* 서버 설정 */ }
 app.set("port", process.env.PORT || 5000);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
-// Connect to MongoDB
+{/* mongoDB 연결 */ }
 connectDB();
 
-// @route   GET /
-// @desc    Test Base API
-// @access  Public
-app.get("/", (_req, res) => {
-  res.send("API Running");
-});
-
-app.use("/api/auth", auth);
+{/* routes */ }
 app.use("/api/user", user);
-//login으로 변경
-app.use("/api/profile", profile);
+app.use("/api/login", login);
+app.use("/api/mypage", mypage);
+app.use("/api/template", template);
 
+{/* server listen */ }
 const port = app.get("port");
 const server = app.listen(port, () =>
   console.log(`Server started on port ${port}`)

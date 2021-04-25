@@ -1,13 +1,13 @@
 {/* login field 상태 값 변경 */}
 import { createReducer } from 'typesafe-actions';
 import { State, Actions } from './types';
-import { LOGIN_CHANGE_FIELD} from './actions';
+import { LOGIN_CHANGE_FIELD } from './actions';
 
 {/* 초기 상태 지정 */}
 const initialState: State = {
   login: {
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   },
 };
 
@@ -15,9 +15,9 @@ const initialState: State = {
 const loginField = createReducer<State, Actions>(initialState, {
   [LOGIN_CHANGE_FIELD]: (state, action) => {
     const key = action.payload.key;
-
     if(
-      key === 'email' || key === 'password' 
+      key === 'email' || 
+      key === 'password' 
     ) {
       return {
         ...state,
