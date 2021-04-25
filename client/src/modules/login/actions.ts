@@ -1,3 +1,4 @@
+{/* 액션 생성 함수 지정 */}
 import { createAction } from 'typesafe-actions';
 
 export const LOGIN_CHANGE_FIELD = 'LOGIN_CHANGE_FIELD';
