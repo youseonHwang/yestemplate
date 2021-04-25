@@ -8,6 +8,7 @@ import SignUpContainer from './containers/pages/loginPage/signUp/SignUpContainer
 import MyPageContainer from './containers/pages/myPage/MyPageContainer';
 import TemplateContainer from './containers/pages/templatePage/TemplatePageContainer';
 import RightPreviewContainer from './containers/pages/writePage/rightPreview/RightPreviewContainer';
+import PreviewContainer from './containers/pages/writePage/preview/PreviewContainer';
 
 {/* Components 화면 확인용 import */ }
 import HeaderComponent from './components/systems/header/Header';
@@ -26,6 +27,7 @@ const App: React.FC = () => {
           <Route exact path="/signup" component={SignUpContainer} ></Route>
           <Route exact path="/mypage" component={MyPageContainer} ></Route>
           <Route exact path="/write" component={WritePage} ></Route>
+          <Route exact path="/preview" component={PreviewContainer} ></Route>
         </Switch>
       </Router>
     </div>
