@@ -27,11 +27,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontSize: 14,
   },
   pos: {
-    marginBottom: 12,
   },
   image: {
     position: 'relative',
-    height: 200,
+    height: 140,
     [theme.breakpoints.down('xs')]: {
       width: '100% !important', // Overrides inline-style
       height: 100,
@@ -108,9 +107,7 @@ export default function SimpleCard() {
             key={image.title}
             className={classes.image}
             focusVisibleClassName={classes.focusVisible}
-            style={{
-              width: '100%',
-            }}
+            style={{ width: '100%' }}
           >
             <span
               className={classes.imageSrc}

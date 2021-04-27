@@ -3,6 +3,8 @@ import axios from 'axios';
 {/* myPage 정보 가져오기 */ }
 const getMyPageInfo: (data: any) => Promise<any> = async (data) => {
   const userId = data._id;
+  console.log('getMyPageInfo', userId
+  )
   const response = await axios.get(`http://localhost:5000/api/mypage/${userId}`, data);
   return response.data;
 }

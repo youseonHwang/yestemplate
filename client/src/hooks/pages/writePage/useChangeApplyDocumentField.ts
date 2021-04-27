@@ -22,7 +22,6 @@ function useChangeApplyDocumentField(): {
   };
   const onChangeDocumentFields = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = event.target;
-    event.target.files
     onChangeDocumentField<string>(name, value);
   };
   return {

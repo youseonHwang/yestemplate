@@ -11,8 +11,13 @@ import { stateType } from '../applicant/ApplicantContainer'
 {/* actions */ }
 import { DocumentSelectField } from '../../../../modules/writeChange/applyDocument/actions'
 
+interface props extends RouteComponentProps {
+  onChangeFile: (event: React.ChangeEvent<HTMLInputElement>) => void;
+}
 
-const DocumentContainer: React.FC<RouteComponentProps> = () => {
+const DocumentContainer: React.FC<props> = (
+  {onChangeFile}
+) => {
   const dispatch = useDispatch();
   const {
     fileName,
@@ -36,6 +41,7 @@ const DocumentContainer: React.FC<RouteComponentProps> = () => {
       fileName={fileName}
       etc={etc}
       onChangeDocumentFields={onChangeDocumentFields}
+      onChangeFile={onChangeFile}
     />
   )
 }

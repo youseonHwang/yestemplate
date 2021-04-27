@@ -1,11 +1,12 @@
 import * as React from "react";
-import { useState } from 'react';
+{/* UI */ }
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import InsertDriveFileIcon from '@material-ui/icons/InsertDriveFile';
-import useUploadFile from '../../../../../hooks/pages/templatePage/useUploadFile';
+import IconButton from '@material-ui/core/IconButton';
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -18,6 +19,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }));
 
 interface ApplyDocumentProps {
+  onChangeFile: (event: React.ChangeEvent<HTMLInputElement>) => void;
   fileName: Array<string | null>;
   etc: string;
   onChangeDocumentFields: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -26,15 +28,11 @@ interface ApplyDocumentProps {
 const ApplyDocument: React.FC<ApplyDocumentProps> = ({
   fileName,
   etc,
+  onChangeFile,
   onChangeDocumentFields,
 }) => {
-  const { uploadFile} = useUploadFile()
-  function onChangeFile(event: React.ChangeEvent<HTMLInputElement>) {
-    if (event.target.files != null) {
-      const selectedFile = event.target.files[0];
-      console.log(selectedFile)
-      uploadFile(selectedFile)
-    }
+  function onChangeFileFields(event: React.ChangeEvent<HTMLInputElement>) {
+    onChangeFile(event)
     onChangeDocumentFields(event)
   }
   const classes = useStyles();
@@ -46,19 +44,31 @@ const ApplyDocument: React.FC<ApplyDocumentProps> = ({
           <Grid
             container direction="row"
             alignItems="flex-end">
-            <Grid item >
-              <InsertDriveFileIcon />
+            <Grid item xs={9}>
+              <TextField
+                id="input-with-icon-grid"
+                label={fileName}
+                disabled
+                style={{ width: '100%' }} />
             </Grid>
-            <Grid item>
-              <TextField id="input-with-icon-grid" label={fileName} disabled />
-            </Grid>
-            <Grid item >
+            <Grid item xs={3}>
               <input
+                style={{ display: "none" }}
+                id="icon-button-file"
+                multiple
                 type="file"
-                placeholder="파일첨부"
                 name="fileName"
-                onChange={onChangeFile}
+                onChange={onChangeFileFields}
               />
+              <label htmlFor="icon-button-file">
+                <IconButton
+                  color="primary"
+                  aria-label="upload picture"
+                  component="span"
+                  style={{ float: 'left' }}>
+                  <PhotoCamera />
+                </IconButton>
+              </label>
             </Grid>
           </Grid>
         </div>
