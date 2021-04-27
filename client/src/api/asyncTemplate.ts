@@ -16,9 +16,27 @@ export const saveTemplate: (data: any) => Promise<ITemplate> = async (data) => {
   return response.data;
 };
 
+{/* 파일 업로드 */ }
+export interface UploadResult {
+  //location: string;
+  isUpload: null | boolean;
+}
+export const uploadFile: (data: any) => Promise<UploadResult> = async (data) => {
+  console.log('client api의 uploadfile로 들어왔습니다.')
+  console.log(data.formData.get('uploadFile'))
+
+  const response = await axios.post('http://localhost:5000/api/template/file', data.formData,
+    { withCredentials: true });
+  console.log(response)
+  if (!response.data.isUpload) {
+    throw new Error('저장에 실패했습니다.');
+  }
+  return response.data;
+};
+
 {/* 수정 */ }
 export const editTemplate: (data: any) => Promise<ITemplate> = async (data) => {
-  const templateId = data._id;
+  const templateId = data.values._id;
   const response = await axios.put(`http://localhost:5000/api/template/edit/${templateId}`, data,
     {
       withCredentials: true,

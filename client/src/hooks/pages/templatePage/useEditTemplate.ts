@@ -6,7 +6,7 @@ import { ApplicantState } from '../../../modules/writeChange/applicant/types';
 import { DocumentState } from '../../../modules/writeChange/applyDocument/types';
 import { ApplyInfoState } from '../../../modules/writeChange/applyInfo/types';
 
-function useSaveTemplateField() {
+function useEditTemplateField() {
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -45,36 +45,36 @@ function useSaveTemplateField() {
     }),
   );
 
-  const values = {
-    userFrom: '607e6c9d2f1afc14d4abdc42',
-    applicant: {
-      belong: belong,
-      position: position,
-      name: name,
-    },
-    applyInfo: {
-      applyContent: applyContent,
-      respondent: {
-        resName: resName,
-        resJumin: resJumin,
-        relation: relation,
-      },
-      applyAmount: applyAmount,
-    },
-    applyDocument: {
-      fileName: fileName,
-      etc: etc
-    },
-  }
-
-  const saveRequest = (): void => {
+  const editRequest = (templateId: string): void => {
     console.log('useSaveTemplate Hook의 saveRequest안으로 들어옴')
-    dispatch(actions.saveTemplateFieldRequest({ values }));
+    const values = {
+      _id: templateId,
+      userFrom: '607e3447f3990d3b44758e15',
+      applicant: {
+        belong: belong,
+        position: position,
+        name: name,
+      },
+      applyInfo: {
+        applyContent: applyContent,
+        respondent: {
+          resName: resName,
+          resJumin: resJumin,
+          relation: relation,
+        },
+        applyAmount: applyAmount,
+      },
+      applyDocument: {
+        fileName: fileName,
+        etc: etc
+      },
+    }
+    dispatch(actions.editTemplateFieldRequest({ values }));
     history.push('/mypage');
   };
 
   return {
-    saveRequest,
+    editRequest,
   };
 }
-export default useSaveTemplateField;
+export default useEditTemplateField;

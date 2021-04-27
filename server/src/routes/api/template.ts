@@ -1,9 +1,26 @@
 import express, { Router, Response } from "express";
+import multer from 'multer'; // express에 multer모듈 적용 (for 파일업로드)
 import HttpStatusCodes from "http-status-codes";
 import Request from "../../types/Request";
 
 {/* Models */ }
 import Template, { ITemplate } from '../../models/Template';
+
+let storage = multer.diskStorage({
+  destination: function (req, file, callback) {
+    callback(null, "server/public/static/images/")
+  },
+  filename: function (req, file, callback) {
+    callback(null, file.originalname + " - " + Date.now())
+  }
+})
+
+// 입력한 파일이 uploads/ 폴더 내에 저장된다.
+// multer라는 모듈이 함수라서 함수에 옵션을 줘서 실행을 시키면, 해당 함수는 미들웨어를 리턴한다.
+var upload = multer({
+  storage,
+  limits: { fileSize: 5 * 1024 * 1024 },
+})
 
 const router: Router = Router();
 
@@ -15,7 +32,7 @@ router.post("/save",
 
     console.log('server의 api로 들어옴')
     console.log(req.body)
-    const userId = req.body.userFrom;
+    const userId = req.body.values.userFrom;
 
     if (!userId) {
       return res.status(HttpStatusCodes.BAD_REQUEST).json({
@@ -23,7 +40,7 @@ router.post("/save",
       })
     }
 
-    const templateFields = req.body;
+    const templateFields = req.body.values;
 
     try {
       let template: ITemplate = new Template(templateFields);
@@ -51,7 +68,7 @@ router.put("/edit/:templateId",
   async (req: Request, res: Response) => {
 
     const templateId = req.params.templateId
-    const templateFields = req.body
+    const templateFields = req.body.values
 
     if (!templateId || !templateFields) {
       return res.status(HttpStatusCodes.BAD_REQUEST).json({
@@ -67,13 +84,35 @@ router.put("/edit/:templateId",
       ).exec();
 
       console.log(template)
-      
+
       if (!template) {
         return res.status(HttpStatusCodes.BAD_REQUEST).json({
           msg: "수정에 실패하였습니다."
         });
       }
       res.status(HttpStatusCodes.OK).json({ success: true, template });
+    } catch (err) {
+      console.error(err.message);
+      res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).send("Server Error");
+    }
+  }
+)
+
+
+{/* 파일 업로드 */ }
+// methods = post
+router.post("/file", upload.array('uploadFile', 5),
+  async (req: Request, res: Response) => {
+    console.log('server의 api도착')
+    const uploadFiles = req.files
+    console.log('server의 uploadFile', uploadFiles)
+    if (!uploadFiles) {
+      return res.status(HttpStatusCodes.BAD_REQUEST).json({
+        msg: "업로드 파일이 없습니다."
+      })
+    }
+    try {
+      res.status(HttpStatusCodes.OK).json({ isUpload: true, });
     } catch (err) {
       console.error(err.message);
       res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).send("Server Error");
@@ -113,7 +152,7 @@ router.get("/:templateId",
   }
 )
 
-{/* 템플릿 수정 */ }
+{/* 템플릿 삭제 */ }
 // test methods = delete
 // test url = http://localhost:5000/api/template/delete/템플릿아이디
 router.delete("/delete/:templateId",

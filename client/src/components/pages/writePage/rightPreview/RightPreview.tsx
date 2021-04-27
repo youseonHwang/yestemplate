@@ -7,9 +7,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import { Divider } from '@material-ui/core';
-import { PdfViewerComponent, Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, Inject } from '@syncfusion/ej2-react-pdfviewer';
-import { ITemplate } from '../../../../api/mypage';
-
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -133,7 +130,13 @@ const useStyles = makeStyles((theme: Theme) =>
   }));
 
 interface RightPreviewProps {
-  saveRequest:() => void,
+  saveRequest: () => void,
+  initRequest: () => void,
+  editRequest: (templateId: string) => void,
+  uploadFile: (file: any) => void;
+  //uploadFile:(file:any) => void,
+  templateId: string,
+  isEdit: boolean,
   values: {
     belong: string;
     position: string;
@@ -146,44 +149,33 @@ interface RightPreviewProps {
     relation: string;
     applyAmount: number;
   },
-  template: {
-    id: string,
-    title: string,
-    userFrom: string,
-    applicant: {
-      belong: string,
-      position: string,
-      name: string,
-    },
-    applyInfo: {
-      applyContent: string,
-      respondent: {
-        resName: string,
-        resJumin: string,
-        relation: string,
-      },
-      applyAmount: number,
-    },
-    applyDocument: {
-      fileName: Array<string>,
-      etc: string
-    },
-    createdAt: string,
-    updatedAt: string,
-    __v: number
-  }
 }
 
-const RightPreview: React.FC<RightPreviewProps> = ({ values, template, saveRequest}) => {
+const RightPreview: React.FC<RightPreviewProps> = ({
+  values,
+  isEdit,
+  templateId,
+  saveRequest,
+  initRequest,
+  editRequest,
+  uploadFile,
+}) => {
   const classes = useStyles();
 
-  {/* 마이페이지에서 수정 클릭시 받아온 template */}
-  console.log(template)
+  function onClickSaveOrEdit() {
+    if (isEdit) {
+      editRequest(templateId)
+      initRequest()
+    } else {
+      saveRequest()
+      initRequest()
+    }
+  }
 
   return (
     <Paper className={classes.paper}>
       <Button className={classes.button}>PDF 변환하기</Button>
-      <Button className={classes.button} style={{ marginRight: '1.7%' }} onClick={saveRequest}>임시저장</Button>
+      <Button className={classes.button} style={{ marginRight: '1.7%' }} onClick={onClickSaveOrEdit}>임시저장</Button>
       <Grid container spacing={0}>
         <Grid item xs={12} sm={12} md={12} >
           <Card className={classes.card} elevation={0}>
@@ -264,7 +256,7 @@ const RightPreview: React.FC<RightPreviewProps> = ({ values, template, saveReque
               </tr>
               <tr>
                 <td className={classes.tgTgL93j}>
-                  {values.belong || template.applicant.belong}
+                  {values.belong}
                 </td>
                 <td className={classes.tgTgL93j}>
                   {values.position}

@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme: Theme) =>
   }));
 
 function WritePage() {
+
   const classes = useStyles();
   return (
     <div className={classes.root}>

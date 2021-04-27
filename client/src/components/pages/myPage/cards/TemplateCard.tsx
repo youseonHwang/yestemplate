@@ -13,7 +13,6 @@ import { ITemplate } from '../../../../api/mypage';
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
   },
   bullet: {
     display: 'inline-block',
@@ -40,11 +39,12 @@ function MyPageComponent(Props: Props) {
   const onClickToWrite = () => {
     history.push({
       pathname: "/write",
-      state: { template: template }
-    }) };
+      state: { template: template, isEdit: true }
+    })
+  };
 
   return (
-    <Grid item xs={3}>
+    <Grid item xs={12} sm={6} md={3}>
       <Card className={classes.root}>
         <CardContent>
           <Typography className={classes.title} color="textSecondary" gutterBottom>

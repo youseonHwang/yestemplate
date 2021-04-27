@@ -1,13 +1,15 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { takeLatest, call, put } from 'redux-saga/effects';
 import {
-  saveTemplate
+  saveTemplate,
+  editTemplate,
+  uploadFile
 } from '../../api/asyncTemplate';
 import { Actions } from '../../modules/postWrite/types';
 
-{/* 템플릿 저장 */}
+{/* 템플릿 저장 */ }
 function* fetchSave(actions: Actions) {
-  console.log('saga로 옴')
+  console.log('save saga로 옴')
   console.log(actions.payload)
   try {
     const req = yield call(saveTemplate, actions.payload);
@@ -23,51 +25,39 @@ function* fetchSave(actions: Actions) {
   }
 }
 
-// {/* 템플릿 수정 */}
-// function* fetchEdit(actions: Actions) {
-//   try {
-//     const req = yield call(editResumeAsync, actions.payload);
-//     yield put({
-//       type: 'EDIT_RESUME_FIELD_SUCCESS',
-//       payload: { resume: req },
-//     });
-//   } catch (e) {
-//     yield put({
-//       type: 'EDIT_RESUME_FIELD_FAILURE',
-//       payload: { message: e.message },
-//     });
-//   }
-// }
-
-// function* fetchUpdate(actions: Actions) {
-//   try {
-//     const req = yield call(updateResumeAsync, actions.payload);
-//     yield put({
-//       type: 'UPDATE_RESUME_FIELD_SUCCESS',
-//       payload: { newResume: req.newResume, isEdited: req.isEdited },
-//     });
-//   } catch (e) {
-//     yield put({
-//       type: 'UPDATE_RESUME_FIELD_FAILURE',
-//       payload: { isEdited: e.message },
-//     });
-//   }
-// }
-
-// function* fetchUpload(actions: Actions) {
-//   try {
-//     const req = yield call(uploadImageAsync, actions.payload);
-//     yield put({
-//       type: 'ON_UPLOAD_IMAGE_SUCCESS',
-//       payload: { location: req.location, isUpload: req.isUpload },
-//     });
-//   } catch (e) {
-//     yield put({
-//       type: 'ON_UPLOAD_IMAGE_FAILURE',
-//       payload: { isEdited: e.message },
-//     });
-//   }
-// }
+{/* 템플릿 수정 */ }
+function* fetchEdit(actions: Actions) {
+  console.log('save saga로 옴')
+  console.log(actions.payload)
+  try {
+    const req = yield call(editTemplate, actions.payload);
+    yield put({
+      type: 'EDIT_TEMPLATE_FIELD_SUCCESS',
+      payload: { template: req },
+    });
+  } catch (e) {
+    yield put({
+      type: 'EDIT_TEMPLATE_FIELD_FAILURE',
+      payload: { msg: e.msg },
+    });
+  }
+}
+{/*파일업로드 */ }
+function* fetchUpload(actions: Actions) {
+  console.log('fetchUpload', actions.payload)
+  try {
+    const req = yield call(uploadFile, actions.payload);
+    yield put({
+      type: 'UPLOAD_FILE_SUCCESS',
+      payload: { isUpload: req.isUpload },
+    });
+  } catch (e) {
+    yield put({
+      type: 'UPLOAD_FILE_FAILURE',
+      payload: { isUpload: false },
+    });
+  }
+}
 
 // function* fetchDelete(actions: Actions) {
 //   try {
@@ -86,8 +76,7 @@ function* fetchSave(actions: Actions) {
 
 export function* requestTemplateSaga() {
   yield takeLatest('SAVE_TEMPLATE_FIELD_REQUEST', fetchSave);
-  // yield takeLatest('EDIT_RESUME_FIELD_REQUEST', fetchEdit);
-  // yield takeLatest('UPDATE_RESUME_FIELD_REQUEST', fetchUpdate);
-  // yield takeLatest('ON_UPLOAD_IMAGE_REQUEST', fetchUpload);
+  yield takeLatest('EDIT_TEMPLATE_FIELD_REQUEST', fetchEdit);
+  yield takeLatest('UPLOAD_FILE_REQUEST', fetchUpload);
   // yield takeLatest('DELETE_RESUME_FIELD_REQUEST', fetchDelete);
 }

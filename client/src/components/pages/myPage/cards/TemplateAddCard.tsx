@@ -17,8 +17,6 @@ const images = () => ({
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    height: '100%',
-    minWidth: 275,
   },
   bullet: {
     display: 'inline-block',
@@ -102,7 +100,7 @@ export default function SimpleCard() {
   const image = images();
 
   return (
-    <Grid item xs={3}>
+    <Grid item xs={12} sm={6} md={3}>
       <Card className={classes.root}>
         <CardContent>
           <ButtonBase

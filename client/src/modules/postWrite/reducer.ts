@@ -3,7 +3,13 @@ import { SaveEditTemplateState, Actions } from './types';
 import {
   SAVE_TEMPLATE_FIELD_REQUEST,
   SAVE_TEMPLATE_FIELD_SUCCESS,
-  SAVE_TEMPLATE_FIELD_FAILURE
+  SAVE_TEMPLATE_FIELD_FAILURE,
+  EDIT_TEMPLATE_FIELD_REQUEST,
+  EDIT_TEMPLATE_FIELD_SUCCESS,
+  EDIT_TEMPLATE_FIELD_FAILURE,
+  UPLOAD_FILE_FAILURE,
+  UPLOAD_FILE_REQUEST,
+  UPLOAD_FILE_SUCCESS
 } from './actions';
 
 const initialState: SaveEditTemplateState = {
@@ -15,11 +21,7 @@ const initialState: SaveEditTemplateState = {
     template: null,
     msg: null,
   },
-  updateTemplate: {
-    isEdited: null,
-    newTemplate: null,
-  },
-  uploadImage: { location: '', isUpload: null },
+  uploadFile: { isUpload: null },
   deleteTemplate: { isDeleted: false, msg: null },
 };
 
@@ -43,57 +45,40 @@ const postWrite = createReducer<SaveEditTemplateState, Actions>(
         ['msg']: action.payload.msg,
       },
     }),
-    // [EDIT_RESUME_FIELD_REQUEST]: (state) => ({
-    //   ...state,
-    // }),
-    // [EDIT_RESUME_FIELD_SUCCESS]: (state, action) => ({
-    //   ...state,
-    //   editResume: {
-    //     ['resume']: action.payload.resume,
-    //     ['message']: null,
-    //   },
-    // }),
-    // [EDIT_RESUME_FIELD_FAILURE]: (state, action) => ({
-    //   ...state,
-    //   editResume: {
-    //     ['resume']: null,
-    //     ['message']: action.payload.message,
-    //   },
-    // }),
-    // [UPDATE_RESUME_FIELD_REQUEST]: (state) => ({
-    //   ...state,
-    // }),
-    // [UPDATE_RESUME_FIELD_SUCCESS]: (state, action) => ({
-    //   ...state,
-    //   updateResume: {
-    //     ['newResume']: action.payload.newResume,
-    //     ['isEdited']: null,
-    //   },
-    // }),
-    // [UPDATE_RESUME_FIELD_FAILURE]: (state, action) => ({
-    //   ...state,
-    //   updateResume: {
-    //     ['newResume']: null,
-    //     ['isEdited']: action.payload.isEdited,
-    //   },
-    // }),
-    // [ON_UPLOAD_IMAGE_REQUEST]: (state) => ({
-    //   ...state,
-    // }),
-    // [ON_UPLOAD_IMAGE_SUCCESS]: (state, action) => ({
-    //   ...state,
-    //   uploadImage: {
-    //     ['location']: action.payload.location,
-    //     ['isUpload']: null,
-    //   },
-    // }),
-    // [ON_UPLOAD_IMAGE_FAILURE]: (state, action) => ({
-    //   ...state,
-    //   uploadImage: {
-    //     ['location']: null,
-    //     ['isUpload']: action.payload.isUpload,
-    //   },
-    // }),
+    [EDIT_TEMPLATE_FIELD_REQUEST]: (state) => ({
+      ...state,
+    }),
+    [EDIT_TEMPLATE_FIELD_SUCCESS]: (state, action) => ({
+      ...state,
+      editTemplate: {
+        ['template']: action.payload.template,
+        ['msg']: null,
+      },
+    }),
+    [EDIT_TEMPLATE_FIELD_FAILURE]: (state, action) => ({
+      ...state,
+      editTemplate: {
+        ['template']: null,
+        ['msg']: action.payload.msg,
+      },
+    }),
+
+    
+    [UPLOAD_FILE_REQUEST]: (state) => ({
+      ...state,
+    }),
+    [UPLOAD_FILE_SUCCESS]: (state) => ({
+      ...state,
+      uploadFile: {
+        ['isUpload']: null,
+      },
+    }),
+    [UPLOAD_FILE_FAILURE]: (state, action) => ({
+      ...state,
+      uploadFile: {
+        ['isUpload']: action.payload.isUpload,
+      },
+    }),
     // [DELETE_RESUME_FIELD_REQUEST]: (state) => ({
     //   ...state,
     // }),

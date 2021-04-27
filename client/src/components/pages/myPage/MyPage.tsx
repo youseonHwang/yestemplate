@@ -42,7 +42,7 @@ function MyPageComponent(Props: Props) {
     <>
       <div className={classes.root} >
         <Grid container justify="space-evenly" >
-          <Grid container item xs={12} spacing={9}>
+          <Grid container item xs={12} sm={12} md={12} spacing={5}>
 
             <TemplateAddCard />
 

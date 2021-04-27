@@ -8,7 +8,15 @@ import { ApplyInfoState } from '../../modules/writeChange/applyInfo/types';
 import {
   saveTemplateFieldRequest,
   saveTemplateFieldSuccess,
-  saveTemplateFieldFailure
+  saveTemplateFieldFailure,
+
+  editTemplateFieldFailure,
+  editTemplateFieldSuccess,
+  editTemplateFieldRequest,
+
+  uploadFileFailure,
+  uploadFileRequest,
+  uploadFileSuccess
 } from './actions';
 
 export interface SaveEditTemplateState {
@@ -18,28 +26,27 @@ export interface SaveEditTemplateState {
   };
   editTemplate: {
     template: null | {
-        applicant: ApplicantState[];
-        applyInfo: ApplyInfoState[];
-        applyDocument: DocumentState[];
+      userFrom: string,
+      applicant: ApplicantState[];
+      applyInfo: ApplyInfoState[];
+      applyDocument: DocumentState[];
     };
     msg: null | string;
   };
-  updateTemplate: {
-    isEdited: null | boolean;
-    newTemplate: null | {
-        applicant: ApplicantState[];
-        applyInfo: ApplyInfoState[];
-        applyDocument: DocumentState[];
-    };
-  };
-  uploadImage: { location: null | string; isUpload: null | boolean };
+  uploadFile: { isUpload: null | boolean };
   deleteTemplate: { isDeleted: boolean; msg: string | null };
 }
 
 const actions = {
   saveTemplateFieldRequest,
   saveTemplateFieldSuccess,
-  saveTemplateFieldFailure
+  saveTemplateFieldFailure,
+  editTemplateFieldFailure,
+  editTemplateFieldSuccess,
+  editTemplateFieldRequest,
+  uploadFileFailure,
+  uploadFileRequest,
+  uploadFileSuccess
 };
 
 export type Actions = ActionType<typeof actions>;
