@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect } from 'react';
+import React, { useRef } from 'react';
 
 import html2canvas from 'html2canvas'
 import jspdf from 'jspdf'
@@ -10,8 +10,9 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import Divider from '@material-ui/core/Divider'
 import CardContent from '@material-ui/core/CardContent';
-import PreviewContainer from '../../../../containers/pages/writePage/preview/PreviewContainer';
-import PreviewButton from '../write/button/Button';
+import Button from '@material-ui/core/Button';
+import SaveIcon from '@material-ui/icons/Save';
+
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -160,22 +161,22 @@ const RightPreview: React.FC<RightPreviewProps> = ({ values, preview, onPreviewM
       html2canvas(inputRef.current).then((canvas) => {
         const imgData = canvas.toDataURL("image/png");
         const pdf = new jspdf();
-        pdf.addImage(imgData, "JPEG", 15, 40, 180, 160);
+        pdf.addImage(imgData, "JPEG", 15, 20, 180, 250);
         pdf.save("download.pdf");
       });
     }
-
   };
   return (
-    <Paper className={classes.paper} >
 
-      <button onClick={printDocument}>Print</button>
-
-      <div style={{}} ref={inputRef}>
-        {preview && (
-          <PreviewContainer values={values} onPreviewModal={onPreviewModal} />
-        )}
-        {/* <button onClick={onPreviewModal}>PDF 변환하기</button> */}
+    <Paper className={classes.paper}>
+      <Button
+        onClick={printDocument}
+        startIcon={<SaveIcon />}
+        variant="contained"
+        color="primary"
+        size="large"
+      >PDF 변환하기</Button>
+      <div ref={inputRef}>
         <Grid container spacing={0}>
           <Grid item xs={12} sm={12} md={12} >
             <Card className={classes.card} elevation={0}>
