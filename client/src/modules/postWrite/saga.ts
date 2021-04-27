@@ -9,7 +9,6 @@ import { Actions } from '../../modules/postWrite/types';
 
 {/* 템플릿 저장 */ }
 function* fetchSave(actions: Actions) {
-  console.log('save saga로 옴')
   console.log(actions.payload)
   try {
     const req = yield call(saveTemplate, actions.payload);
@@ -27,7 +26,6 @@ function* fetchSave(actions: Actions) {
 
 {/* 템플릿 수정 */ }
 function* fetchEdit(actions: Actions) {
-  console.log('save saga로 옴')
   console.log(actions.payload)
   try {
     const req = yield call(editTemplate, actions.payload);

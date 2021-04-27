@@ -35,7 +35,6 @@ interface Props extends RouteComponentProps {
 
 function MyPageComponent(Props: Props) {
   const classes = useStyles();
-  console.log(Props.templates)
   const templates = Props.templates
 
   return (

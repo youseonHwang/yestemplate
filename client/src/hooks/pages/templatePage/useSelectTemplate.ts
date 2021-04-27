@@ -8,7 +8,6 @@ function useSelectTemplateField() {
   const dispatch = useDispatch();
 
   const initRequest = (): void => {
-    console.log('useSelectTemplateField Hook의 initRequest 들어옴')
     dispatch(ApplicantSelectField({}))
     dispatch(DocumentSelectField({}))
     dispatch(InfoSelectField({}))

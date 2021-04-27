@@ -57,10 +57,18 @@ function MyPageComponent(Props: Props) {
           < Card className={classes.root}>
             <CardContent>
               <Typography className={classes.title} color="textSecondary" gutterBottom>
-                신청자:{template.applicant && template.applicant.name || 'unNamed'}
+                신청인:{template.applicant && template.applicant.name || 'unNamed'}
               </Typography>
               <Typography variant="h5" component="h2">
-                {template.title ? template.title : 'untitled'}
+
+                {template.applyInfo && //true고
+                  template.applyInfo.applyContent ? //true면
+                  template.applyInfo.applyContent.length < 10 ?
+                    template.applyInfo.applyContent
+                    : template.applyInfo.applyContent.slice(0, 10) + ' ...(더보기)'
+                  : 'No Content'
+                }
+
               </Typography>
               <Typography className={classes.pos} color="textSecondary">
                 작성: {template.createdAt}

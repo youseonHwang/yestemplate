@@ -9,7 +9,6 @@ function useInitTemplateField() {
   const dispatch = useDispatch();
 
   const initRequest = (): void => {
-    console.log('useInitTemplateField Hook의 initRequest 들어옴')
     dispatch(ApplicantInitField({}))
     dispatch(DocumentInitField({}))
     dispatch(InfoInitField({}))

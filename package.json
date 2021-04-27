@@ -25,6 +25,7 @@
     "@types/react-router": "^5.1.13",
     "@types/react-router-dom": "^5.1.7",
     "@types/utf8": "^2.1.6",
+    "@types/yup": "^0.29.11",
     "bcryptjs": "^2.4.3",
     "config": "^3.1.0",
     "cookie-parser": "^1.4.5",

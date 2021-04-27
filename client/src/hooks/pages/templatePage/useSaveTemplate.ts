@@ -68,7 +68,6 @@ function useSaveTemplateField() {
   }
 
   const saveRequest = (): void => {
-    console.log('useSaveTemplate Hook의 saveRequest안으로 들어옴')
     dispatch(actions.saveTemplateFieldRequest({ values }));
     history.push('/mypage');
   };

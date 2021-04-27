@@ -159,7 +159,6 @@ const RightPreview: React.FC<RightPreviewProps> = ({ values, preview, onPreviewM
     if (inputRef.current != null) {
       html2canvas(inputRef.current).then((canvas) => {
         const imgData = canvas.toDataURL("image/png");
-        console.log(imgData)
         const pdf = new jspdf();
         pdf.addImage(imgData, "JPEG", 15, 40, 180, 160);
         pdf.save("download.pdf");
@@ -168,12 +167,11 @@ const RightPreview: React.FC<RightPreviewProps> = ({ values, preview, onPreviewM
 
   };
   return (
-    <Paper className={classes.paper} ref={inputRef}>
-      
+    <Paper className={classes.paper} >
+
       <button onClick={printDocument}>Print</button>
 
-      <div style={{ overflow: "scroll", height: '800px' }}>
-        <PreviewButton onPreviewModal={onPreviewModal} />
+      <div style={{}} ref={inputRef}>
         {preview && (
           <PreviewContainer values={values} onPreviewModal={onPreviewModal} />
         )}

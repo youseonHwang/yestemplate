@@ -46,7 +46,6 @@ function useEditTemplateField() {
   );
 
   const editRequest = (templateId: string): void => {
-    console.log('useSaveTemplate Hook의 saveRequest안으로 들어옴')
     const values = {
       _id: templateId,
       userFrom: '607e3447f3990d3b44758e15',

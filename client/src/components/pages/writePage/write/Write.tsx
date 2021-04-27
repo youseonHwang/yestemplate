@@ -55,10 +55,8 @@ function Write() {
   const { uploadFile } = useUploadFile();
   {/*파일 선택 반환 */ }
   const onChangeFile = ({ currentTarget: { files } }: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(files)
     if (files) {
       setFile(existing => existing.concat(Array.from(files)));
-      console.log(file)
     }
   }
 
