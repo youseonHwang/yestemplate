@@ -1,68 +1,52 @@
-// import { ActionType } from 'typesafe-actions';
+import { ActionType } from 'typesafe-actions';
 
-// //* import redux state types
-// import { ApplicantState } from '../../modules/writeChange/applicant/types';
-// import { DocumentState } from '../../modules/writeChange/applyDocument/types';
-// import { ApplyInfoState } from '../../modules/writeChange/applyInfo/types';
+//* import redux state types
+import { ApplicantState } from '../../modules/writeChange/applicant/types';
+import { DocumentState } from '../../modules/writeChange/applyDocument/types';
+import { ApplyInfoState } from '../../modules/writeChange/applyInfo/types';
 
-// import {
-//   saveResumeFieldRequest,
-//   saveResumeFieldSuccess,
-//   saveResumeFieldFailure,
-//   editResumeFieldRequest,
-//   editResumeFieldSuccess,
-//   editResumeFieldFailure,
-//   updateResumeFieldRequest,
-//   updateResumeFieldSuccess,
-//   updateResumeFieldFailure,
-//   onUploadImageRequest,
-//   onUploadImageSuccess,
-//   onUploadImageFailure,
-//   deleteResumeFieldRequest,
-//   deleteResumeFieldSuccess,
-//   deleteResumeFieldFailure,
-// } from './actions';
+import {
+  saveTemplateFieldRequest,
+  saveTemplateFieldSuccess,
+  saveTemplateFieldFailure,
 
-// export interface SaveEditResumeState {
-//   saveResume: {
-//     save: boolean | null;
-//     message: null | string;
-//   };
-//   editResume: {
-//     resume: null | {
-//         applicant: ApplicantState[];
-//         applyInfo: ApplyInfoState[];
-//         applyDocument: DocumentState[];
-//     };
-//     message: null | string;
-//   };
-//   updateResume: {
-//     isEdited: null | boolean;
-//     newResume: null | {
-//         applicant: ApplicantState[];
-//         applyInfo: ApplyInfoState[];
-//         applyDocument: DocumentState[];
-//     };
-//   };
-//   uploadImage: { location: null | string; isUpload: null | boolean };
-//   deleteResume: { isDeleted: boolean; message: string | null };
-// }
+  editTemplateFieldFailure,
+  editTemplateFieldSuccess,
+  editTemplateFieldRequest,
 
-// const actions = {
-//   saveResumeFieldRequest,
-//   saveResumeFieldSuccess,
-//   saveResumeFieldFailure,
-//   editResumeFieldRequest,
-//   editResumeFieldSuccess,
-//   editResumeFieldFailure,
-//   updateResumeFieldRequest,
-//   updateResumeFieldSuccess,
-//   updateResumeFieldFailure,
-//   onUploadImageRequest,
-//   onUploadImageSuccess,
-//   onUploadImageFailure,
-//   deleteResumeFieldRequest,
-//   deleteResumeFieldSuccess,
-//   deleteResumeFieldFailure,
-// };
-// export type Actions = ActionType<typeof actions>;
+  uploadFileFailure,
+  uploadFileRequest,
+  uploadFileSuccess
+} from './actions';
+
+export interface SaveEditTemplateState {
+  saveTemplate: {
+    success: boolean | null;
+    msg: null | string;
+  };
+  editTemplate: {
+    template: null | {
+      userFrom: string,
+      applicant: ApplicantState[];
+      applyInfo: ApplyInfoState[];
+      applyDocument: DocumentState[];
+    };
+    msg: null | string;
+  };
+  uploadFile: { isUpload: null | boolean };
+  deleteTemplate: { isDeleted: boolean; msg: string | null };
+}
+
+const actions = {
+  saveTemplateFieldRequest,
+  saveTemplateFieldSuccess,
+  saveTemplateFieldFailure,
+  editTemplateFieldFailure,
+  editTemplateFieldSuccess,
+  editTemplateFieldRequest,
+  uploadFileFailure,
+  uploadFileRequest,
+  uploadFileSuccess
+};
+
+export type Actions = ActionType<typeof actions>;

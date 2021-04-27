@@ -8,7 +8,7 @@ import user from "./routes/api/user";
 import login from "./routes/api/login";
 import mypage from "./routes/api/mypage";
 import template from "./routes/api/template";
-
+import auth from './middleware/auth'
 const app = express();
 
 {/* cors설정 */ }
@@ -17,13 +17,15 @@ const corsOptions = {
   credentials: true,
   exposedHeaders: ["set-cookie"],
 }
+
+
 app.use(cors(corsOptions));
+app.use(cookieParser());
 
 {/* 서버 설정 */ }
 app.set("port", process.env.PORT || 5000);
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
+app.use(express.urlencoded({ extended: false }));
 
 {/* mongoDB 연결 */ }
 connectDB();

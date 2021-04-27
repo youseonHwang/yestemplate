@@ -1,13 +1,19 @@
-{/* 신청내용 타입 지정 */}
+{/* 신청내용 타입 지정 */ }
 import { ActionType } from 'typesafe-actions';
-import { ApplicantChangeField } from './actions';
+import { ApplicantChangeField, ApplicantInitField, ApplicantSelectField } from './actions';
 
 export interface ApplicantState {
-    applicant: {
-        belong: string;
-        position: string;
-        name: string;
-    }
+  applicant: {
+    belong: string;
+    position: string;
+    name: string;
+  }
 }
 
-export type Actions = ActionType<typeof ApplicantChangeField>;
+const actions = {
+  ApplicantInitField,
+  ApplicantChangeField,
+  ApplicantSelectField
+};
+
+export type Actions = ActionType<typeof actions>;

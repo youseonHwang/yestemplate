@@ -27,7 +27,7 @@ router.post("/signup",
     }
 
     const { name, email, password } = req.body;
-    
+
     try {
       // 가져온 email을 가지고 User가 이미 존재하는지 확인
       let user: IUser = await User.findOne({ email });
