@@ -51,7 +51,6 @@ const ApplicantContainer: React.FC<RouteComponentProps> = () => {
   {/* 렌더링 된 후 한번만 동작 mypage -> write로 넘어 올 때 template 정보 init에 가져옴 */ }
   useEffect(() => {
     if (state) {
-      console.log('applicant의 state', state)
       if (state.template.applicant) {
         const applicant = state.template.applicant
         dispatch(ApplicantSelectField({ applicant }))

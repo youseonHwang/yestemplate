@@ -22,12 +22,9 @@ export interface UploadResult {
   isUpload: null | boolean;
 }
 export const uploadFile: (data: any) => Promise<UploadResult> = async (data) => {
-  console.log('client api의 uploadfile로 들어왔습니다.')
-  console.log(data.formData.get('uploadFile'))
 
   const response = await axios.post('http://localhost:5000/api/template/file', data.formData,
     { withCredentials: true });
-  console.log(response)
   if (!response.data.isUpload) {
     throw new Error('저장에 실패했습니다.');
   }

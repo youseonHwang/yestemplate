@@ -15,6 +15,9 @@ import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 
+import { Formik, Form, FormikProps } from 'formik'
+import * as Yup from 'yup'
+
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -74,6 +77,10 @@ const Login: React.FC<LoginProps> = ({
   onLoginRequest,
 }) => {
 
+  const hasError = (password: string) => {
+    password.length < 6 ? true : false;
+  }
+
   const classes = useStyles();
 
   return (
@@ -99,6 +106,7 @@ const Login: React.FC<LoginProps> = ({
                     <Grid container spacing={2}>
                       <Grid item xs={12}>
                         <TextField
+
                           variant="outlined"
                           required
                           fullWidth
@@ -111,19 +119,36 @@ const Login: React.FC<LoginProps> = ({
                         />
                       </Grid>
                       <Grid item xs={12}>
-                        <TextField
-                          variant="outlined"
-                          required
-                          fullWidth
-                          name="password"
-                          label="Password"
-                          type="password"
-                          id="password"
-                          autoComplete="current-password"
-                          value={password}
-                          onChange={onChangeLoginFields}
-                        />
+                        {password.length > 5 || password.length === 0 ?
+                          <TextField
+                            variant="outlined"
+                            required
+                            fullWidth
+                            name="password"
+                            label="Password"
+                            type="password"
+                            id="password"
+                            autoComplete="current-password"
+                            value={password}
+                            onChange={onChangeLoginFields}
+                          />
+                          : <TextField
+                            variant="outlined"
+                            error
+                            required
+                            fullWidth
+                            name="password"
+                            id="password"
+                            label=""
+                            autoComplete="current-password"
+                            value={password}
+                            onChange={onChangeLoginFields}
+                            defaultValue="Hello World"
+                            helperText="비밀번호는 6글자 이상입니다."
+                          />
+                        }
                       </Grid>
+
                       <Grid item xs={12}>
                         <FormControlLabel
                           control={<Checkbox value="remember" color="primary" />}

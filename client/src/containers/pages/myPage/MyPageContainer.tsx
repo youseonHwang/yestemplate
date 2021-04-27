@@ -31,7 +31,7 @@ export default function MyPageContainer(Props: Props) {
     getTemplates()
   }, [])
 
-  console.log(templates) //promise인 상태..
+  console.log(templates) 
 
   return (
     <MyPageComponent templates={templates} />

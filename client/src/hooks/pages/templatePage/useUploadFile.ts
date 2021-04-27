@@ -13,7 +13,6 @@ function useUploadFile(): {
   // );
   const uploadFile = (file: File) => {
     const formData = new FormData();
-    console.log('hook의 file', file)
     formData.append('uploadFile', file);
     dispatch(actions.uploadFileRequest({ formData }));
   };
