@@ -1,6 +1,4 @@
 import React from 'react';
-import { useState } from 'react';
-
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -9,7 +7,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import { Divider } from '@material-ui/core';
-import { PdfViewerComponent, Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, Inject } from '@syncfusion/ej2-react-pdfviewer';
 import PreviewContainer from '../../../../containers/pages/writePage/preview/PreviewContainer';
 import PreviewButton from '../write/button/Button';
 import { PDFDownloadLink } from '@react-pdf/renderer';
@@ -148,41 +145,16 @@ interface RightPreviewProps {
     relation: string;
     applyAmount: number;
   };
-  template: {
-    id: string,
-    title: string,
-    userFrom: string,
-    applicant: {
-      belong: string,
-      position: string,
-      name: string,
-    },
-    applyInfo: {
-      applyContent: string,
-      respondent: {
-        resName: string,
-        resJumin: string,
-        relation: string,
-      },
-      applyAmount: number,
-    },
-    applyDocument: {
-      fileName: Array<string>,
-      etc: string
-    },
-    createdAt: string,
-    updatedAt: string,
-    __v: number
-  };
   onPreviewModal: () => void;
   preview: boolean;
 }
 
-const RightPreview: React.FC<RightPreviewProps> = ({ values, template, preview, onPreviewModal }) => {
+const RightPreview: React.FC<RightPreviewProps> = ({ values, preview, onPreviewModal }) => {
   const classes = useStyles();
 
   return (
     <Paper className={classes.paper}>
+      <div style={{ overflow: "scroll", height: '800px' }}>
       <PreviewButton onPreviewModal={onPreviewModal}/>
       {preview && (
         <PreviewContainer values={values} onPreviewModal={onPreviewModal} />
@@ -209,127 +181,127 @@ const RightPreview: React.FC<RightPreviewProps> = ({ values, template, preview, 
         <Grid item xs={9} sm={9} md={9} >
           <Divider className={classes.rightDiv} />
         </Grid>
-
-        <Grid item xs={12} sm={6} md={6} >
-          <p style={{ fontSize: '35px', fontWeight: 'bold', textAlign: 'center' }}>
-            <br />
+          <Grid item xs={12} sm={6} md={6} >
+            <p style={{ fontSize: '35px', fontWeight: 'bold', textAlign: 'center' }}>
+              <br />
                   경조금 지급신청서
                 </p>
-        </Grid>
+          </Grid>
 
-        <Grid item xs={12} sm={6} md={6}>
-          <div style={{}} >
-            <table className={classes.tg} style={{ tableLayout: "fixed", width: "100%" }}>
+          <Grid item xs={12} sm={6} md={6}>
+            <div style={{}} >
+              <table className={classes.tg} style={{ tableLayout: "fixed", width: "100%" }}>
+                <thead>
+                  <tr>
+                    <th rowSpan={2} className={classes.tgTgHikc} >결재</th>
+                    <th className={classes.tgTgHikc} >담당</th>
+                    <th className={classes.tgTgHikc} >팀장</th>
+                    <th className={classes.tgTgHikc} >임원</th>
+                    <th className={classes.tgTgHikc} >대표이사</th>
+                  </tr>
+                  <tr>
+                    <td className={classes.tgTgL93j} ></td>
+                    <td className={classes.tgTgL93j}></td>
+                    <td className={classes.tgTgL93j}></td>
+                    <td className={classes.tgTgL93j}></td>
+                  </tr>
+                </thead>
+              </table>
+            </div>
+          </Grid>
+        </Grid>
+        <Grid item xs={12} sm={12} >
+          <div style={{}}>
+            <table>
+              <colgroup className={classes.tg} style={{ tableLayout: "fixed", width: "1172px" }}>
+                <col style={{ width: "190px" }} />
+                <col style={{ width: "244px" }} />
+                <col style={{ width: "244px" }} />
+                <col style={{ width: "267px" }} />
+                <col style={{ width: "471px" }} />
+              </colgroup>
               <thead>
                 <tr>
-                  <th rowSpan={2} className={classes.tgTgHikc} >결재</th>
-                  <th className={classes.tgTgHikc} >담당</th>
-                  <th className={classes.tgTgHikc} >팀장</th>
-                  <th className={classes.tgTgHikc} >임원</th>
-                  <th className={classes.tgTgHikc} >대표이사</th>
-                </tr>
-                <tr>
-                  <td className={classes.tgTgL93j} ></td>
-                  <td className={classes.tgTgL93j}></td>
-                  <td className={classes.tgTgL93j}></td>
-                  <td className={classes.tgTgL93j}></td>
+                  <th colSpan={4} className={classes.tgTgEqfb}>
+                    경조금 지급규정에 의거하여 다음과 같이 경조금을 신청하오니 지급하여 주시기 바랍니다.<br /><br />- 다 음 -
+                      </th>
                 </tr>
               </thead>
+              <tbody>
+                <tr>
+                  <td rowSpan={2} className={classes.tgTgFc4c}>
+                    <br />
+                    신청인
+                  </td>
+                  <td className={classes.tgTgFc4c}>소속</td>
+                  <td className={classes.tgTgFc4c}>직위</td>
+                  <td className={classes.tgTgFc4c}>성명</td>
+                </tr>
+                <tr>
+                  <td className={classes.tgTgL93j}>
+                    {values.belong}
+                  </td>
+                  <td className={classes.tgTgL93j}>
+                    {values.position}
+                  </td>
+                  <td className={classes.tgTgL93j}>
+                    {values.name}
+                  </td>
+                </tr>
+                <tr>
+                  <td rowSpan={5} className={classes.tgTgHikc}>신청사항</td>
+                  <td className={classes.tgTgFc4c}>내용</td>
+                  <td colSpan={2} className={classes.tgTgL93j}>
+                    {values.applyContent}
+                  </td>
+                </tr>
+                <tr>
+                  <td rowSpan={3} className={classes.tgTgHikc}>피신청인<br /></td >
+                  <td className={classes.tgTgEqfb}>성명</td>
+                  <td className={classes.tgTgL93j}>
+                    {values.resName}
+                  </td>
+                </tr>
+                <tr>
+                  <td className={classes.tgTgEqfb}>주민등록번호</td>
+                  <td className={classes.tgTgL93j}>
+                    {values.resJumin}
+                  </td>
+                </tr>
+                <tr>
+                  <td className={classes.tgTgEqfb}>신청인과의 관계</td>
+                  <td className={classes.tgTgL93j}>
+                    {values.relation}
+                  </td>
+                </tr>
+                <tr>
+                  <td className={classes.tgTgFc4c}>신청금액</td>
+                  <td colSpan={2} className={classes.tgTgL93j}>
+                    {values.applyAmount}
+                  </td>
+                </tr>
+                <tr>
+                  <td className={classes.tgTgFc4c}>증빙자료<br />첨부</td>
+                  <td colSpan={3} className={classes.tgTgL93j}>
+                    {values.fileName}
+                  </td>
+                </tr>
+                <tr>
+                  <td className={classes.tgTgFc4c}>기타 사항</td>
+                  <td colSpan={3} className={classes.tgTgL93j}>
+                    {values.etc}
+                  </td>
+                </tr>
+                <tr>
+                  <td colSpan={4} className={classes.tgTg3mbc}>신청자:
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(인)</td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </Grid>
-      </Grid>
-      <Grid item xs={12} sm={12} >
-        <div style={{}}>
-          <table>
-            <colgroup className={classes.tg} style={{ tableLayout: "fixed", width: "1172px" }}>
-              <col style={{ width: "190px" }} />
-              <col style={{ width: "244px" }} />
-              <col style={{ width: "244px" }} />
-              <col style={{ width: "267px" }} />
-              <col style={{ width: "471px" }} />
-            </colgroup>
-            <thead>
-              <tr>
-                <th colSpan={4} className={classes.tgTgEqfb}>
-                  경조금 지급규정에 의거하여 다음과 같이 경조금을 신청하오니 지급하여 주시기 바랍니다.<br /><br />- 다 음 -
-                      </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td rowSpan={2} className={classes.tgTgFc4c}>
-                  <br />
-                    신청인
-                  </td>
-                <td className={classes.tgTgFc4c}>소속</td>
-                <td className={classes.tgTgFc4c}>직위</td>
-                <td className={classes.tgTgFc4c}>성명</td>
-              </tr>
-              <tr>
-                <td className={classes.tgTgL93j}>
-                  {values.belong}
-                </td>
-                <td className={classes.tgTgL93j}>
-                  {values.position}
-                </td>
-                <td className={classes.tgTgL93j}>
-                  {values.name}
-                </td>
-              </tr>
-              <tr>
-                <td rowSpan={5} className={classes.tgTgHikc}>신청사항</td>
-                <td className={classes.tgTgFc4c}>내용</td>
-                <td colSpan={2} className={classes.tgTgL93j}>
-                  {values.applyContent}
-                </td>
-              </tr>
-              <tr>
-                <td rowSpan={3} className={classes.tgTgHikc}>피신청인<br /></td >
-                <td className={classes.tgTgEqfb}>성명</td>
-                <td className={classes.tgTgL93j}>
-                  {values.resName}
-                </td>
-              </tr>
-              <tr>
-                <td className={classes.tgTgEqfb}>주민등록번호</td>
-                <td className={classes.tgTgL93j}>
-                  {values.resJumin}
-                </td>
-              </tr>
-              <tr>
-                <td className={classes.tgTgEqfb}>신청인과의 관계</td>
-                <td className={classes.tgTgL93j}>
-                  {values.relation}
-                </td>
-              </tr>
-              <tr>
-                <td className={classes.tgTgFc4c}>신청금액</td>
-                <td colSpan={2} className={classes.tgTgL93j}>
-                  {values.applyAmount}
-                </td>
-              </tr>
-              <tr>
-                <td className={classes.tgTgFc4c}>증빙자료<br />첨부</td>
-                <td colSpan={3} className={classes.tgTgL93j}>
-                  {values.fileName}
-                </td>
-              </tr>
-              <tr>
-                <td className={classes.tgTgFc4c}>기타 사항</td>
-                <td colSpan={3} className={classes.tgTgL93j}>
-                  {values.etc}
-                </td>
-              </tr>
-              <tr>
-                <td colSpan={4} className={classes.tgTg3mbc}>신청자:
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(인)</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </Grid>
+      </div>
     </Paper>
   );
 }

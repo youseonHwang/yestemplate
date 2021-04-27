@@ -1,39 +1,21 @@
-// import { useDispatch } from 'react-redux';
-// // import * as actions from '../../../modules/config/actions';
-// // import * as initInfo from '../../../modules/changeField/info/actions';
-// // import * as skills from '../../../modules/changeField/skills/actions';
-// // import * as workExperience from '../../../modules/changeField/workExperience/actions';
-// // import * as education from '../../../modules/changeField/education/actions';
-// // import * as aea from '../../../modules/changeField/aea/actions';
-// // import * as certificates from '../../../modules/changeField/certificate/actions';
 
-// {/* 임시 저장되어 있는 template */ }
-// function useSelectTemplate(): {
-//   selectTemplate: (templateCode: number) => void;
-//   initResumeField: () => void;
-// } {
-//   const dispatch = useDispatch();
+import { useDispatch } from 'react-redux';
+import {ApplicantSelectField} from '../../../modules/writeChange/applicant/actions'
+import {DocumentSelectField} from '../../../modules/writeChange/applydocument/actions'
+import {InfoSelectField} from '../../../modules/writeChange/applyInfo/actions'
 
-//   const selectTemplate = (templateCode: number) => {
-//     if (localStorage.getItem('current_user')) {
-//       localStorage.removeItem('resume-field');
-//     }
-//     dispatch(actions.selectTemplate({ value: templateCode }));
-//     localStorage.removeItem('edit_field');
-//   };
+function useSelectTemplateField() {
+  const dispatch = useDispatch();
 
-//   const initResumeField = () => {
-//     dispatch(initInfo.initInfoField(''));
-//     dispatch(skills.initSkillsField(''));
-//     dispatch(workExperience.initExperienceField(''));
-//     dispatch(education.initEducationField(''));
-//     dispatch(aea.initAeaField(''));
-//     dispatch(certificates.initCertificateField(''));
-//   };
-//   return {
-//     selectTemplate,
-//     initResumeField,
-//   };
-// }
+  const initRequest = (): void => {
+    console.log('useSelectTemplateField Hook의 initRequest 들어옴')
+    dispatch(ApplicantSelectField({}))
+    dispatch(DocumentSelectField({}))
+    dispatch(InfoSelectField({}))
+  };
 
-// export default useSelectTemplate;
+  return {
+    initRequest,
+  };
+}
+export default useSelectTemplateField;

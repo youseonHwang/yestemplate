@@ -1,18 +1,18 @@
-{/* 신청사항 타입 지정 */}
+{/* 신청사항 타입 지정 */ }
 import { ActionType } from 'typesafe-actions';
-import { InfoChangeField } from './actions';
+import { InfoSelectField, InfoChangeField, InfoInitField } from './actions';
 
 export interface ApplyInfoState {
-    applyInfo: {
-        applyContent: string,
-        respondent: {
-            resName: string,
-            resJumin: string,
-            relation: string,
-        },
-        applyAmount: number,
-    };
+  applyInfo: {
+    applyContent: string,
+    respondent: {
+      resName: string,
+      resJumin: string,
+      relation: string,
+    },
+    applyAmount: number,
+  };
 }
 
-const actions = { InfoChangeField }
+const actions = { InfoChangeField, InfoInitField, InfoSelectField }
 export type Actions = ActionType<typeof actions>;

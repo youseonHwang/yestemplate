@@ -18,7 +18,8 @@ export interface ITemplate extends Document {
     applyAmount: number | null,
   },
   applyDocument: {
-    fileName: Array<string | null>
+    fileName: Array<string | null>,
+    etc: string|null,
   },
   createdAt: string | null,
   updatedAt: string | null,
@@ -44,9 +45,6 @@ const templateSchema: Schema = new Schema({
     name: {
       type: String,
     },
-    etc: {
-      type: String,
-    },
   },
   applyInfo: {
     applyContent: {
@@ -68,7 +66,10 @@ const templateSchema: Schema = new Schema({
     },
   },
   applyDocument: {
-    fileName: [{ type: String }]
+    fileName: [{ type: String }],
+    etc: {
+      type: String,
+    },
   },
 
 

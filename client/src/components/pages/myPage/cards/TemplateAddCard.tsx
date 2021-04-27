@@ -17,8 +17,6 @@ const images = () => ({
 
 const useStyles = makeStyles((theme: Theme) => ({
   root: {
-    height: '100%',
-    minWidth: 275,
   },
   bullet: {
     display: 'inline-block',
@@ -29,11 +27,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     fontSize: 14,
   },
   pos: {
-    marginBottom: 12,
   },
   image: {
     position: 'relative',
-    height: 200,
+    height: 140,
     [theme.breakpoints.down('xs')]: {
       width: '100% !important', // Overrides inline-style
       height: 100,
@@ -102,7 +99,7 @@ export default function SimpleCard() {
   const image = images();
 
   return (
-    <Grid item xs={3}>
+    <Grid item xs={12} sm={6} md={3}>
       <Card className={classes.root}>
         <CardContent>
           <ButtonBase
@@ -110,9 +107,7 @@ export default function SimpleCard() {
             key={image.title}
             className={classes.image}
             focusVisibleClassName={classes.focusVisible}
-            style={{
-              width: '100%',
-            }}
+            style={{ width: '100%' }}
           >
             <span
               className={classes.imageSrc}

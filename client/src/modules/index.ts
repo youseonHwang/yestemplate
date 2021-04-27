@@ -9,10 +9,12 @@ import requestSignUp from './signUp/requestSignUp/reducer';
 import applicantField from './writeChange/applicant/reducer';
 import documentField from './writeChange/applyDocument/reducer';
 import applyInfoField from './writeChange/applyInfo/reducer';
+import postWrite from './postWrite/reducer'
 
 {/* 사가 임포트 */ }
 import { loginSaga } from '../modules/postLogin/saga';
 import { signUpSaga } from './signUp/requestSignUp/saga';
+import { requestTemplateSaga } from './postWrite/saga'
 
 {/* reducers */ }
 const rootReducer = combineReducers({
@@ -23,13 +25,16 @@ const rootReducer = combineReducers({
   applicantField,
   documentField,
   applyInfoField,
+  postWrite,
 })
 
 {/* sagas */ }
 export function* rootSaga(): Generator {
   yield all([
     loginSaga(),
-    signUpSaga()
+    signUpSaga(),
+    requestTemplateSaga(),
+    
   ]);
 }
 
