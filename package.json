@@ -23,6 +23,7 @@
     "@types/react-pdf": "^5.0.2",
     "@types/react-router": "^5.1.13",
     "@types/react-router-dom": "^5.1.7",
+    "@types/utf8": "^2.1.6",
     "bcryptjs": "^2.4.3",
     "config": "^3.1.0",
     "cookie-parser": "^1.4.5",
@@ -35,12 +36,14 @@
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.29.1",
     "mongoose": "^5.12.3",
+    "react-component-export-image": "^1.0.6",
     "react-pdf": "^5.2.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "redux-devtools-extension": "^2.13.9",
     "request": "^2.88.0",
-    "typescript": "^3.4.5"
+    "typescript": "^3.4.5",
+    "utf8": "^3.0.0"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.2",
@@ -49,6 +52,8 @@
     "@types/gravatar": "^1.8.0",
     "@types/jsonwebtoken": "^8.3.2",
     "concurrently": "^4.1.0",
-    "nodemon": "^1.19.0"
+    "file-loader": "^6.2.0",
+    "nodemon": "^1.19.0",
+    "url-loader": "^4.1.1"
   }
 }

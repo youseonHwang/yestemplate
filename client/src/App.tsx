@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { createGlobalStyle } from 'styled-components';
 
 {/* Containers */ }
 import LoginPageContainer from './containers/pages/loginPage/logIn/LoginPageContainer';
@@ -14,9 +15,20 @@ import PreviewContainer from './containers/pages/writePage/preview/PreviewContai
 import HeaderComponent from './components/systems/header/Header';
 import WritePage from './components/pages/writePage/WritePage';
 
+const GlobalStyles = createGlobalStyle`
+  @font-face {
+    font-family:'NanumGothic';
+    src: url(${require('./Assets/Fonts/NanumGothic.ttf')});
+  }
+  body {
+    font-family: 'NanumGothic', NanumGothic;
+  }
+`;
+
 const App: React.FC = () => {
   return (
     <div className="App">
+      <GlobalStyles/>
       <Router>
         {/* 로그인여부 확인해서 Header조건부 랜더링 하기 */}
         <HeaderComponent />

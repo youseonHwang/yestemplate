@@ -1,4 +1,6 @@
 import React from 'react';
+import { useState } from 'react';
+
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -8,6 +10,9 @@ import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import { Divider } from '@material-ui/core';
 import { PdfViewerComponent, Toolbar, Magnification, Navigation, LinkAnnotation, BookmarkView, ThumbnailView, Print, TextSelection, TextSearch, Annotation, Inject } from '@syncfusion/ej2-react-pdfviewer';
+import PreviewContainer from '../../../../containers/pages/writePage/preview/PreviewContainer';
+import PreviewButton from '../write/button/Button';
+import { PDFDownloadLink } from '@react-pdf/renderer';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -142,7 +147,7 @@ interface RightPreviewProps {
     resJumin: string;
     relation: string;
     applyAmount: number;
-  },
+  };
   template: {
     id: string,
     title: string,
@@ -168,18 +173,21 @@ interface RightPreviewProps {
     createdAt: string,
     updatedAt: string,
     __v: number
-  }
+  };
+  onPreviewModal: () => void;
+  preview: boolean;
 }
 
-const RightPreview: React.FC<RightPreviewProps> = ({ values, template }) => {
+const RightPreview: React.FC<RightPreviewProps> = ({ values, template, preview, onPreviewModal }) => {
   const classes = useStyles();
-
-  console.log(template)
 
   return (
     <Paper className={classes.paper}>
-      <Button className={classes.button}>PDF 변환하기</Button>
-      <Button className={classes.button} style={{ marginRight: '1.7%' }}>임시저장</Button>
+      <PreviewButton onPreviewModal={onPreviewModal}/>
+      {preview && (
+        <PreviewContainer values={values} onPreviewModal={onPreviewModal} />
+      )}
+      {/* <button onClick={onPreviewModal}>PDF 변환하기</button> */}
       <Grid container spacing={0}>
         <Grid item xs={12} sm={12} md={12} >
           <Card className={classes.card} elevation={0}>

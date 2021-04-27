@@ -9,10 +9,11 @@ import useLoadPreviewValues from '../../../../hooks/pages/writePage/useLoadPrevi
 
 {/* model Interface */ }
 import { stateType } from '../applicant/ApplicantContainer'
+import usePreviewModal from '../../../../hooks/pages/writePage/usePreviewModal';
 
 function RightPreviewContainer() {
   const { state } = useLocation<stateType>();
-
+  const { preview, onPreviewModal } = usePreviewModal();
   const [template, setTemplate] = useState({
     id: '',
     title: '',
@@ -47,7 +48,9 @@ function RightPreviewContainer() {
   }, [])
   const values = useLoadPreviewValues();
   return (
-    <RightPreview values={values} template={template} />
+    <>
+      <RightPreview values={values} template={template} preview={preview} onPreviewModal={onPreviewModal} />
+    </>
   )
 }
 

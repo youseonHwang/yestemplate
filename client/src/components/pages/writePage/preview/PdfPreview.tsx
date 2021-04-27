@@ -1,20 +1,7 @@
-import React from 'react';
+import React  from 'react';
+import { Page, Document, Text, View } from '@react-pdf/renderer';
 
-import Content from './content/Content';
-
-import { Page, Document, StyleSheet } from '@react-pdf/renderer';
-
-const styles = StyleSheet.create({
-    page: {
-      padding: 60,
-    },
-    container: {
-      flex: 1,
-      flexDirection: 'row',
-    },
-  });
-
-interface PdfDocumentProps {
+interface PdfPreviewProps {
     values: {
         belong: string;
         position: string;
@@ -29,16 +16,24 @@ interface PdfDocumentProps {
     };
 }
 
-const PdfDocument: React.FC<PdfDocumentProps> = ({ values }) => {
+const PdfPreview: React.FC<PdfPreviewProps> = ({ values }) => {
     return (
         <Document>
-            <Page size="A4" style={styles.page}>
-                {/* 헤더 넣어야 하나요? */}
-                {/* <Header values={values} /> */}
-                <Content values={values} />
+            <Page size="A4">
+                <View>
+                    <Text>{values.belong}</Text>
+                    <Text>{values.position}</Text>
+                    <Text>{values.name}</Text>
+                </View>
+                <View>
+                    <Text>Column 1 Row 1</Text>
+                    <Text>Column 2 Row 1</Text>
+                    <Text>Column 3 Row 1</Text>
+                    <Text>Column 4 Row 1</Text>
+                </View>
             </Page>
         </Document>
-    )
-}
+    );
+};
 
-export default PdfDocument;
+export default PdfPreview;

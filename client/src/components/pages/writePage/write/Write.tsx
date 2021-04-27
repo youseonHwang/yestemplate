@@ -18,18 +18,14 @@ const useStyles = makeStyles((theme: Theme) =>
     }
   }));
 
+  const Write: React.FC = () => {
+    return (
+      <Paper>
+        <ApplicantContainer />
+        <ApplyInfoContainer />
+        <ApplyDocumentContainer />
+      </Paper>
+    )
+  }
 
-function Write() {
-
-  const classes = useStyles();
-  return (
-    <Paper className={classes.paper}>
-      <ApplicantContainer />
-      <ApplyInfoContainer />
-      <ApplyDocumentContainer />
-    </Paper>
-  )
-}
-
-
-export default withRouter(Write);
+export default Write;
