@@ -1,4 +1,4 @@
-import React, { VoidFunctionComponent } from 'react';
+import React from 'react';
 import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
@@ -7,6 +7,9 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import { Divider } from '@material-ui/core';
+import PreviewContainer from '../../../../containers/pages/writePage/preview/PreviewContainer';
+import PreviewButton from '../write/button/Button';
+import { PDFDownloadLink } from '@react-pdf/renderer';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -141,39 +144,43 @@ interface RightPreviewProps {
     resJumin: string;
     relation: string;
     applyAmount: number;
-  },
+  };
+  onPreviewModal: () => void;
+  preview: boolean;
 }
 
-const RightPreview: React.FC<RightPreviewProps> = ({
-  values,
-}) => {
+const RightPreview: React.FC<RightPreviewProps> = ({ values, preview, onPreviewModal }) => {
   const classes = useStyles();
+
   return (
     <Paper className={classes.paper}>
       <div style={{ overflow: "scroll", height: '800px' }}>
-        <Button className={classes.button}>PDF 변환하기</Button>
-        <Grid container spacing={0}>
-          <Grid item xs={12} sm={12} md={12} >
-            <Card className={classes.card} elevation={0}>
-              <div className={classes.details}>
-                <CardMedia
-                  className={classes.cover}
-                  image='../../../../../../public/Logo.png'
-                  title="Live from space album cover"
-                />
-                <CardContent className={classes.content}>
-                  <p>Worldwide Digital Convergence Solution PROVIDER</p>
-                </CardContent>
-              </div>
-            </Card>
-          </Grid>
-          <Grid item xs={3} sm={3} md={3} >
-            <Divider className={classes.leftDiv} />
-          </Grid>
-          <Grid item xs={9} sm={9} md={9} >
-            <Divider className={classes.rightDiv} />
-          </Grid>
-
+      <PreviewButton onPreviewModal={onPreviewModal}/>
+      {preview && (
+        <PreviewContainer values={values} onPreviewModal={onPreviewModal} />
+      )}
+      {/* <button onClick={onPreviewModal}>PDF 변환하기</button> */}
+      <Grid container spacing={0}>
+        <Grid item xs={12} sm={12} md={12} >
+          <Card className={classes.card} elevation={0}>
+            <div className={classes.details}>
+              <CardMedia
+                className={classes.cover}
+                image='../../../../../../public/Logo.png'
+                title="Live from space album cover"
+              />
+              <CardContent className={classes.content}>
+                <p>Worldwide Digital Convergence Solution PROVIDER</p>
+              </CardContent>
+            </div>
+          </Card>
+        </Grid>
+        <Grid item xs={3} sm={3} md={3} >
+          <Divider className={classes.leftDiv} />
+        </Grid>
+        <Grid item xs={9} sm={9} md={9} >
+          <Divider className={classes.rightDiv} />
+        </Grid>
           <Grid item xs={12} sm={6} md={6} >
             <p style={{ fontSize: '35px', fontWeight: 'bold', textAlign: 'center' }}>
               <br />

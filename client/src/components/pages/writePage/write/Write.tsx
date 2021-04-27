@@ -17,7 +17,6 @@ import useSaveTemplate from '../../../../hooks/pages/templatePage/useSaveTemplat
 import useInitTemplateField from '../../../../hooks/pages/templatePage/useInitTemplateField';
 import useEditTemplateField from '../../../../hooks/pages/templatePage/useEditTemplate';
 import useUploadFile from '../../../../hooks/pages/templatePage/useUploadFile'
-import useSelectUploadFile from 'src/hooks/pages/templatePage/useSelectUploadFile';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
