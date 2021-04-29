@@ -65,12 +65,10 @@ router.post("/signup",
           msg: "회원가입에 실패하였습니다."
         });
       }
-      console.log(user);
 
       res.json({ user, success: true });
 
     } catch (err) {
-      console.error(err.message);
       res.status(HttpStatusCodes.INTERNAL_SERVER_ERROR).send("Server Error");
     }
   }

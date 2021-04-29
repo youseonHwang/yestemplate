@@ -40,7 +40,6 @@ export interface stateType {
   }
 }
 
-
 const ApplicantContainer: React.FC<RouteComponentProps> = () => {
   const dispatch = useDispatch();
 

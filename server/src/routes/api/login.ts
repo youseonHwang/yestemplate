@@ -78,4 +78,15 @@ router.post("/",
   }
 );
 
+{/* 로그아웃 시도 중 */}
+// router.get("/logout", (req: Request, res: Response) => {
+//   User.findOneAndUpdate({ email: req.userId }, { token: "" }, (err, doc) => {
+//       if (err) return res.json({ success: false, err });
+//       return res.status(200).send({
+//           success: true
+//       });
+//   });
+// });
+
+
 export default router;
