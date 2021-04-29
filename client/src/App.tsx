@@ -31,15 +31,16 @@ const App: React.FC = () => {
       <GlobalStyles/>
       <Router>
         {/* 로그인여부 확인해서 Header조건부 랜더링 하기 */}
-        <HeaderComponent />
         <Switch>
           {/* 컨테이너 자리? */}
           <Route exact path="/" component={LoginPageContainer} ></Route>
-          <Route exact path="/template" component={TemplateContainer} ></Route>
           <Route exact path="/signup" component={SignUpContainer} ></Route>
-          <Route exact path="/mypage" component={MyPageContainer} ></Route>
-          <Route exact path="/write" component={WritePage} ></Route>
-          <Route exact path="/preview" component={PreviewContainer} ></Route>
+          <div>
+            <HeaderComponent />
+            <Route exact path="/template" component={TemplateContainer} ></Route>
+            <Route exact path="/mypage" component={MyPageContainer} ></Route>
+            <Route exact path="/write" component={WritePage} ></Route>
+          </div>
         </Switch>
       </Router>
     </div>
