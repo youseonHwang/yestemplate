@@ -11,6 +11,7 @@ function* fetch(actions: Actions) {
       type: 'POST_LOGIN_SUCCESS',
       payload: { isLoginSuccessed: req.isLoginSuccessed },
     });
+    
   } catch (error) {
     yield put({
       type: 'POST_LOGIN_FAILURE',

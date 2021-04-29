@@ -5,12 +5,6 @@ function useUploadFile(): {
   uploadFile: (file: File) => void;
 } {
   const dispatch = useDispatch();
-  // //? useSelector
-  // const { location } = useSelector(
-  //   ({ asyncResumeField }: { asyncResumeField: SaveEditResumeState }) => ({
-  //     location: asyncResumeField.uploadImage.location,
-  //   }),
-  // );
   const uploadFile = (file: File) => {
     const formData = new FormData();
     formData.append('uploadFile', file);

@@ -10,6 +10,7 @@ import applicantField from './writeChange/applicant/reducer';
 import documentField from './writeChange/applyDocument/reducer';
 import applyInfoField from './writeChange/applyInfo/reducer';
 import postWrite from './postWrite/reducer'
+import openModal from './modal/reducer'
 
 {/* 사가 임포트 */ }
 import { loginSaga } from '../modules/postLogin/saga';
@@ -26,6 +27,7 @@ const rootReducer = combineReducers({
   documentField,
   applyInfoField,
   postWrite,
+  openModal
 })
 
 {/* sagas */ }

@@ -1,11 +1,10 @@
 import * as React from 'react';
+import { useHistory } from "react-router";
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import { Theme, createStyles } from '@material-ui/core/styles';
+import { Theme } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import Typography from '@material-ui/core/Typography';
 
@@ -95,12 +94,18 @@ const useStyles = makeStyles((theme: Theme) => ({
 }));
 
 export default function SimpleCard() {
+  const history = useHistory();
   const classes = useStyles();
   const image = images();
 
   return (
     <Grid item xs={12} sm={6} md={3}>
-      <Card className={classes.root}>
+      <Card className={classes.root}
+        onClick={e => {
+          e.preventDefault();
+          history.push({ pathname: "/template" })
+        }}
+      >
         <CardContent>
           <ButtonBase
             focusRipple

@@ -2,7 +2,6 @@ import bcrypt from "bcryptjs";
 import { Router, Response } from "express";
 import { check, validationResult } from "express-validator/check";
 import HttpStatusCodes from "http-status-codes";
-import jwt from "jsonwebtoken";
 import Request from "../../types/Request";
 import User, { IUser } from "../../models/User";
 

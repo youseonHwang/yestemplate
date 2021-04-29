@@ -1,16 +1,13 @@
 import * as React from "react";
 import { withRouter } from 'react-router-dom';
 import { RouteComponentProps } from 'react-router-dom'
-
 import Grid from '@material-ui/core/Grid';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-
 import { ITemplate } from '../../../api/mypage';
 
 {/* 자식 컴포넌트 */ }
 import TemplateAddCard from './cards/TemplateAddCard'
 import TemplateCard from "./cards/TemplateCard"
-
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -28,6 +25,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   }),
 );
+
 interface Props extends RouteComponentProps {
   key?: number,
   templates: Array<ITemplate>
@@ -42,9 +40,7 @@ function MyPageComponent(Props: Props) {
       <div className={classes.root} >
         <Grid container justify="space-evenly" >
           <Grid container item xs={12} sm={12} md={12} spacing={5}>
-
             <TemplateAddCard />
-
             {templates.map((template: ITemplate, index: number) => {
               return (
                 <TemplateCard key={index} template={template} />

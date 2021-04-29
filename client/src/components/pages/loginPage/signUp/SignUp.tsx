@@ -143,10 +143,11 @@ const SignUpComponent: React.FC<SignUpProps> = ({
                       variant="contained"
                       color="primary"
                       className={classes.submit}
-                      onClick={e => {
-                        e.preventDefault();
-                        onSignUpRequest(name, email, password);
-                      }}
+                      onClick={
+                        e => {
+                          e.preventDefault();
+                          onSignUpRequest(name, email, password);
+                        }}
                     >
                       Sign Up
                     </Button>
