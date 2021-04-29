@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body{
+    font-family: 'NanumGothic', NanumGothic;
     background-color: rgb(237, 237, 237);
   }
 `;

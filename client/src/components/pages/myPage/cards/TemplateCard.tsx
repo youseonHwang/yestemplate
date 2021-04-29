@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { useHistory } from "react-router";
-import { RouteComponentProps } from 'react-router-dom'
 
 import { makeStyles } from '@material-ui/core/styles';
+import Tooltip from '@material-ui/core/Tooltip';
 import Card from '@material-ui/core/Card';
 import Grid from '@material-ui/core/Grid';
 import CardActions from '@material-ui/core/CardActions';
@@ -38,7 +38,7 @@ interface Props extends RouteComponentProps {
   template: ITemplate
 }
 
-function MyPageComponent(Props: Props) {
+function TemplateCardComponent(Props: Props) {
   const history = useHistory();
   const classes = useStyles();
   const template = Props.template
@@ -63,9 +63,9 @@ function MyPageComponent(Props: Props) {
 
                 {template.applyInfo && //true고
                   template.applyInfo.applyContent ? //true면
-                  template.applyInfo.applyContent.length < 10 ?
+                  template.applyInfo.applyContent.length < 7 ?
                     template.applyInfo.applyContent
-                    : template.applyInfo.applyContent.slice(0, 10) + ' ...(더보기)'
+                    : template.applyInfo.applyContent.slice(0, 7) + ' ...(더보기)'
                   : 'No Content'
                 }
 
@@ -80,10 +80,12 @@ function MyPageComponent(Props: Props) {
                 {'내용 없음'}
               </Typography> */}
             </CardContent>
-            <CardActions>
+          <CardActions>
+            <Tooltip title="수정">
               <Button variant="outlined" onClick={onClickToWrite} style={{ marginLeft: '75%', width: '15%' }} className={classes.palette}>
                 <EditTwoToneIcon />
               </Button>
+            </Tooltip>
             </CardActions>
           </Card>
         }
@@ -91,4 +93,4 @@ function MyPageComponent(Props: Props) {
     </ >
   );
 }
-export default withRouter(MyPageComponent);
+export default withRouter(TemplateCardComponent);

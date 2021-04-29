@@ -1,12 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import App from './App';
-
 {/* Style */ }
 import GlobalStyles from './styles/GlobalStyles'
 import theme from './styles/theme'
 import { ThemeProvider } from './styles/themeComponents'
-
 {/* Store */ }
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';

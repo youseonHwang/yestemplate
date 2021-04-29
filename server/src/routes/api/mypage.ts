@@ -1,20 +1,16 @@
 import express, { Router, Response } from "express";
 import HttpStatusCodes from "http-status-codes";
 import Request from "../../types/Request";
-
-import auth from '../../middleware/auth';
 {/* Models */ }
 import User, { IUser } from "../../models/User";
-import Template, { ITemplate } from '../../models/Template';
+import Template from '../../models/Template';
 
 const router: Router = Router();
-
 
 {/* 현재 로그인 된 user의 mypage 정보 조회 */ }
 router.get("/:id",
   async (req: Request, res: Response) => {
     const token = req.cookies.token
-    console.log(token)
     //test url = http://localhost:5000/api/mypage/607e3447f3990d3b44758e15
     const _id = req.params.id
 

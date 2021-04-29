@@ -2,6 +2,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import * as actions from '../../../modules/postWrite/actions';
+import { openModal } from '../../../modules/modal/actions'
 import { ApplicantState } from '../../../modules/writeChange/applicant/types';
 import { DocumentState } from '../../../modules/writeChange/applyDocument/types';
 import { ApplyInfoState } from '../../../modules/writeChange/applyInfo/types';

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useEffect } from 'react'
 import { withRouter, RouteComponentProps } from 'react-router-dom';
-
 {/* hooks */ }
 import useSignUpChangeField from '../../../../hooks/pages/loginPage/signUp/useSignUpChangeField';
 {/* components */ }
