@@ -33,7 +33,7 @@ const ApplyInfo: React.FC<ApplyInfoProps> = ({
 }) => {
   const classes = useStyles();
   return (
-    <Paper className={classes.paper}>
+    <Paper className={classes.paper} elevation={3}>
       <Grid item xs={12}>
         <h1 style={{ fontSize: '20px', fontWeight: 'bold', textAlign: 'left', marginBottom: '3%' }} >신청사항</h1>
         <TextField

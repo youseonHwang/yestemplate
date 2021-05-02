@@ -133,7 +133,6 @@ const useStyles = makeStyles((theme: Theme) =>
       marginBottom: '20px',
     }
   }));
-
 interface RightPreviewProps {
   values: {
     belong: string;
@@ -169,6 +168,7 @@ const RightPreview: React.FC<RightPreviewProps> = ({ values, preview, onPreviewM
 
     <Paper className={classes.paper}>
       <Button
+        style={{ float: 'right', marginBottom: '2%' }}
         onClick={printDocument}
         startIcon={<SaveIcon />}
         variant="contained"

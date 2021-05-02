@@ -36,7 +36,7 @@ const ApplyDocument: React.FC<ApplyDocumentProps> = ({
   }
   const classes = useStyles();
   return (
-    <Paper className={classes.paper}>
+    <Paper className={classes.paper} elevation={3}>
       <Grid item xs={12}>
         <h1 style={{ fontSize: '20px', fontWeight: 'bold', textAlign: 'left' }} >증빙자료 첨부</h1>
         <div style={{ marginBottom: '3%' }}>

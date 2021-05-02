@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     marginTop: theme.spacing(4),
   },
   cardGrid: {
-    paddingTop: theme.spacing(8),
+    paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(8),
   },
   card: {
@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'column',
   },
   cardMedia: {
-    paddingTop: '56.25%', // 16:9
+    paddingTop: '130%', // 16:9
   },
   cardContent: {
     flexGrow: 1,
@@ -60,7 +60,7 @@ export default function Album() {
           <Grid container spacing={4}>
             {cards.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
+                <Card className={classes.card} >
                   <CardMedia
                     className={classes.cardMedia}
                     image="../../../../public/TEMPLATE.png"
@@ -75,9 +75,9 @@ export default function Album() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button size="small" color="primary">
-                        <Link href="/write">
-                            작성하기
+                    <Button size="small" color="primary" >
+                      <Link href="/write">
+                        작성하기
                         </Link>
                     </Button>
                   </CardActions>
