@@ -30,7 +30,7 @@ const Applicant: React.FC<ApplicantProps> = ({
 }) => {
   const classes = useStyles();
   return (
-    <Paper className={classes.paper}>
+    <Paper className={classes.paper} >
       <Grid item xs={12} >
         <h1 style={{ fontSize: '20px', fontWeight: 'bold', textAlign: 'left', marginBottom: '3%' }} >신청인</h1>
         <TextField

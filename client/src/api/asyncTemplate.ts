@@ -42,7 +42,6 @@ export const editTemplate: (data: any) => Promise<ITemplate> = async (data) => {
   if (!response.data.success) {
     throw new Error('수정에 실패했습니다.');
   }
-  // localStorage.setItem('edit_field', JSON.stringify(response.data.resume));
   return response.data;
 };
 

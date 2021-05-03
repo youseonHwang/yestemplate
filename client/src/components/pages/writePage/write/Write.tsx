@@ -7,13 +7,18 @@ import { Theme, createStyles, makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
 
 {/* container를 불러와야 component를 가져올 수 있음 */ }
 import ApplicantContainer from '../../../../containers/pages/writePage/applicant/ApplicantContainer';
 import ApplyDocumentContainer from '../../../../containers/pages/writePage/applyDocument/ApplyDocumentContainer';
 import ApplyInfoContainer from '../../../../containers/pages/writePage/applyInfo/ApplyInfoContainer';
 
-{/*hooks */ }
+{/*hooks */}
 import useSaveTemplate from '../../../../hooks/pages/templatePage/useSaveTemplate'
 import useInitTemplateField from '../../../../hooks/pages/templatePage/useInitTemplateField';
 import useEditTemplateField from '../../../../hooks/pages/templatePage/useEditTemplate';
@@ -22,11 +27,15 @@ import useUploadFile from '../../../../hooks/pages/templatePage/useUploadFile'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     paper: {
+      backgroundColor: 'grb(232, 232, 232)',
       width: '95%',
       padding: theme.spacing(2),
       marginBottom: theme.spacing(5),
       textAlign: 'center',
-    }
+    },
+    color: {
+      color: '#388e3c',
+    },
   }));
 
 function Write() {
@@ -74,11 +83,13 @@ function Write() {
   }
   return (
     <Paper className={classes.paper}>
-      <div style={{ overflow: "scroll", height: '800px' }}>
+      <div style={{ overflow: "scroll", height: '1100px' }}>
+
         <ApplicantContainer />
         <ApplyInfoContainer />
         <ApplyDocumentContainer onChangeFile={onChangeFile} />
         <Button
+          style={{ float: 'right', marginRight: '5%' }}
           variant="contained"
           color="primary"
           size="large"

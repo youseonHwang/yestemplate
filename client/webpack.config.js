@@ -16,6 +16,13 @@ module.exports = {
       }
     ],
   },
+  devServer: {
+    contentBase: path.join(__dirname + "/"),
+    inline: true,
+    hot: true,
+    host: "localhost",
+    port: 8080
+  },
   output: {
     filename: 'bundle.js', // build시 만들어질 파일 번들 파일 이름
     path: path.resolve(__dirname, '/dist'), // 그리고 경로

@@ -36,7 +36,6 @@ export function* rootSaga(): Generator {
     loginSaga(),
     signUpSaga(),
     requestTemplateSaga(),
-    
   ]);
 }
 
